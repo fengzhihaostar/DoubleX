@@ -1,0 +1,169 @@
+﻿@{
+    ViewBag.Title = "新增术语";
+    Layout = "~/Areas/Member/Views/Shared/_Layout.cshtml";
+}
+@section headers{}
+@section styles{
+}
+<link href="@(WebHelper.GetStaticUrl("/css/Term/Term.css"))" rel="stylesheet" />
+<div class="container">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 member-menu">
+                    @Html.Partial("_Menu")
+                </div>
+                <div class="col-sm-9 member-contianer bg-white">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <p class="member-contianer-title">@ViewBag.Title</p>
+                            <strong>项目:</strong>
+                            <select id="select-project"></select>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <strong>源语言:</strong>
+                            <select id="select-srclang">
+                                <option value="zh">中文</option>
+                                <option value="en">English</option>
+                                <option value="pt">Português</option>
+                                <option value="es">El español</option>
+                                <option value="fr">Français</option>
+                                <option value="it">In Italiano</option>
+                                <option value="ko">한국어</option>
+                                <option value="ja">日本語</option>
+                                <option value="de">Deutsch</option>
+                                <option value="ru">русский</option>
+                                <option value="ar">عربي </option>
+                            </select>
+                            &nbsp;&nbsp;&nbsp;
+                            <strong>目标语言:</strong>
+                            <select id="select-tgtlang">
+                                <option value="en">English</option>
+                                <option value="zh">中文</option>
+                                <option value="pt">Português</option>
+                                <option value="es">El español</option>
+                                <option value="fr">Français</option>
+                                <option value="it">In Italiano</option>
+                                <option value="ko">한국어</option>
+                                <option value="ja">日本語</option>
+                                <option value="de">Deutsch</option>
+                                <option value="ru">русский</option>
+                                <option value="ar">عربي </option>
+                            </select>
+                            &nbsp;&nbsp;&nbsp;
+                            <div style="display:inline-block;width:30%">
+                                <strong>标签:</strong>
+                                <input id="input-flag" type="text" class="form-control" style="width:65%;display:inline-block;height:23px;font-family:微软雅黑" />
+                                <input id="botton-flag-select" type="button" style="font-family:微软雅黑;border:solid;border-width:1px;width:30px;" value="选择" />
+                                <ul id="ul-flag" style="position: absolute; top: 0px; left: 0px;"></ul>
+                            </div>
+                            <br /><br />
+                            <strong>术语原文</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="text" id="text-src" class="form-control" style="width:90%;display:inline-block" placeholder="请输入术语原文" />
+                            <br /><br />
+                            <strong>术语译文</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="text" id="text-tgt" class="form-control" style="width:90%;display:inline-block" placeholder="请输入术语译文" />
+                            <br /><br />
+                            <div class="form-group" style="float: right; margin-right: 10px; ">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="button" id="btn-save" class="btn btn-default">确定创建</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/term.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/project.js"))"></script>
+    <script type="text/javascript">
+        var pageView = {}, projectModel = new Project(), termModel = new Term();
+        var isDropDown = false;
+        $(function () {
+            $('#btn-save').click(function () {
+                var projectId = $('#select-project option:selected').val();
+                var src = $('#text-src').val();
+                if (src && projectId && projectId.length > 1 && src.length > 0) {
+                    var data =
+                        {
+                            ProjectId: projectId,
+                            UserId: $('#input-flag').val(),
+                            TermSrcLang: $('#select-srclang option:selected').val(),
+                            TermTgtLang: $('#select-tgtlang option:selected').val(),
+                            TermSrc: src,
+                            TermTgt: $('#text-tgt').val()
+                        };
+                    termModel.insertTerm({ data: data }, function (result) {
+                        alert(result["Message"]);
+                        location.href = "@(WebHelper.GetMemberUrl("/term/terminfo"))";
+                    });
+                }
+            });
+
+            projectModel.projectQuery({}, function (result) {
+                var html = '';
+                $(result['Obj'].Items).each(function (index, item) {
+                    html += '<option value="' + item['Id'] + '">' + item['ProjectName'] + '</option>';
+                });
+                $('#select-project').empty();
+                $('#select-project').html(html);
+                if ($('#select-project option').length > 0)
+                    $($('#select-project option')[0]).css('selected', 'selected');
+                flagInit();
+                initUl();
+            });
+        })
+
+        function initUl() {
+            //初始化下拉框位置
+            var left = $('#input-flag').position().left;
+            var top = $('#input-flag').position().top + 23;
+            $('#ul-flag').css("top", top + 'px');
+            $('#ul-flag').css("left", left + 'px');
+            $('#ul-flag').hide();
+
+            $('#select-project').change(function () {
+                flagInit();
+            });
+
+            $('#botton-flag-select').click(function (e) {
+                isDropDown = false;
+                $('#ul-flag').fadeIn();
+
+                $(document).one("click", function () {
+                    $('#ul-flag').hide();
+                });
+
+                e.stopPropagation();
+            })
+
+            $("#ul-flag").on("click", function (e) {
+                e.stopPropagation();
+            });
+        }
+
+        function flagInit() {
+            var projectId = $('#select-project option:selected').val();
+            var html = '';
+            if (projectId && projectId.length > 1) {
+                termModel.statisticsUserIds({ data: { ProjectId: projectId } }, function (result) {
+                    $(result['Obj']).each(function (index, item) {
+                        html += '<li style="background-color:#f1f1f1;width:200px;cursor:pointer;">' + item + '</li>';
+                    });
+                    $('#ul-flag').empty();
+                    $('#ul-flag').html(html);
+                    $('#ul-flag li').each(function (index, item) {
+                        $(item).click(function () {
+                            $('#input-flag').val($(item).html());
+                            $('#ul-flag').hide();
+                        });
+                    });
+                });
+            }
+        }
+    </script>
+}
+
+

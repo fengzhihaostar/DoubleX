@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "充值记录";
+    Layout = "~/Areas/Member/Views/Shared/_Layout.cshtml";
+}
+@section headers{}
+@section styles{
+}
+<div class="container">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 member-menu">
+                    @Html.Partial("_Menu")
+                </div>
+                <div class="col-sm-9 member-contianer bg-white">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <p class="member-contianer-title">@ViewBag.Title</p>
+                            <table id="data-list" class="table table-hover list-table member-list-table">
+                                <thead>
+                                    <tr>
+                                        <th class="t-l t-w160">时间</th>
+                                        <th class="t-w120">支付方式</th>
+                                        <th class="t-w120">金额</th>
+                                        <th class="t-l">描述</th>
+                                        <th class="t-w80">状态</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="5">
+                                            <div id="pagination" class="pagination-box"></div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/trade.js"))"></script>
+    <script type="text/javascript">
+        var pageView = {}, tradeModel = new Trade();
+        var $list = $(".list-table > tbody"), colCount = 5;
+        $(document).ready(function () { pageView.init(); });
+
+    </script>
+    <script type="text/javascript">
+
+        pageView.init = function () {
+            pageView.query();
+        }
+
+        pageView.query = function () {
+
+            var queryModel = mu.queryPagingData({
+                Key: $("#txt-search-key").val(),
+                PageIndex: ($("#pagination").data('curPageIndex') || 0)
+            });
+
+            mu.queryPagingSet($list, colCount, { data: queryModel }, tradeModel.rechargeRecordQuery, function (result) {
+                mu.queryPagingHtml($list, colCount, { callback: function (i, v) { pageView.query(i); } }, result, function (items) {
+                    var listHtml = "";
+                    $(items).each(function (index, item) {
+                        var id = item["Id"];
+                        listHtml += "<tr>";
+                        listHtml += "    <td class=\"t-l\">" + mu.listFormatDateTime(item["CreateDt"]) + "</td>";
+                        listHtml += "    <td>" + item["PaymentTypeText"] + "</td>";
+                        listHtml += "    <td>" + dx.util.formatMoney(item["MoneyValue"]) + "</td>";
+                        listHtml += "    <td class=\"t-l\">" + item["Descript"] + "</td>";
+                        listHtml += "    <td>" + item["RechargeStateText"] + "</td>";
+                        listHtml += "</tr>";
+                    });
+                    $list.html(listHtml);
+                });
+            });
+        }
+
+
+    </script>
+}
+
+
+
+
+
+
+
+

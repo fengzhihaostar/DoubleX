@@ -1,0 +1,31 @@
+﻿@model PathModel
+@{
+    string defaultHomeText = "工作台", defaultHomeLink = WebHelper.GetManageUrl();
+}
+@if (!VerifyHelper.IsNull(Model))
+{
+    <div class="page-heading bg-white  border-bottom">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>@(Model.CurrentText)</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="@(VerifyHelper.IsEmpty(Model.HomeLink)?defaultHomeLink:Model.HomeLink)">@(VerifyHelper.IsEmpty(Model.HomeText) ? defaultHomeText : Model.HomeText)</a>
+                    </li>
+                    @if (!VerifyHelper.IsEmpty(Model.Items))
+                    {
+                        foreach (var item in Model.Items)
+                        {
+                            <li>
+                                <a href="@(VerifyHelper.IsEmpty(item.Value)?"javascript:;":item.Value)">@(item.Key)</a>
+                            </li>
+                        }
+                    }
+                    <li class="active">
+                        <strong><a href="@(VerifyHelper.IsEmpty(Model.CurrentLink)?"javascript:;":Model.CurrentLink)">@(Model.CurrentText)</a></strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+}

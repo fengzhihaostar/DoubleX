@@ -1,0 +1,1155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C33BBDEC-42D6-4937-87B8-54338EEE8086}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DoubleX.Applaction.Apisite</RootNamespace>
+    <AssemblyName>DoubleX.Applaction.Apisite</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.7.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.2.0.7\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\Code.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Code.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Common.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Manage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Manage.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Script.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Script.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Api\Controllers\CommonController.cs" />
+    <Compile Include="Areas\Api\Controllers\ProjectController.cs" />
+    <Compile Include="Areas\Api\Controllers\TermController.cs" />
+    <Compile Include="Areas\Api\Controllers\TradeController.cs" />
+    <Compile Include="Areas\Api\Controllers\TrafficController.cs" />
+    <Compile Include="Areas\Api\Controllers\MemberController.cs" />
+    <Compile Include="Areas\Api\Controllers\OrganizeController.cs" />
+    <Compile Include="Areas\Manage\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Manage\Controllers\DemoController.cs" />
+    <Compile Include="Areas\Manage\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Manage\Controllers\OrganizeController.cs" />
+    <Compile Include="Areas\Manage\ManageAreaRegistration.cs" />
+    <Compile Include="Areas\Member\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Member\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Member\Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\DocumentController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Areas\Member\Controllers\TermController.cs" />
+    <Compile Include="Areas\Member\Controllers\TradeController.cs" />
+    <Compile Include="Areas\Member\Controllers\TrafficController.cs" />
+    <Compile Include="Areas\Member\Controllers\UserController.cs" />
+    <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\base.css" />
+    <Content Include="Content\css\Term\term.css" />
+    <Content Include="Content\css\member.css" />
+    <Content Include="Content\fonts\iconfont.css" />
+    <Content Include="Content\fonts\iconfont.js" />
+    <Content Include="Content\fonts\iconfont.svg" />
+    <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\images\member\member-account-bg.png" />
+    <Content Include="Content\images\member\loginbanner.png" />
+    <Content Include="Content\images\member\member-home-tag.png" />
+    <Content Include="Content\images\member\security-line.png" />
+    <Content Include="Content\images\member\verify-code.png" />
+    <Content Include="Content\images\payment\alipay.png" />
+    <Content Include="Content\images\payment\weixin.png" />
+    <Content Include="Content\module\common.js" />
+    <Content Include="Content\module\project.js" />
+    <Content Include="Content\module\term.js" />
+    <Content Include="Content\module\trade.js" />
+    <Content Include="Content\module\traffic.js" />
+    <Content Include="Content\module\member.js" />
+    <Content Include="Content\module\organize.js" />
+    <Content Include="Content\plugs\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\plugs\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\plugs\bootstrap\bootstrap.css" />
+    <Content Include="Content\plugs\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\css\manage.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\plugs\doublex\doublex.all.js" />
+    <Content Include="Content\plugs\drag\drag.css" />
+    <Content Include="Content\plugs\drag\drag.js" />
+    <Content Include="Content\plugs\iCheck\skins\all.css" />
+    <Content Include="Content\plugs\iCheck\skins\flat\aero%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\aero.css" />
+    <Content Include="Content\plugs\iCheck\skins\flat\aero.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\blue%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\blue.css" />
+    <Content Include="Content\plugs\iCheck\skins\flat\blue.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\flat%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\flat.css" />
+    <Content Include="Content\plugs\iCheck\skins\flat\flat.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\green%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\green.css" />
+    <Content Include="Content\plugs\iCheck\skins\flat\green.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\grey%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\grey.css" />
+    <Content Include="Content\plugs\iCheck\skins\flat\grey.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\orange%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\orange.css" />
+    <Content Include="Content\plugs\iCheck\skins\flat\orange.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\pink%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\pink.css" />
+    <Content Include="Content\plugs\iCheck\skins\flat\pink.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\purple%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\purple.css" />
+    <Content Include="Content\plugs\iCheck\skins\flat\purple.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\red%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\red.css" />
+    <Content Include="Content\plugs\iCheck\skins\flat\red.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\yellow%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\yellow.css" />
+    <Content Include="Content\plugs\iCheck\skins\flat\yellow.png" />
+    <Content Include="Content\plugs\iCheck\skins\flat\_all.css" />
+    <Content Include="Content\plugs\iCheck\skins\futurico\futurico%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\futurico\futurico.css" />
+    <Content Include="Content\plugs\iCheck\skins\futurico\futurico.png" />
+    <Content Include="Content\plugs\iCheck\skins\line\aero.css" />
+    <Content Include="Content\plugs\iCheck\skins\line\blue.css" />
+    <Content Include="Content\plugs\iCheck\skins\line\green.css" />
+    <Content Include="Content\plugs\iCheck\skins\line\grey.css" />
+    <Content Include="Content\plugs\iCheck\skins\line\line%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\line\line.css" />
+    <Content Include="Content\plugs\iCheck\skins\line\line.png" />
+    <Content Include="Content\plugs\iCheck\skins\line\orange.css" />
+    <Content Include="Content\plugs\iCheck\skins\line\pink.css" />
+    <Content Include="Content\plugs\iCheck\skins\line\purple.css" />
+    <Content Include="Content\plugs\iCheck\skins\line\red.css" />
+    <Content Include="Content\plugs\iCheck\skins\line\yellow.css" />
+    <Content Include="Content\plugs\iCheck\skins\line\_all.css" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\aero%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\aero.css" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\aero.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\blue%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\blue.css" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\blue.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\green%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\green.css" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\green.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\grey%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\grey.css" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\grey.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\minimal%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\minimal.css" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\minimal.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\orange%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\orange.css" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\orange.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\pink%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\pink.css" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\pink.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\purple%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\purple.css" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\purple.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\red%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\red.css" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\red.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\yellow%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\yellow.css" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\yellow.png" />
+    <Content Include="Content\plugs\iCheck\skins\minimal\_all.css" />
+    <Content Include="Content\plugs\iCheck\skins\polaris\polaris%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\polaris\polaris.css" />
+    <Content Include="Content\plugs\iCheck\skins\polaris\polaris.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\aero%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\aero.css" />
+    <Content Include="Content\plugs\iCheck\skins\square\aero.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\blue.small.css" />
+    <Content Include="Content\plugs\iCheck\skins\square\blue%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\blue-small.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\blue.css" />
+    <Content Include="Content\plugs\iCheck\skins\square\blue.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\green%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\green.css" />
+    <Content Include="Content\plugs\iCheck\skins\square\green.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\grey%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\grey.css" />
+    <Content Include="Content\plugs\iCheck\skins\square\grey.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\orange%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\orange.css" />
+    <Content Include="Content\plugs\iCheck\skins\square\orange.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\pink%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\pink.css" />
+    <Content Include="Content\plugs\iCheck\skins\square\pink.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\purple%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\purple.css" />
+    <Content Include="Content\plugs\iCheck\skins\square\purple.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\red%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\red.css" />
+    <Content Include="Content\plugs\iCheck\skins\square\red.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\square%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\square.css" />
+    <Content Include="Content\plugs\iCheck\skins\square\square.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\yellow%402x.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\yellow.css" />
+    <Content Include="Content\plugs\iCheck\skins\square\yellow.png" />
+    <Content Include="Content\plugs\iCheck\skins\square\_all.css" />
+    <Content Include="Content\script\apisite.js" />
+    <Content Include="Content\script\member.js" />
+    <Content Include="descript.txt" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Config\Log4Net.config" />
+    <Content Include="Areas\Manage\Views\web.config" />
+    <Content Include="Areas\Manage\Views\Home\Index.cshtml" />
+    <Content Include="Content\plugs\bootstrap\bootstrap-theme.css.map" />
+    <Content Include="Content\plugs\bootstrap\bootstrap-theme.min.css.map" />
+    <Content Include="Content\plugs\bootstrap\bootstrap.css.map" />
+    <Content Include="Content\plugs\bootstrap\bootstrap.min.css.map" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\Manage\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Manage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Content\plugs\bootstrap\bootstrap.js" />
+    <Content Include="Content\plugs\bootstrap\bootstrap.min.js" />
+    <Content Include="Areas\Manage\Views\Shared\_Master.cshtml" />
+    <Content Include="Areas\Manage\Views\Demo\List.cshtml" />
+    <Content Include="Areas\Manage\Views\Demo\Dialog.cshtml" />
+    <Content Include="Areas\Manage\Views\Demo\Form.cshtml" />
+    <Content Include="Areas\Manage\Views\Demo\Search.cshtml" />
+    <Content Include="Content\fonts\iconfont.eot" />
+    <Content Include="Content\fonts\iconfont.ttf" />
+    <Content Include="Content\fonts\iconfont.woff" />
+    <Content Include="Areas\Manage\Views\Organize\EmployeeList.cshtml" />
+    <Content Include="Areas\Manage\Views\Shared\_Path.cshtml" />
+    <Content Include="Areas\Manage\Views\Organize\EmployeeEdit.cshtml" />
+    <Content Include="Areas\Manage\Views\Demo\Detail.cshtml" />
+    <Content Include="Areas\Member\Views\web.config" />
+    <Content Include="Areas\Member\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Member\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Member\Views\Shared\_Account.cshtml" />
+    <Content Include="Areas\Member\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Member\Views\Account\Regist.cshtml" />
+    <Content Include="Areas\Member\Views\Account\Agreement.cshtml" />
+    <Content Include="Areas\Member\Views\Account\ForgetPwd.cshtml" />
+    <Content Include="Areas\Member\Views\User\Detail.cshtml" />
+    <Content Include="Areas\Member\Views\User\EditPwd.cshtml" />
+    <Content Include="Areas\Member\Views\User\Security.cshtml" />
+    <Content Include="Areas\Member\Views\Traffic\UseRecord.cshtml" />
+    <Content Include="Areas\Member\Views\Trade\CostRecord.cshtml" />
+    <Content Include="Areas\Member\Views\Shared\_Menu.cshtml" />
+    <Content Include="Areas\Member\Views\Trade\Recharge.cshtml" />
+    <Content Include="Areas\Member\Views\Trade\RechargeRedirect.cshtml" />
+    <Content Include="Areas\Member\Views\Trade\RechargeRecord.cshtml" />
+    <Content Include="Areas\Member\Views\User\BindMobile.cshtml" />
+    <Content Include="Areas\Member\Views\User\BindEmail.cshtml" />
+    <Content Include="Config\Template.config" />
+    <Content Include="Areas\Member\Views\Project\ProjectInfo.cshtml" />
+    <Content Include="Areas\Member\Views\Project\ProjectAdd.cshtml" />
+    <Content Include="Content\documents\UTH FAQ.docx" />
+    <Content Include="Areas\Member\Views\Shared\_Layout - 复制.cshtml" />
+    <Content Include="Areas\Member\Views\Term\TermInfo.cshtml" />
+    <Content Include="Areas\Member\Views\Term\TermAdd.cshtml" />
+    <Content Include="Areas\Member\Views\Term\TermDemonStration.cshtml" />
+    <Content Include="Views\Question\CommonQuestion.cshtml" />
+    <Content Include="Areas\Member\Views\Shared\_Technicaldoc.cshtml" />
+    <None Include="Content\plugs\jQuery\jquery-1.12.4.intellisense.js" />
+    <Content Include="Content\plugs\jQuery\jquery-1.12.4.js" />
+    <Content Include="Content\plugs\jQuery\jquery-1.12.4.min.js" />
+    <Content Include="Content\script\manage.js" />
+    <Content Include="Content\css\home\base.style.css" />
+    <Content Include="Content\css\home\home.style.css" />
+    <Content Include="Content\css\home\Services\translate.style.css" />
+    <Content Include="Content\images\home\Service.png" />
+    <Content Include="Content\images\home\Service\banner.png" />
+    <Content Include="Content\images\home\Service\demo-icons.png" />
+    <Content Include="Content\images\home\Service\icons.png" />
+    <Content Include="Content\images\home\Service\intro-bg.png" />
+    <Content Include="Content\images\home\Service\intro.png" />
+    <Content Include="Content\images\home\template.png" />
+    <Content Include="Content\images\home\UTHLogo.png" />
+    <Content Include="Content\script\knockout-2.2.0.debug.js" />
+    <Content Include="Content\script\knockout-2.2.0.js" />
+    <Content Include="Content\script\modernizr-2.6.2.js" />
+    <Content Include="Scripts\culture\DoubleX.Culture.en-US.js" />
+    <Content Include="Scripts\culture\DoubleX.Culture.zh-CN.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Content\plugs\datepicker\bootstrap-datetimepicker.css" />
+    <Content Include="Content\plugs\datepicker\bootstrap-datetimepicker.js" />
+    <Content Include="Content\plugs\datepicker\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\plugs\datepicker\bootstrap-datetimepicker.min.js" />
+    <Content Include="Content\plugs\datepicker\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.ar.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.az.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.bg.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.bn.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.ca.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.cs.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.da.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.de.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.ee.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.el.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.es.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.fi.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.fr.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.he.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.hr.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.hu.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.hy.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.id.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.is.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.it.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.ja.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.ka.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.ko.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.lt.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.lv.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.ms.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.nb.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.nl.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.no.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.pl.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.pt-BR.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.pt.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.ro.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.rs-latin.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.rs.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.ru.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.sk.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.sl.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.sv.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.sw.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.th.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.tr.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.ua.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.uk.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Content\plugs\datepicker\locales\bootstrap-datetimepicker.zh-TW.js" />
+    <Content Include="Content\plugs\dialog\css\bootstrap-dialog.css" />
+    <Content Include="Content\plugs\dialog\css\bootstrap-dialog.min.css" />
+    <Content Include="Content\plugs\dialog\js\bootstrap-dialog.js" />
+    <Content Include="Content\plugs\dialog\js\bootstrap-dialog.min.js" />
+    <Content Include="Content\plugs\echarts\echarts.min.js" />
+    <Content Include="Content\plugs\iCheck\green%402x.png" />
+    <Content Include="Content\plugs\iCheck\green.png" />
+    <Content Include="Content\plugs\iCheck\iCheck.css" />
+    <Content Include="Content\plugs\iCheck\icheck.min.js" />
+    <Content Include="Content\plugs\jsonp\jquery.jsonp.js" />
+    <Content Include="Content\plugs\metisMenu\jquery.metisMenu.js" />
+    <Content Include="Content\plugs\pace\pace.js" />
+    <Content Include="Content\plugs\pace\pace.min.js" />
+    <Content Include="Content\plugs\pace\themes\black\pace-theme-barber-shop.css" />
+    <Content Include="Content\plugs\pace\themes\black\pace-theme-big-counter.css" />
+    <Content Include="Content\plugs\pace\themes\black\pace-theme-bounce.css" />
+    <Content Include="Content\plugs\pace\themes\black\pace-theme-center-atom.css" />
+    <Content Include="Content\plugs\pace\themes\black\pace-theme-center-circle.css" />
+    <Content Include="Content\plugs\pace\themes\black\pace-theme-center-radar.css" />
+    <Content Include="Content\plugs\pace\themes\black\pace-theme-center-simple.css" />
+    <Content Include="Content\plugs\pace\themes\black\pace-theme-corner-indicator.css" />
+    <Content Include="Content\plugs\pace\themes\black\pace-theme-fill-left.css" />
+    <Content Include="Content\plugs\pace\themes\black\pace-theme-flash.css" />
+    <Content Include="Content\plugs\pace\themes\black\pace-theme-flat-top.css" />
+    <Content Include="Content\plugs\pace\themes\black\pace-theme-loading-bar.css" />
+    <Content Include="Content\plugs\pace\themes\black\pace-theme-mac-osx.css" />
+    <Content Include="Content\plugs\pace\themes\black\pace-theme-minimal.css" />
+    <Content Include="Content\plugs\pace\themes\blue\pace-theme-barber-shop.css" />
+    <Content Include="Content\plugs\pace\themes\blue\pace-theme-big-counter.css" />
+    <Content Include="Content\plugs\pace\themes\blue\pace-theme-bounce.css" />
+    <Content Include="Content\plugs\pace\themes\blue\pace-theme-center-atom.css" />
+    <Content Include="Content\plugs\pace\themes\blue\pace-theme-center-circle.css" />
+    <Content Include="Content\plugs\pace\themes\blue\pace-theme-center-radar.css" />
+    <Content Include="Content\plugs\pace\themes\blue\pace-theme-center-simple.css" />
+    <Content Include="Content\plugs\pace\themes\blue\pace-theme-corner-indicator.css" />
+    <Content Include="Content\plugs\pace\themes\blue\pace-theme-fill-left.css" />
+    <Content Include="Content\plugs\pace\themes\blue\pace-theme-flash.css" />
+    <Content Include="Content\plugs\pace\themes\blue\pace-theme-flat-top.css" />
+    <Content Include="Content\plugs\pace\themes\blue\pace-theme-loading-bar.css" />
+    <Content Include="Content\plugs\pace\themes\blue\pace-theme-mac-osx.css" />
+    <Content Include="Content\plugs\pace\themes\blue\pace-theme-minimal.css" />
+    <Content Include="Content\plugs\pace\themes\green\pace-theme-barber-shop.css" />
+    <Content Include="Content\plugs\pace\themes\green\pace-theme-big-counter.css" />
+    <Content Include="Content\plugs\pace\themes\green\pace-theme-bounce.css" />
+    <Content Include="Content\plugs\pace\themes\green\pace-theme-center-atom.css" />
+    <Content Include="Content\plugs\pace\themes\green\pace-theme-center-circle.css" />
+    <Content Include="Content\plugs\pace\themes\green\pace-theme-center-radar.css" />
+    <Content Include="Content\plugs\pace\themes\green\pace-theme-center-simple.css" />
+    <Content Include="Content\plugs\pace\themes\green\pace-theme-corner-indicator.css" />
+    <Content Include="Content\plugs\pace\themes\green\pace-theme-fill-left.css" />
+    <Content Include="Content\plugs\pace\themes\green\pace-theme-flash.css" />
+    <Content Include="Content\plugs\pace\themes\green\pace-theme-flat-top.css" />
+    <Content Include="Content\plugs\pace\themes\green\pace-theme-loading-bar.css" />
+    <Content Include="Content\plugs\pace\themes\green\pace-theme-mac-osx.css" />
+    <Content Include="Content\plugs\pace\themes\green\pace-theme-minimal.css" />
+    <Content Include="Content\plugs\pace\themes\orange\pace-theme-barber-shop.css" />
+    <Content Include="Content\plugs\pace\themes\orange\pace-theme-big-counter.css" />
+    <Content Include="Content\plugs\pace\themes\orange\pace-theme-bounce.css" />
+    <Content Include="Content\plugs\pace\themes\orange\pace-theme-center-atom.css" />
+    <Content Include="Content\plugs\pace\themes\orange\pace-theme-center-circle.css" />
+    <Content Include="Content\plugs\pace\themes\orange\pace-theme-center-radar.css" />
+    <Content Include="Content\plugs\pace\themes\orange\pace-theme-center-simple.css" />
+    <Content Include="Content\plugs\pace\themes\orange\pace-theme-corner-indicator.css" />
+    <Content Include="Content\plugs\pace\themes\orange\pace-theme-fill-left.css" />
+    <Content Include="Content\plugs\pace\themes\orange\pace-theme-flash.css" />
+    <Content Include="Content\plugs\pace\themes\orange\pace-theme-flat-top.css" />
+    <Content Include="Content\plugs\pace\themes\orange\pace-theme-loading-bar.css" />
+    <Content Include="Content\plugs\pace\themes\orange\pace-theme-mac-osx.css" />
+    <Content Include="Content\plugs\pace\themes\orange\pace-theme-minimal.css" />
+    <Content Include="Content\plugs\pace\themes\pink\pace-theme-barber-shop.css" />
+    <Content Include="Content\plugs\pace\themes\pink\pace-theme-big-counter.css" />
+    <Content Include="Content\plugs\pace\themes\pink\pace-theme-bounce.css" />
+    <Content Include="Content\plugs\pace\themes\pink\pace-theme-center-atom.css" />
+    <Content Include="Content\plugs\pace\themes\pink\pace-theme-center-circle.css" />
+    <Content Include="Content\plugs\pace\themes\pink\pace-theme-center-radar.css" />
+    <Content Include="Content\plugs\pace\themes\pink\pace-theme-center-simple.css" />
+    <Content Include="Content\plugs\pace\themes\pink\pace-theme-corner-indicator.css" />
+    <Content Include="Content\plugs\pace\themes\pink\pace-theme-fill-left.css" />
+    <Content Include="Content\plugs\pace\themes\pink\pace-theme-flash.css" />
+    <Content Include="Content\plugs\pace\themes\pink\pace-theme-flat-top.css" />
+    <Content Include="Content\plugs\pace\themes\pink\pace-theme-loading-bar.css" />
+    <Content Include="Content\plugs\pace\themes\pink\pace-theme-mac-osx.css" />
+    <Content Include="Content\plugs\pace\themes\pink\pace-theme-minimal.css" />
+    <Content Include="Content\plugs\pace\themes\purple\pace-theme-barber-shop.css" />
+    <Content Include="Content\plugs\pace\themes\purple\pace-theme-big-counter.css" />
+    <Content Include="Content\plugs\pace\themes\purple\pace-theme-bounce.css" />
+    <Content Include="Content\plugs\pace\themes\purple\pace-theme-center-atom.css" />
+    <Content Include="Content\plugs\pace\themes\purple\pace-theme-center-circle.css" />
+    <Content Include="Content\plugs\pace\themes\purple\pace-theme-center-radar.css" />
+    <Content Include="Content\plugs\pace\themes\purple\pace-theme-center-simple.css" />
+    <Content Include="Content\plugs\pace\themes\purple\pace-theme-corner-indicator.css" />
+    <Content Include="Content\plugs\pace\themes\purple\pace-theme-fill-left.css" />
+    <Content Include="Content\plugs\pace\themes\purple\pace-theme-flash.css" />
+    <Content Include="Content\plugs\pace\themes\purple\pace-theme-flat-top.css" />
+    <Content Include="Content\plugs\pace\themes\purple\pace-theme-loading-bar.css" />
+    <Content Include="Content\plugs\pace\themes\purple\pace-theme-mac-osx.css" />
+    <Content Include="Content\plugs\pace\themes\purple\pace-theme-minimal.css" />
+    <Content Include="Content\plugs\pace\themes\red\pace-theme-barber-shop.css" />
+    <Content Include="Content\plugs\pace\themes\red\pace-theme-big-counter.css" />
+    <Content Include="Content\plugs\pace\themes\red\pace-theme-bounce.css" />
+    <Content Include="Content\plugs\pace\themes\red\pace-theme-center-atom.css" />
+    <Content Include="Content\plugs\pace\themes\red\pace-theme-center-circle.css" />
+    <Content Include="Content\plugs\pace\themes\red\pace-theme-center-radar.css" />
+    <Content Include="Content\plugs\pace\themes\red\pace-theme-center-simple.css" />
+    <Content Include="Content\plugs\pace\themes\red\pace-theme-corner-indicator.css" />
+    <Content Include="Content\plugs\pace\themes\red\pace-theme-fill-left.css" />
+    <Content Include="Content\plugs\pace\themes\red\pace-theme-flash.css" />
+    <Content Include="Content\plugs\pace\themes\red\pace-theme-flat-top.css" />
+    <Content Include="Content\plugs\pace\themes\red\pace-theme-loading-bar.css" />
+    <Content Include="Content\plugs\pace\themes\red\pace-theme-mac-osx.css" />
+    <Content Include="Content\plugs\pace\themes\red\pace-theme-minimal.css" />
+    <Content Include="Content\plugs\pace\themes\silver\pace-theme-barber-shop.css" />
+    <Content Include="Content\plugs\pace\themes\silver\pace-theme-big-counter.css" />
+    <Content Include="Content\plugs\pace\themes\silver\pace-theme-bounce.css" />
+    <Content Include="Content\plugs\pace\themes\silver\pace-theme-center-atom.css" />
+    <Content Include="Content\plugs\pace\themes\silver\pace-theme-center-circle.css" />
+    <Content Include="Content\plugs\pace\themes\silver\pace-theme-center-radar.css" />
+    <Content Include="Content\plugs\pace\themes\silver\pace-theme-center-simple.css" />
+    <Content Include="Content\plugs\pace\themes\silver\pace-theme-corner-indicator.css" />
+    <Content Include="Content\plugs\pace\themes\silver\pace-theme-fill-left.css" />
+    <Content Include="Content\plugs\pace\themes\silver\pace-theme-flash.css" />
+    <Content Include="Content\plugs\pace\themes\silver\pace-theme-flat-top.css" />
+    <Content Include="Content\plugs\pace\themes\silver\pace-theme-loading-bar.css" />
+    <Content Include="Content\plugs\pace\themes\silver\pace-theme-mac-osx.css" />
+    <Content Include="Content\plugs\pace\themes\silver\pace-theme-minimal.css" />
+    <Content Include="Content\plugs\pace\themes\white\pace-theme-barber-shop.css" />
+    <Content Include="Content\plugs\pace\themes\white\pace-theme-big-counter.css" />
+    <Content Include="Content\plugs\pace\themes\white\pace-theme-bounce.css" />
+    <Content Include="Content\plugs\pace\themes\white\pace-theme-center-atom.css" />
+    <Content Include="Content\plugs\pace\themes\white\pace-theme-center-circle.css" />
+    <Content Include="Content\plugs\pace\themes\white\pace-theme-center-radar.css" />
+    <Content Include="Content\plugs\pace\themes\white\pace-theme-center-simple.css" />
+    <Content Include="Content\plugs\pace\themes\white\pace-theme-corner-indicator.css" />
+    <Content Include="Content\plugs\pace\themes\white\pace-theme-fill-left.css" />
+    <Content Include="Content\plugs\pace\themes\white\pace-theme-flash.css" />
+    <Content Include="Content\plugs\pace\themes\white\pace-theme-flat-top.css" />
+    <Content Include="Content\plugs\pace\themes\white\pace-theme-loading-bar.css" />
+    <Content Include="Content\plugs\pace\themes\white\pace-theme-mac-osx.css" />
+    <Content Include="Content\plugs\pace\themes\white\pace-theme-minimal.css" />
+    <Content Include="Content\plugs\pace\themes\yellow\pace-theme-barber-shop.css" />
+    <Content Include="Content\plugs\pace\themes\yellow\pace-theme-big-counter.css" />
+    <Content Include="Content\plugs\pace\themes\yellow\pace-theme-bounce.css" />
+    <Content Include="Content\plugs\pace\themes\yellow\pace-theme-center-atom.css" />
+    <Content Include="Content\plugs\pace\themes\yellow\pace-theme-center-circle.css" />
+    <Content Include="Content\plugs\pace\themes\yellow\pace-theme-center-radar.css" />
+    <Content Include="Content\plugs\pace\themes\yellow\pace-theme-center-simple.css" />
+    <Content Include="Content\plugs\pace\themes\yellow\pace-theme-corner-indicator.css" />
+    <Content Include="Content\plugs\pace\themes\yellow\pace-theme-fill-left.css" />
+    <Content Include="Content\plugs\pace\themes\yellow\pace-theme-flash.css" />
+    <Content Include="Content\plugs\pace\themes\yellow\pace-theme-flat-top.css" />
+    <Content Include="Content\plugs\pace\themes\yellow\pace-theme-loading-bar.css" />
+    <Content Include="Content\plugs\pace\themes\yellow\pace-theme-mac-osx.css" />
+    <Content Include="Content\plugs\pace\themes\yellow\pace-theme-minimal.css" />
+    <Content Include="Content\plugs\pagination\jquery.pagination.js" />
+    <Content Include="Content\plugs\pagination\pagination.css" />
+    <Content Include="Content\plugs\select2\css\select2-bootstrap.css" />
+    <Content Include="Content\plugs\select2\css\select2-bootstrap.min.css" />
+    <Content Include="Content\plugs\select2\css\select2.css" />
+    <Content Include="Content\plugs\select2\css\select2.min.css" />
+    <Content Include="Content\plugs\select2\js\i18n\ar.js" />
+    <Content Include="Content\plugs\select2\js\i18n\az.js" />
+    <Content Include="Content\plugs\select2\js\i18n\bg.js" />
+    <Content Include="Content\plugs\select2\js\i18n\ca.js" />
+    <Content Include="Content\plugs\select2\js\i18n\cs.js" />
+    <Content Include="Content\plugs\select2\js\i18n\da.js" />
+    <Content Include="Content\plugs\select2\js\i18n\de.js" />
+    <Content Include="Content\plugs\select2\js\i18n\el.js" />
+    <Content Include="Content\plugs\select2\js\i18n\en.js" />
+    <Content Include="Content\plugs\select2\js\i18n\es.js" />
+    <Content Include="Content\plugs\select2\js\i18n\et.js" />
+    <Content Include="Content\plugs\select2\js\i18n\eu.js" />
+    <Content Include="Content\plugs\select2\js\i18n\fa.js" />
+    <Content Include="Content\plugs\select2\js\i18n\fi.js" />
+    <Content Include="Content\plugs\select2\js\i18n\fr.js" />
+    <Content Include="Content\plugs\select2\js\i18n\gl.js" />
+    <Content Include="Content\plugs\select2\js\i18n\he.js" />
+    <Content Include="Content\plugs\select2\js\i18n\hi.js" />
+    <Content Include="Content\plugs\select2\js\i18n\hr.js" />
+    <Content Include="Content\plugs\select2\js\i18n\hu.js" />
+    <Content Include="Content\plugs\select2\js\i18n\id.js" />
+    <Content Include="Content\plugs\select2\js\i18n\is.js" />
+    <Content Include="Content\plugs\select2\js\i18n\it.js" />
+    <Content Include="Content\plugs\select2\js\i18n\ja.js" />
+    <Content Include="Content\plugs\select2\js\i18n\km.js" />
+    <Content Include="Content\plugs\select2\js\i18n\ko.js" />
+    <Content Include="Content\plugs\select2\js\i18n\lt.js" />
+    <Content Include="Content\plugs\select2\js\i18n\lv.js" />
+    <Content Include="Content\plugs\select2\js\i18n\mk.js" />
+    <Content Include="Content\plugs\select2\js\i18n\ms.js" />
+    <Content Include="Content\plugs\select2\js\i18n\nb.js" />
+    <Content Include="Content\plugs\select2\js\i18n\nl.js" />
+    <Content Include="Content\plugs\select2\js\i18n\pl.js" />
+    <Content Include="Content\plugs\select2\js\i18n\pt-BR.js" />
+    <Content Include="Content\plugs\select2\js\i18n\pt.js" />
+    <Content Include="Content\plugs\select2\js\i18n\ro.js" />
+    <Content Include="Content\plugs\select2\js\i18n\ru.js" />
+    <Content Include="Content\plugs\select2\js\i18n\sk.js" />
+    <Content Include="Content\plugs\select2\js\i18n\sr-Cyrl.js" />
+    <Content Include="Content\plugs\select2\js\i18n\sr.js" />
+    <Content Include="Content\plugs\select2\js\i18n\sv.js" />
+    <Content Include="Content\plugs\select2\js\i18n\th.js" />
+    <Content Include="Content\plugs\select2\js\i18n\tr.js" />
+    <Content Include="Content\plugs\select2\js\i18n\uk.js" />
+    <Content Include="Content\plugs\select2\js\i18n\vi.js" />
+    <Content Include="Content\plugs\select2\js\i18n\zh-CN.js" />
+    <Content Include="Content\plugs\select2\js\i18n\zh-TW.js" />
+    <Content Include="Content\plugs\select2\js\select2.full.js" />
+    <Content Include="Content\plugs\select2\js\select2.full.min.js" />
+    <Content Include="Content\plugs\select2\js\select2.js" />
+    <Content Include="Content\plugs\select2\js\select2.min.js" />
+    <Content Include="Content\plugs\slimscroll\jquery.slimscroll.js" />
+    <Content Include="Content\plugs\slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\anchor\anchor.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\attachment.css" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\attachment.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\attachment.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\fileTypeImages\icon_chm.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\fileTypeImages\icon_default.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\fileTypeImages\icon_doc.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\fileTypeImages\icon_exe.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\fileTypeImages\icon_jpg.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\fileTypeImages\icon_mp3.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\fileTypeImages\icon_mv.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\fileTypeImages\icon_pdf.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\fileTypeImages\icon_ppt.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\fileTypeImages\icon_psd.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\fileTypeImages\icon_rar.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\fileTypeImages\icon_txt.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\fileTypeImages\icon_xls.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\images\alignicon.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\images\alignicon.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\images\bg.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\images\file-icons.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\images\file-icons.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\images\icons.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\images\icons.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\images\image.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\images\progress.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\images\success.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\attachment\images\success.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\background\background.css" />
+    <Content Include="Content\plugs\ueditor\dialogs\background\background.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\background\background.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\background\images\bg.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\background\images\success.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\charts\chart.config.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\charts\charts.css" />
+    <Content Include="Content\plugs\ueditor\dialogs\charts\charts.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\charts\charts.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\charts\images\charts0.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\charts\images\charts1.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\charts\images\charts2.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\charts\images\charts3.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\charts\images\charts4.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\charts\images\charts5.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\emotion\emotion.css" />
+    <Content Include="Content\plugs\ueditor\dialogs\emotion\emotion.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\emotion\emotion.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\emotion\images\0.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\emotion\images\bface.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\emotion\images\cface.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\emotion\images\fface.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\emotion\images\jxface2.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\emotion\images\neweditor-tab-bg.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\emotion\images\tface.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\emotion\images\wface.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\emotion\images\yface.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\gmap\gmap.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\help\help.css" />
+    <Content Include="Content\plugs\ueditor\dialogs\help\help.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\help\help.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\image\image.css" />
+    <Content Include="Content\plugs\ueditor\dialogs\image\image.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\image\image.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\image\images\alignicon.jpg" />
+    <Content Include="Content\plugs\ueditor\dialogs\image\images\bg.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\image\images\icons.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\image\images\icons.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\image\images\image.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\image\images\progress.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\image\images\success.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\image\images\success.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\insertframe\insertframe.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\internal.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\link\link.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\map\map.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\map\show.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\music\music.css" />
+    <Content Include="Content\plugs\ueditor\dialogs\music\music.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\music\music.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\preview\preview.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\images\addimg.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\images\brush.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\images\delimg.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\images\delimgH.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\images\empty.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\images\emptyH.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\images\eraser.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\images\redo.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\images\redoH.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\images\scale.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\images\scaleH.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\images\size.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\images\undo.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\images\undoH.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\scrawl.css" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\scrawl.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\scrawl\scrawl.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\searchreplace\searchreplace.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\searchreplace\searchreplace.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\snapscreen\snapscreen.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\spechars\spechars.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\spechars\spechars.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\table\dragicon.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\table\edittable.css" />
+    <Content Include="Content\plugs\ueditor\dialogs\table\edittable.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\table\edittable.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\table\edittd.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\table\edittip.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\template\config.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\template\images\bg.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\template\images\pre0.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\template\images\pre1.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\template\images\pre2.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\template\images\pre3.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\template\images\pre4.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\template\template.css" />
+    <Content Include="Content\plugs\ueditor\dialogs\template\template.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\template\template.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\video\images\bg.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\video\images\center_focus.jpg" />
+    <Content Include="Content\plugs\ueditor\dialogs\video\images\file-icons.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\video\images\file-icons.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\video\images\icons.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\video\images\icons.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\video\images\image.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\video\images\left_focus.jpg" />
+    <Content Include="Content\plugs\ueditor\dialogs\video\images\none_focus.jpg" />
+    <Content Include="Content\plugs\ueditor\dialogs\video\images\progress.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\video\images\right_focus.jpg" />
+    <Content Include="Content\plugs\ueditor\dialogs\video\images\success.gif" />
+    <Content Include="Content\plugs\ueditor\dialogs\video\images\success.png" />
+    <Content Include="Content\plugs\ueditor\dialogs\video\video.css" />
+    <Content Include="Content\plugs\ueditor\dialogs\video\video.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\video\video.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\webapp\webapp.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\wordimage\fClipboard_ueditor.swf" />
+    <Content Include="Content\plugs\ueditor\dialogs\wordimage\imageUploader.swf" />
+    <Content Include="Content\plugs\ueditor\dialogs\wordimage\tangram.js" />
+    <Content Include="Content\plugs\ueditor\dialogs\wordimage\wordimage.html" />
+    <Content Include="Content\plugs\ueditor\dialogs\wordimage\wordimage.js" />
+    <Content Include="Content\plugs\ueditor\lang\en\en.js" />
+    <Content Include="Content\plugs\ueditor\lang\en\images\addimage.png" />
+    <Content Include="Content\plugs\ueditor\lang\en\images\alldeletebtnhoverskin.png" />
+    <Content Include="Content\plugs\ueditor\lang\en\images\alldeletebtnupskin.png" />
+    <Content Include="Content\plugs\ueditor\lang\en\images\background.png" />
+    <Content Include="Content\plugs\ueditor\lang\en\images\button.png" />
+    <Content Include="Content\plugs\ueditor\lang\en\images\copy.png" />
+    <Content Include="Content\plugs\ueditor\lang\en\images\deletedisable.png" />
+    <Content Include="Content\plugs\ueditor\lang\en\images\deleteenable.png" />
+    <Content Include="Content\plugs\ueditor\lang\en\images\listbackground.png" />
+    <Content Include="Content\plugs\ueditor\lang\en\images\localimage.png" />
+    <Content Include="Content\plugs\ueditor\lang\en\images\music.png" />
+    <Content Include="Content\plugs\ueditor\lang\en\images\rotateleftdisable.png" />
+    <Content Include="Content\plugs\ueditor\lang\en\images\rotateleftenable.png" />
+    <Content Include="Content\plugs\ueditor\lang\en\images\rotaterightdisable.png" />
+    <Content Include="Content\plugs\ueditor\lang\en\images\rotaterightenable.png" />
+    <Content Include="Content\plugs\ueditor\lang\en\images\upload.png" />
+    <Content Include="Content\plugs\ueditor\lang\zh-cn\images\copy.png" />
+    <Content Include="Content\plugs\ueditor\lang\zh-cn\images\localimage.png" />
+    <Content Include="Content\plugs\ueditor\lang\zh-cn\images\music.png" />
+    <Content Include="Content\plugs\ueditor\lang\zh-cn\images\upload.png" />
+    <Content Include="Content\plugs\ueditor\lang\zh-cn\zh-cn.js" />
+    <Content Include="Content\plugs\ueditor\themes\default\css\ueditor.css" />
+    <Content Include="Content\plugs\ueditor\themes\default\css\ueditor.min.css" />
+    <Content Include="Content\plugs\ueditor\themes\default\dialogbase.css" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\anchor.gif" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\arrow.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\arrow_down.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\arrow_up.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\button-bg.gif" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\cancelbutton.gif" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\charts.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\cursor_h.gif" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\cursor_h.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\cursor_v.gif" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\cursor_v.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\dialog-title-bg.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\filescan.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\highlighted.gif" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\icons-all.gif" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\icons.gif" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\icons.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\loaderror.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\loading.gif" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\lock.gif" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\neweditor-tab-bg.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\pagebreak.gif" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\scale.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\sortable.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\spacer.gif" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\sparator_v.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\table-cell-align.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\tangram-colorpicker.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\toolbar_bg.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\unhighlighted.gif" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\upload.png" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\videologo.gif" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\word.gif" />
+    <Content Include="Content\plugs\ueditor\themes\default\images\wordpaste.png" />
+    <Content Include="Content\plugs\ueditor\themes\iframe.css" />
+    <Content Include="Content\plugs\ueditor\third-party\codemirror\codemirror.css" />
+    <Content Include="Content\plugs\ueditor\third-party\codemirror\codemirror.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\adapters\mootools-adapter.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\adapters\mootools-adapter.src.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\adapters\prototype-adapter.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\adapters\prototype-adapter.src.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\adapters\standalone-framework.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\adapters\standalone-framework.src.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\highcharts-more.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\highcharts-more.src.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\highcharts.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\highcharts.src.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\annotations.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\annotations.src.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\canvas-tools.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\canvas-tools.src.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\data.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\data.src.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\drilldown.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\drilldown.src.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\exporting.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\exporting.src.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\funnel.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\funnel.src.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\heatmap.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\heatmap.src.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\map.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\map.src.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\no-data-to-display.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\modules\no-data-to-display.src.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\themes\dark-blue.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\themes\dark-green.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\themes\gray.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\themes\grid.js" />
+    <Content Include="Content\plugs\ueditor\third-party\highcharts\themes\skies.js" />
+    <Content Include="Content\plugs\ueditor\third-party\jquery-1.10.2.js" />
+    <Content Include="Content\plugs\ueditor\third-party\jquery-1.10.2.min.js" />
+    <Content Include="Content\plugs\ueditor\third-party\snapscreen\UEditorSnapscreen.exe" />
+    <Content Include="Content\plugs\ueditor\third-party\SyntaxHighlighter\shCore.js" />
+    <Content Include="Content\plugs\ueditor\third-party\SyntaxHighlighter\shCoreDefault.css" />
+    <Content Include="Content\plugs\ueditor\third-party\video-js\font\vjs.svg" />
+    <Content Include="Content\plugs\ueditor\third-party\video-js\video-js.css" />
+    <Content Include="Content\plugs\ueditor\third-party\video-js\video-js.min.css" />
+    <Content Include="Content\plugs\ueditor\third-party\video-js\video-js.swf" />
+    <Content Include="Content\plugs\ueditor\third-party\video-js\video.dev.js" />
+    <Content Include="Content\plugs\ueditor\third-party\video-js\video.js" />
+    <Content Include="Content\plugs\ueditor\third-party\webuploader\Uploader.swf" />
+    <Content Include="Content\plugs\ueditor\third-party\webuploader\webuploader.css" />
+    <Content Include="Content\plugs\ueditor\third-party\webuploader\webuploader.custom.js" />
+    <Content Include="Content\plugs\ueditor\third-party\webuploader\webuploader.custom.min.js" />
+    <Content Include="Content\plugs\ueditor\third-party\webuploader\webuploader.flashonly.js" />
+    <Content Include="Content\plugs\ueditor\third-party\webuploader\webuploader.flashonly.min.js" />
+    <Content Include="Content\plugs\ueditor\third-party\webuploader\webuploader.html5only.js" />
+    <Content Include="Content\plugs\ueditor\third-party\webuploader\webuploader.html5only.min.js" />
+    <Content Include="Content\plugs\ueditor\third-party\webuploader\webuploader.js" />
+    <Content Include="Content\plugs\ueditor\third-party\webuploader\webuploader.min.js" />
+    <Content Include="Content\plugs\ueditor\third-party\webuploader\webuploader.withoutimage.js" />
+    <Content Include="Content\plugs\ueditor\third-party\webuploader\webuploader.withoutimage.min.js" />
+    <Content Include="Content\plugs\ueditor\third-party\xss.min.js" />
+    <Content Include="Content\plugs\ueditor\third-party\zeroclipboard\ZeroClipboard.js" />
+    <Content Include="Content\plugs\ueditor\third-party\zeroclipboard\ZeroClipboard.min.js" />
+    <Content Include="Content\plugs\ueditor\third-party\zeroclipboard\ZeroClipboard.swf" />
+    <Content Include="Content\plugs\ueditor\ueditor.all.js" />
+    <Content Include="Content\plugs\ueditor\ueditor.all.min.js" />
+    <Content Include="Content\plugs\ueditor\ueditor.config.js" />
+    <Content Include="Content\plugs\ueditor\ueditor.parse.js" />
+    <Content Include="Content\plugs\ueditor\ueditor.parse.min.js" />
+    <Content Include="Content\plugs\validator\bootstrapValidator-ext.js" />
+    <Content Include="Content\plugs\validator\bootstrapValidator.css" />
+    <Content Include="Content\plugs\validator\bootstrapValidator.js" />
+    <Content Include="Content\plugs\webuploader\Uploader.swf" />
+    <Content Include="Content\plugs\webuploader\webuploader.css" />
+    <Content Include="Content\plugs\webuploader\webuploader.custom.js" />
+    <Content Include="Content\plugs\webuploader\webuploader.custom.min.js" />
+    <Content Include="Content\plugs\webuploader\webuploader.fis.js" />
+    <Content Include="Content\plugs\webuploader\webuploader.flashonly.js" />
+    <Content Include="Content\plugs\webuploader\webuploader.flashonly.min.js" />
+    <Content Include="Content\plugs\webuploader\webuploader.html5nodepend.js" />
+    <Content Include="Content\plugs\webuploader\webuploader.html5only.js" />
+    <Content Include="Content\plugs\webuploader\webuploader.html5only.min.js" />
+    <Content Include="Content\plugs\webuploader\webuploader.js" />
+    <Content Include="Content\plugs\webuploader\webuploader.min.js" />
+    <Content Include="Content\plugs\webuploader\webuploader.noimage.js" />
+    <Content Include="Content\plugs\webuploader\webuploader.noimage.min.js" />
+    <Content Include="Content\plugs\webuploader\webuploader.nolog.js" />
+    <Content Include="Content\plugs\webuploader\webuploader.nolog.min.js" />
+    <Content Include="Content\plugs\webuploader\webuploader.withoutimage.js" />
+    <Content Include="Content\plugs\webuploader\webuploader.withoutimage.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Content\plugs\underscore\underscore-contrib.js" />
+    <Content Include="Content\plugs\underscore\underscore-contrib.min.js" />
+    <Content Include="Content\plugs\underscore\underscore-ext.js" />
+    <Content Include="Content\plugs\underscore\underscore.js" />
+    <Content Include="Content\plugs\underscore\underscore.min.js" />
+    <Content Include="Content\plugs\underscore\underscore.string.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Content\plugs\dialog\less\bootstrap-dialog.less" />
+    <Content Include="Content\plugs\ueditor\third-party\jquery-1.10.2.min.map" />
+    <Content Include="Content\plugs\ueditor\third-party\video-js\font\vjs.eot" />
+    <Content Include="Content\plugs\ueditor\third-party\video-js\font\vjs.ttf" />
+    <Content Include="Content\plugs\ueditor\third-party\video-js\font\vjs.woff" />
+    <Content Include="Content\plugs\webuploader\README.md" />
+    <Content Include="Content\plugs\underscore\underscore.min.map" />
+    <Content Include="Content\plugs\jQuery\jquery-1.12.4.min.map" />
+    <Content Include="Views\Payment\ToPlatform.cshtml" />
+    <Content Include="Content\images\home\Service\NuGet.Tools.vsix" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Question\TechnologyDocument.cshtml" />
+    <Content Include="Views\Document\VoinceToVoince.cshtml" />
+    <Content Include="Views\Document\TxtToVoince.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Api\Views\Common\" />
+    <Folder Include="Log\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Script.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Script.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Code.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Code.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DoubleX.Module.Project\DoubleX.Module.Project.csproj">
+      <Project>{e39ac66b-2453-4845-ba36-eac96db05c8e}</Project>
+      <Name>DoubleX.Module.Project</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DoubleX.Module.Term\DoubleX.Module.Term.csproj">
+      <Project>{eba54a03-3ab9-485d-ba61-7da16f43e253}</Project>
+      <Name>DoubleX.Module.Term</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\DoubleX.Framework.Warmup\DoubleX.Framework.Warmup.csproj">
+      <Project>{b84b79ae-cfa4-4a40-8ac1-d6570ee6b0aa}</Project>
+      <Name>DoubleX.Framework.Warmup</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\DoubleX.Framework.Web\DoubleX.Framework.Web.csproj">
+      <Project>{59b8335a-92df-40eb-870e-7cb8b6519bc0}</Project>
+      <Name>DoubleX.Framework.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\DoubleX.Framework\DoubleX.Framework.csproj">
+      <Project>{231314b8-b175-48fd-853b-7d3cf738467e}</Project>
+      <Name>DoubleX.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\DoubleX.Infrastructure.Core.EF\DoubleX.Infrastructure.Core.EF.csproj">
+      <Project>{8debf3fa-b7dc-47a8-bc86-85c58dc354b4}</Project>
+      <Name>DoubleX.Infrastructure.Core.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\DoubleX.Infrastructure.Core\DoubleX.Infrastructure.Core.csproj">
+      <Project>{763d8201-1f11-4414-aae0-af9a58d6b016}</Project>
+      <Name>DoubleX.Infrastructure.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\DoubleX.Infrastructure.Utility.Net45\DoubleX.Infrastructure.Utility.Net45.csproj">
+      <Project>{cfc0e83b-791c-4987-af72-f3c9a43b5775}</Project>
+      <Name>DoubleX.Infrastructure.Utility.Net45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\DoubleX.Infrastructure.Utility\DoubleX.Infrastructure.Utility.csproj">
+      <Project>{ebfcac7e-9168-4ade-a703-db546b678610}</Project>
+      <Name>DoubleX.Infrastructure.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Module\DoubleX.Module.Common\DoubleX.Module.Common.csproj">
+      <Project>{6578c337-3ef0-45ed-b680-e515ae2d4779}</Project>
+      <Name>DoubleX.Module.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Module\DoubleX.Module.Member\DoubleX.Module.Member.csproj">
+      <Project>{1c32c981-df90-41b9-ae37-e39d61933e59}</Project>
+      <Name>DoubleX.Module.Member</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Module\DoubleX.Module.Organize\DoubleX.Module.Organize.csproj">
+      <Project>{56f80ee9-f936-4510-911d-b5937a608994}</Project>
+      <Name>DoubleX.Module.Organize</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Module\DoubleX.Module.Payment\DoubleX.Module.Trade.csproj">
+      <Project>{bd88d0df-d7c0-48ac-ae9c-2a58c50c6f70}</Project>
+      <Name>DoubleX.Module.Trade</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Module\DoubleX.Module.Traffic\DoubleX.Module.Traffic.csproj">
+      <Project>{91abdb83-28e4-4437-83dd-a1b9de00f348}</Project>
+      <Name>DoubleX.Module.Traffic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Manage.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Manage.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Common.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>11301</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:11301/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。启用“NuGet 程序包还原”可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

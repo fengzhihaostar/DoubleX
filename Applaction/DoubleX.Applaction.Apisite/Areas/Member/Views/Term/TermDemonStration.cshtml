@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "术语演示";
+    Layout = "~/Areas/Member/Views/Shared/_Layout.cshtml";
+}
+
+@section headers{}
+
+@section styles{}
+
+<link href="@(WebHelper.GetStaticUrl("/css/term/term.css"))" rel="stylesheet" />
+<div class="container">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 member-menu">
+                    @Html.Partial("_Menu")
+                </div>
+                <div class="col-sm-9 member-contianer bg-white">
+                    <p class="member-contianer-title">@ViewBag.Title</p>
+                    <div class="tech-section tech-demo">
+                        <div id="wake-demo">
+                            <div class="demo-input">
+                                <div>
+                                    <strong>源语言：</strong>
+                                    <select id="select-srclang">
+                                        <option value="zh">中文</option>
+                                        <option value="en">English</option>
+                                        <option value="pt">Português</option>
+                                        <option value="es">El español</option>
+                                        <option value="fr">Français</option>
+                                        <option value="it">In Italiano</option>
+                                        <option value="ko">한국어</option>
+                                        <option value="ja">日本語</option>
+                                        <option value="de">Deutsch</option>
+                                        <option value="ru">русский</option>
+                                        <option value="ar">عربي</option>
+                                    </select>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <strong>目标语言：</strong>
+                                    <select id="select-tgtlang">
+                                        <option value="en">English</option>
+                                        <option value="zh">中文</option>
+                                        <option value="pt">Português</option>
+                                        <option value="es">El español</option>
+                                        <option value="fr">Français</option>
+                                        <option value="it">In Italiano</option>
+                                        <option value="ko">한국어</option>
+                                        <option value="ja">日本語</option>
+                                        <option value="de">Deutsch</option>
+                                        <option value="ru">русский</option>
+                                        <option value="ar">عربي</option>
+                                    </select>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <strong>项目：</strong>
+                                    <select id="select-project">
+                                        <option value="0">请选择项目</option>
+                                    </select>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <strong>标签：</strong>
+                                    <select id="select-flag">
+                                        <option value="-9999">请选择术语标签</option>
+                                    </select>
+                                    <br /><br />
+                                    <label for="text-src" style="display:none"></label>
+                                    <input type="text" id="text-src">
+                                    <button type="button" class="btn-primary" id="button-translate">翻译</button>
+                                </div>
+                                <p>输入要翻译的文字, 点击翻译开始. </p>
+                                译文：<span id="emo-translate-target-word"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/term.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/project.js"))"></script>
+    <script type="text/javascript">
+        var pageView = {}, termModel = new Term(), projectModel = new Project();
+        var $list = $(".list-table > tbody"), colCount = 5;
+        $(document).ready(function () { pageView.init(); });
+
+    </script>
+    <script type="text/javascript">
+        pageView.init = function () {
+            projectModel.projectQuery({}, function (result) {
+                var html = '<option value="0">请选择项目</option>';
+                $(result['Obj'].Items).each(function (index, item) {
+                    html += '<option key="' + item['TranslateKey'] + '" value="' + item['Id'] + '">' + item['ProjectName'] + '</option>';
+                });
+                $('#select-project').empty();
+                $('#select-project').html(html);
+
+                $('#select-project').change(function () {
+                    var projectId = $('#select-project option:selected').val();
+
+                    if (projectId && projectId.length > 1) {
+                        html = '<option value="-9999">请选择术语标签</option>';
+                        termModel.statisticsUserIds({ data: { ProjectId: projectId } }, function (result) {
+                            $(result['Obj']).each(function (index, item) {
+                                html += '<option value="' + item + '">' + item + '</option>';
+                            });
+                            $('#select-flag').empty();
+                            $('#select-flag').html(html);
+                        });
+                    }
+                });
+            });
+        }
+
+        $('#button-translate').click(function () {
+            var projectId = $('#select-project option:selected').val();
+            if ('0' == projectId) {
+                alert('请选择一个项目后再尝试翻译。(如果您当前没有可选项目，您需要预先创建一个项目)');
+                return;
+            }
+            var q = $('#text-src').val();
+            if (q && q.length > 0) {
+                var userId = $('#select-flag option:selected').val();
+                if (userId == '-9999') {
+                    userId = '';
+                }
+                var data = {
+                    Key: $('#select-project option:selected').attr('key'),
+                    Source: $('#select-srclang option:selected').val(),
+                    Target: $('#select-tgtlang option:selected').val(),
+                    Q: q,
+                    UserId: userId
+                }
+
+                termModel.termDemo({ data: data }, function (result) {
+                    $('#emo-translate-target-word').html(result['Obj']['Translations'][0]['Tgt']);
+                });
+            }
+            else {
+                alert('请输入有效内容！');
+            }
+        });
+    </script>
+}
+
+

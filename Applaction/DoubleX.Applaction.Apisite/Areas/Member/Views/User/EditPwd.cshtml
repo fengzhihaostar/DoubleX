@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "修改密码";
+    Layout = "~/Areas/Member/Views/Shared/_Layout.cshtml";
+}
+@section headers{}
+@section styles{
+}
+<div class="container">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 member-menu">
+                    @Html.Partial("_Menu")
+                </div>
+                <div class="col-sm-9 member-contianer bg-white">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <p class="member-contianer-title">@ViewBag.Title</p>
+                            <form id="detail-form" class="form-horizontal member-form">
+                                <div class="form-group">
+                                    <label for="txtOldPwd" class="col-sm-2 control-label">旧密码</label>
+                                    <div class="col-sm-8">
+                                        <input type="password" id="txtOldPwd" name="txtOldPwd" class="form-control" placeholder="请输入旧密码" />
+                                    </div>
+                                    <label class="col-sm-2 control-label"></label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtNewPwd" class="col-sm-2 control-label">新密码</label>
+                                    <div class="col-sm-8">
+                                        <input type="password" id="txtNewPwd" name="txtNewPwd" class="form-control" placeholder="请输入新密码" />
+                                    </div>
+                                    <label class="col-sm-2 control-label"></label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="button" id="btn-save" class="btn btn-default">修改密码</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/member.js"))"></script>
+    <script type="text/javascript">
+        var pageView = {}, memberModel = new Member();
+        $(document).ready(function () { pageView.init(); });
+
+    </script>
+    <script type="text/javascript">
+
+        pageView.init = function () {
+            //控件渲染
+            //....
+
+            //数据验证
+            pageView.validator();
+
+            //保存操作
+            $("#btn-save").click(function () {
+                if (mu.validatorSubmit("#detail-form")) {
+                    pageView.save();
+                }
+            });
+        }
+
+        pageView.save = function () {
+            var model = pageView.getModel();
+            memberModel.memberEditPwd({ data: model }, function (result, status) {
+                dx.util.message({ message: "密码修改成功" });
+            })
+        }
+
+        pageView.getModel = function () {
+            return {
+                Id: "",
+                OldPwd: $("#txtOldPwd").val(),
+                NewPwd: $("#txtNewPwd").val()
+            };
+        }
+
+        pageView.validator = function () {
+            var fields = {
+                txtOldPwd: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输入旧密码'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 16,
+                            message: '密码为6-16个字符'
+                        }
+                    }
+                },
+                txtNewPwd: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输入新密码'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 16,
+                            message: '密码为6-16个字符'
+                        }
+                    }
+                }
+            };
+            $('#detail-form').bootstrapValidator(mu.validatorOption(fields));
+        }
+
+    </script>
+}

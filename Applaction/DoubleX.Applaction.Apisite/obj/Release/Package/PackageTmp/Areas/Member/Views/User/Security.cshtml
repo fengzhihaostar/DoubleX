@@ -1,0 +1,105 @@
+﻿@model DoubleX.Module.Member.MemberDetailModel
+@{
+    ViewBag.Title = "账号安全";
+    Layout = "~/Areas/Member/Views/Shared/_Layout.cshtml";
+    var securityProgress = 30;
+    var securityProgressText = "30%(低)";
+    if (Model.MobileIsVerify || Model.EmailIsVerify) {
+        securityProgress = 60;
+        securityProgressText = "60%(中)";
+    }
+    if (Model.MobileIsVerify && Model.EmailIsVerify)
+    {
+        securityProgress = 95;
+        securityProgressText = "95%(高)";
+    }
+}
+@section headers{}
+@section styles{
+}
+<div class="container">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 member-menu">
+                    @Html.Partial("_Menu")
+                </div>
+                <div class="col-sm-9 member-contianer bg-white">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <p class="member-contianer-title">@ViewBag.Title</p>
+                            <div class="member-security-detail">
+                                <p><strong>安全等级</strong><span class="member-security-progress"><i style="width:@(securityProgress)%;"></i></span><span>@(securityProgressText)</span></p>
+                                <p>
+                                    <strong>会员账号</strong><span id="member-account">@(Model.Account)</span>
+                                    <strong>上次登录时间</strong><span id="member-lastDt">@(DateTimeHelper.Get(Model.LastDt))</span>
+                                </p>
+                            </div>
+                            <p class="member-contianer-title">安全设置</p>
+                            <div class="member-security-list">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="item">
+                                            <i class="iconfont icon-lock"></i>
+                                            <span></span>
+                                            <a href="@(WebHelper.GetMemberUrl("/user/editpwd"))" class="btn btn-primary">修改登录密码</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="item"  title="@(Model.Mobile)">
+                                            <i class="iconfont icon-smartphone"></i>
+                                            <span></span>
+                                            @if (Model.MobileIsVerify)
+                                            {
+                                                <button class="btn btn-primary" disabled="disabled" title="@(Model.Mobile)">手机号码己绑定</button>
+                                            }
+                                            else
+                                            {
+                                                <a href="@(WebHelper.GetMemberUrl("/user/bindmobile"))" class="btn btn-primary">修改手机绑定</a>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="item item-last"  title="@(Model.Email)">
+                                            <i class="iconfont icon-email"></i>
+                                            <span></span>
+                                            @if (Model.EmailIsVerify)
+                                            {
+                                                <button class="btn btn-primary" disabled="disabled" title="@(Model.Email)">邮箱地址己绑定</button>
+                                            }
+                                            else
+                                            {
+                                                <a href="@(WebHelper.GetMemberUrl("/user/bindemail"))" class="btn btn-primary">修改邮箱绑定</a>
+                                            }
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/member.js"))"></script>
+    <script type="text/javascript">
+        var pageView = {}, memberModel = new Member();
+        $(document).ready(function () { pageView.init(); });
+
+    </script>
+    <script type="text/javascript">
+        pageView.init = function () {
+        }
+    </script>
+}
+
+
+
+
+
+
+
+

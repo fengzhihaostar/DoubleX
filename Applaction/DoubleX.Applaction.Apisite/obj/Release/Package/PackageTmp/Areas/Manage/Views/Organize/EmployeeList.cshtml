@@ -1,0 +1,176 @@
+﻿@{
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+    string curModuleText = "组织管理", curPathText = "账号列表";
+    PathModel pathModel = new PathModel()
+    {
+        Items = new List<KeyValuePair<string, string>>() {
+            new KeyValuePair<string, string>(curModuleText,"")
+        },
+        CurrentText = curPathText
+    };
+    ViewBag.Title = string.Format("{0}-{1}", curModuleText, curPathText);
+}
+@section headers{}
+@section styles{}
+@Html.Partial("_Path", pathModel)
+<div class="content-wrapper animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>@(curPathText)</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-7 m-b-xs tooltip-box">
+                            <a id="btn-refresh" class="btn btn-white btn-sm" href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="刷新列表"><i class="iconfont icon-refresh"></i>刷新</a>
+                            <a id="btn-resetPwd" class="btn btn-white btn-sm" href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="重置密码"><i class="iconfont icon-modeedit"></i></a>
+                            <a id="btn-remove" class="btn btn-white btn-sm" href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="删除选中"><i class="iconfont icon-delete"></i></a>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="input-group">
+                                <input id="txt-search-key" class="input-sm form-control" placeholder="请输入关键字......" type="text"><span class="input-group-btn">
+                                    <button type="button" id="btn-search" class="btn btn-sm btn-primary"> 搜索</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <table id="labelblock-list" class="table table-hover list-table">
+                        <thead>
+                            <tr>
+                                <th class="chk-box">
+                                    <input type="checkbox" class="i-checks list-chk-all" name="list-chk" value="" />
+                                </th>
+                                <th class="t-l">账号</th>
+                                <th class="t-w80">次数</th>
+                                <th class="t-w120">重置密码</th>
+                                <th class="t-w160">时间</th>
+                                <th class="t-w120">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <div id="pagination" class="pagination-box"></div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/organize.js"))"></script>
+    <script type="text/javascript">
+
+        var pageView = {};
+        var organizeModel = new Organize();
+        var $list = $(".list-table > tbody");
+
+        $(document).ready(function () { pageView.init(); });
+
+    </script>
+    <script type="text/javascript">
+        pageView.init = function () {
+
+            $("#btn-resetPwd").on("click", function () {
+                var items = pageView.getCheckIds();
+                if (dx.util.isNullOrEmpty(items)) {
+                    dx.util.message({ message: "请选择至少一项重置!" })
+                    return;
+                }
+                pageView.resetPwd(items);
+            })
+            $("#btn-remove").on("click", function () {
+                var items = pageView.getCheckIds();
+                if (dx.util.isNullOrEmpty(items)) {
+                    dx.util.message({ message: "请选择至少一项删除!" })
+                    return;
+                }
+                pageView.remove(items);
+            })
+            $("#btn-refresh").on("click", function () {
+                pageView.query();
+            })
+            $("#btn-search").on("click", function () {
+                pageView.query();
+            })
+
+            $(".list-table").on("click", "a.btn-item-resetPwd", function () {
+                var id = $(this).attr("data-id") || "";
+                pageView.resetPwd([id]);
+            })
+            $(".list-table").on("click", "a.btn-item-remove", function () {
+                var id = $(this).attr("data-id") || "";
+                pageView.remove([id]);
+            })
+
+            pageView.query();
+        }
+
+        pageView.query = function () {
+
+            var queryModel = mu.queryPagingData({
+                Key: $("#txt-search-key").val(),
+                PageIndex: ($("#pagination").data('curPageIndex') || 0)
+            });
+
+            mu.queryPagingSet($list, 6, { data: queryModel }, organizeModel.employeeQuery, function (result) {
+                mu.queryPagingHtml($list, 6, { callback: function (i, v) { pageView.query(i); } }, result, function (items) {
+                    var listHtml = "";
+                    $(items).each(function (index, item) {
+                        var id = item["Id"];
+                        listHtml += "<tr>";
+                        listHtml += "    " + mu.listCheckTd(id);
+                        listHtml += "    <td class=\"t-l\">" + item["Account"] + "</td>";
+                        listHtml += "    <td>" + item["LoginCount"] + "</td>";
+                        listHtml += "    " + mu.listButtonTd(id, [{ text: "重置", className: "btn-item-resetPwd" }]);
+                        listHtml += "    <td>" + mu.listFormatDateTime(item["LastDt"]) + "</td>";
+                        listHtml += "    " + mu.listButtonTd(id, [{ text: "删除", className: "btn-item-remove" }]);
+                        listHtml += "</tr>";
+                    });
+                    $list.html(listHtml);
+                });
+            });
+        }
+
+        pageView.remove = function (ids) {
+            //数据判断
+            if (!dx.util.isArray(ids) || dx.util.filter(ids, function (item) { return dx.util.isNullOrEmpty(item); }).length > 0) {
+                dx.util.message({ message: "数据错误，请刷新重试!" })
+                return;
+            }
+            //删除确认
+            dx.util.confirm({ message: "是否确认删除?" }, function (dialog) {
+                dialog.close();
+                organizeModel.employeeRemove({ data: { ids: ids } }, function (result, status) {
+                    dx.util.message({ message: "删除成功!" }, function () { pageView.query(); })
+                })
+            })
+        }
+
+        pageView.resetPwd = function (ids) {
+            //数据判断
+            if (!dx.util.isArray(ids) || dx.util.filter(ids, function (item) { return dx.util.isNullOrEmpty(item); }).length > 0) {
+                dx.util.message({ message: "数据错误，请刷新重试!" })
+                return;
+            }
+            //重置确认
+            dx.util.confirm({ message: "是否确认重置密码?" }, function (dialog) {
+                dialog.close();
+                organizeModel.employeeResetPwd({ data: { ids: ids } }, function (result, status) {
+                    dx.util.message({ message: "重置成功!" }, function () { pageView.query(); })
+                })
+            })
+        }
+
+        pageView.getCheckIds = function () {
+            return mu.iCheckValues($("input[name=\"list-chk\"]:not(.list-chk-all)"));
+        }
+
+    </script>
+}
+

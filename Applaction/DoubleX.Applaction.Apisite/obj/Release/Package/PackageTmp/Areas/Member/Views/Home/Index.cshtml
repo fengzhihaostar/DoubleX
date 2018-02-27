@@ -1,0 +1,150 @@
+﻿@{
+    ViewBag.Title = "首页";
+    Layout = "~/Areas/Member/Views/Shared/_Layout.cshtml";
+}
+@section headers{}
+@section styles{
+}
+<div class="container">
+    <div class="wrapper">
+        <div class="ibox member-statistics">
+            <div class="ibox-content clearfix" style="position:relative;">
+                <div class="member-home-tag"></div>
+                <div class="row">
+                    <div class="col-sm-3 descript descript-first">
+                        <p>账户余额</p>
+                        <p>
+                            <strong class="member-money" id="member-balance"><img class="member-money-image" src="@(WebHelper.GetStaticUrl("/images/loading.gif"))" /></strong>&nbsp;&nbsp;
+                            <a href="@(WebHelper.GetMemberUrl("/trade/recharge"))" class="btn btn-default btn-primary btn-xs" style="margin-top:-7px;">充&nbsp;值</a>
+                        </p>
+                    </div>
+                    <div class="col-sm-3 descript">
+                        <p class="title">当月消费总额</p>
+                        <p><strong class="member-money" id="member-consume-total"><img class="member-money-image" src="@(WebHelper.GetStaticUrl("/images/loading.gif"))" /></strong></p>
+                    </div>
+                    <div class="col-sm-2 descript">
+                        <p class="title">当月流量统计</p>
+                        <p><strong class="member-money" id="member-traffic-total" style="width:150px"><img class="member-money-image" src="@(WebHelper.GetStaticUrl("/images/loading.gif"))" /></strong></p>
+                    </div>
+                    <div class="col-sm-3 descript">
+                        <p class="title">当月充值总额</p>
+                        <p><strong class="member-money" id="member-recharge-total"><img class="member-money-image" src="@(WebHelper.GetStaticUrl("/images/loading.gif"))" /></strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="ibox member-navigate">
+            <div class="ibox-content">
+                <div class="member-navigate-list">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <a href="@(WebHelper.GetMemberUrl("/traffic/userecord"))"><i class="iconfont icon-brokenimage ico1"></i>使用记录</a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="@(WebHelper.GetMemberUrl("/trade/recharge"))"><i class="iconfont icon-accountbalance ico2"></i>我的钱包</a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="@(WebHelper.GetMemberUrl("/user/security"))"><i class="iconfont icon-beenhere ico3"></i>账号安全</a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="@(WebHelper.GetMemberUrl("/term/terminfo"))"><i class="iconfont icon-person ico4"></i>术语管理</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ibox">
+            <div class="ibox-content">
+                <p class="list-table-title">
+                    <span><i class="iconfont icon-storage"></i>&nbsp;项目情况</span>
+                    <a href="@(WebHelper.GetMemberUrl("/project/projectInfo"))" class="more">更多项目>></a>
+                    <a href="@(WebHelper.GetMemberUrl("/project/projectAdd"))" style="float: right;padding-right:30px;">创建项目</a>
+                </p>
+                <table id="use-record-list" class="table table-hover list-table member-list-table">
+                    <thead>
+                        <tr>
+                            <th class="t-w120">名称</th>
+                            <th class="t-w120">Key</th>
+                            <th class="t-w120">项目状态</th>
+                            <th class="t-w120">创建时间</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/project.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/member.js"))"></script>
+    <script type="text/javascript">
+        var pageView = {}, projectModel = new Project(), memberModel = new Member();
+        var $list = $("#use-record-list  > tbody "), colCount = 5;
+        $(document).ready(function () {
+            pageView.init();
+        })
+    </script>
+    <script type="text/javascript">
+        pageView.init = function () {
+            pageView.queryUseRecord();
+            pageView.getMemberDetail();
+        }
+
+        pageView.getMemberDetail = function () {
+            memberModel.memberGetDetail({}, function (result) {
+                var model = result["Obj"];
+                if (!dx.util.isNullOrEmpty(model)) {
+                    $("#member-balance").html('￥' + dx.util.formatMoney(model["Balance"]));
+                    $("#member-recharge-total").html('￥' + dx.util.formatMoney(model["MonthRechargeTotal"]));
+                    $("#member-consume-total").html('￥' + dx.util.formatMoney(model["MonthConsumeTotal"]));
+                    var tarffic = model["MonthTrafficTotal"];
+                    if (tarffic > 10000) {
+                        tarffic = tarffic / 10000 + '';
+                        if (tarffic.indexOf('.') > 0)
+                            tarffic = tarffic.substring(0, tarffic.indexOf('.') + 3);
+                        tarffic += '万字';
+                    }
+                    else
+                        tarffic = tarffic + '字';
+                    $("#member-traffic-total").html(tarffic);
+                }
+            })
+        }
+
+        pageView.queryUseRecord = function () {
+            var queryModel = mu.queryPagingData({
+                Key: "",
+                PageIndex: 0
+            });
+            mu.queryPagingSet($list, colCount, { data: queryModel }, projectModel.projectQuery, function (result) {
+                var listHtml = "";
+                $(result["Obj"]["Items"]).each(function (index, item) {
+                    var id = item["Id"];
+                    listHtml += "<tr>";
+                    listHtml += "    <td>" + item["ProjectName"] + "</td>";
+                    listHtml += "    <td>" + item["TranslateKey"] + "</td>";
+                    listHtml += "    <td>" + GetState(item["State"]) + "</td>";
+                    listHtml += "    <td>" + mu.listFormatDateTime(item["CreateDt"]) + "</td>";
+                    listHtml += "</tr>";
+                })
+                if (mu.queryCount(result) == 0) {
+                    $list.html("<tr><td colspan=\"" + colCount + "\" class=\"t-l\">暂无数据......</td></tr>");
+                    return;
+                }
+                $list.html(listHtml);
+            });
+        }
+
+        function GetState(state) {
+            if (0 == state)
+                return "正常";
+            else if (-1 == state)
+                return "停用";
+            else
+                return "正常";
+        }
+    </script>
+}

@@ -1,0 +1,264 @@
+﻿@{
+    ViewBag.Title = "技术文档";
+    Layout = "~/Areas/Member/Views/Shared/_Technicaldoc.cshtml";
+}
+<style>
+    div p {
+        font-family: 微软雅黑;
+    }
+
+    table {
+        width: 100%;
+        border: solid;
+        border-width: 1px;
+    }
+
+    thead {
+        background-color: #c7c3c3;
+        text-align: center;
+    }
+
+    tr td {
+        border: solid;
+        border-width: 1px;
+        text-align: center;
+        font-family: 微软雅黑;
+    }
+
+    .tb-left {
+        text-align: left;
+    }
+
+    .tb-20 {
+        width: 20%;
+    }
+
+    .tb-40 {
+        width: 40%;
+    }
+
+    .tb-80 {
+        width: 40%;
+    }
+</style>
+<div class="wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-9 member-contianer bg-white">
+                <p class="member-contianer-title">@ViewBag.Title</p>
+                <h2>语音翻译成语音</h2>
+                <br />
+                <p>
+                    UTH翻译API通过HTTP接口对外提供多语种互译服务。您只需要通过调用UTH翻译API，传入待翻译的语音信息，并指定要翻译的源语言和目标语言种类，就可以得到相应的语音翻译结果。
+                </p>
+                <p>
+                    <b>接口输入参数：</b>
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <td class="tb-20">参数名</td>
+                            <td class="tb-20">类型</td>
+                            <td class="tb-20">是否可空</td>
+                            <td class="tb-40">说明</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>key</td>
+                            <td>string</td>
+                            <td>否</td>
+                            <td class="tb-left">用户唯一标识</td>
+                        </tr>
+                        <tr>
+                            <td>format</td>
+                            <td>string</td>
+                            <td>否</td>
+                            <td class="tb-left">语音格式，请填写（pcm（不压缩）、wav、opus、speex、amr,flac）格式之一</td>
+                        </tr>
+                        <tr>
+                            <td>source</td>
+                            <td>string</td>
+                            <td>否</td>
+                            <td class="tb-left">源语言</td>
+                        </tr>
+                        <tr>
+                            <td>target</td>
+                            <td>string</td>
+                            <td>否</td>
+                            <td class="tb-left">目标语言</td>
+                        </tr>
+                        <tr>
+                            <td>url</td>
+                            <td>string</td>
+                            <td>是</td>
+                            <td class="tb-left">线上语音地址(与content必需选填一项)</td>
+                        </tr>
+                        <tr>
+                            <td>content</td>
+                            <td>string</td>
+                            <td>是</td>
+                            <td class="tb-left">真实的语音数据 ，需要进行base64 编码(与url必需选填一项)</td>
+                        </tr>
+                        <tr>
+                            <td>rate</td>
+                            <td>string</td>
+                            <td>是</td>
+                            <td class="tb-left">采样率，支持 8000 或者 16000, 不填默认为：16000</td>
+                        </tr>
+                        <tr>
+                            <td>spd</td>
+                            <td>int</td>
+                            <td>是</td>
+                            <td class="tb-left">输出声音- 语速，取值0-9，默认为5中语速 (选填)</td>
+                        </tr>
+                        <tr>
+                            <td>pit</td>
+                            <td>int</td>
+                            <td>是</td>
+                            <td class="tb-left">输出声音- 音调，取值0-9，默认为5中语调 (选填)</td>
+                        </tr>
+                        <tr>
+                            <td>vol</td>
+                            <td>int</td>
+                            <td>是</td>
+                            <td class="tb-left">输出声音- 音量，取值0-9，默认为5中音量 (选填)</td>
+                        </tr>
+                        <tr>
+                            <td>per</td>
+                            <td>int</td>
+                            <td>是</td>
+                            <td class="tb-left">输出声音- 发音人选择，取值0-1, 0为女声，1为男声，默认为女声 (选填)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <p>
+                    <b>接口输出参数:</b>
+                </p>
+                <div style="width:100%;background-color:#f7f3f3;">
+                    {"Code":0,"Message":"sucess","AudioData":"//MoxAALcOokAEpMcB8gxSKNQqbFcoZOmF1iYSBcH...Base64Code....."}
+                </div>
+                <br />
+                <p>
+                    <b>说明：</b><br />
+                    AudioData：语音文件Base64字符串<br />
+                    Code：返回代码<br />
+                    Message：返回信息<br />
+                </p>
+                <br />
+                <p>
+                    <b>Code码：</b>
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <td class="tb-20">Code</td>
+                            <td class="tb-80">说明</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td class="tb-left">成功</td>
+                        </tr>
+                        <tr>
+                            <td>-901000</td>
+                            <td class="tb-left">用户Key错误</td>
+                        </tr>
+                        <tr>
+                            <td>-901001</td>
+                            <td class="tb-left">调用频率超出</td>
+                        </tr>
+                        <tr>
+                            <td>-901002</td>
+                            <td class="tb-left">某一时间段内，调用字数总和超出</td>
+                        </tr>
+                        <tr>
+                            <td>-901004</td>
+                            <td class="tb-left">语言错误</td>
+                        </tr>
+                        <tr>
+                            <td>-901005</td>
+                            <td class="tb-left">单个请求翻译内容超长</td>
+                        </tr>
+                        <tr>
+                            <td>-901006</td>
+                            <td class="tb-left">参数错误</td>
+                        </tr>
+                        <tr>
+                            <td>-901007</td>
+                            <td class="tb-left">用户Key过期</td>
+                        </tr>
+                        <tr>
+                            <td>-901009</td>
+                            <td class="tb-left">账户余额不足</td>
+                        </tr>
+                        <tr>
+                            <td>-902001</td>
+                            <td class="tb-left">暂不支持此格式</td>
+                        </tr>
+                        <tr>
+                            <td>-901002</td>
+                            <td class="tb-left">未能识别该语音</td>
+                        </tr>
+                        <tr>
+                            <td>-909000</td>
+                            <td class="tb-left">内部错误</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <p><b>接口调用样例：</b></p>
+                <p>GET:&nbsp;&nbsp;<a target="_blank" href="@(System.Configuration.ConfigurationManager.AppSettings["BaseAPIUrl"])/api/VoiceTranslate?key=@(System.Configuration.ConfigurationManager.AppSettings["ApiKey"])&format=wav&source=zh&target=en&url=http%3A%2F%2Fdx.sc.chinaz.com%2FFiles%2FDownLoad%2Fsound1%2F201506%2F5951.wav">@(System.Configuration.ConfigurationManager.AppSettings["BaseAPIUrl"])/api/VoiceTranslate?key=@(System.Configuration.ConfigurationManager.AppSettings["ApiKey"])&format=wav&source=zh&target=en&url=http%3A%2F%2Fdx.sc.chinaz.com%2FFiles%2FDownLoad%2Fsound1%2F201506%2F5951.wav</a></p>
+                <p>POST:&nbsp;&nbsp;<a href="javascript:void(0);">@(System.Configuration.ConfigurationManager.AppSettings["BaseAPIUrl"])/api/VoiceTranslate</a></p>
+                <p>入参样本(注意：url与content必需要传其中之一，如果都传，默认采用url地址)</p>
+                <div style="width:100%;background-color:#f7f3f3;">
+                    {
+                        "Key": "@(System.Configuration.ConfigurationManager.AppSettings["ApiKey"])",
+                        "Format": "wav",
+                        "Source": "zh",
+                        "Target": "en",
+                        "Content": "",
+                        "Rate": 16000,
+                        "Spd": 5,
+                        "Pit": 5,
+                        "Vol": 5,
+                        "Per": 0,
+                        "Len": 0,
+                        "Url": "http://dx.sc.chinaz.com/Files/DownLoad/sound1/201506/5951.wav"
+                    }
+                </div>
+                <br />
+                <p><b>支持的语言编码：</b></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <td style="width:70%;">语言</td>
+                            <td>语言Code（作为传入参数）</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>简体中文</td>
+                            <td>zh</td>
+                        </tr>
+                        <tr>
+                            <td>英语</td>
+                            <td>en</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+     //Layout.setSidebarMenuActiveLink('set', $('#voinceToVoince'));
+</script>
+

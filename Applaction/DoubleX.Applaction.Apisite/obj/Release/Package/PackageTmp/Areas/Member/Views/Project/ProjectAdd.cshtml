@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "新建项目";
+    Layout = "~/Areas/Member/Views/Shared/_Layout.cshtml";
+}
+@section headers{}
+@section styles{
+}
+<div class="container">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 member-menu">
+                    @Html.Partial("_Menu")
+                </div>
+                <div class="col-sm-9 member-contianer bg-white">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <p class="member-contianer-title">@ViewBag.Title</p>
+                            <form id="detail-form" class="form-horizontal member-form">
+                                <div class="form-group">
+                                    <label for="txt_projectName" class="col-sm-2 control-label">项目名称</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="txt_projectName" class="form-control" placeholder="请输入项目名称" />
+                                    </div>
+                                    <label class="col-sm-2 control-label"></label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="button" id="btn-save" class="btn btn-default">确定创建</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/project.js"))"></script>
+    <script type="text/javascript">
+        var pageView = {}, projectModel = new Project();
+        $(function () {
+            $('#btn-save').click(function () {
+                var pName = $('#txt_projectName').val();
+                if (pName && pName.length > 0) {
+                    projectModel.insertProject({ data: { ProjectName: pName } }, function (result) {
+                        alert(result["Message"]);
+                        location.href = "@(WebHelper.GetMemberUrl("/project/projectinfo"))";
+                    });
+                }
+                else
+                    alert('项目名称不允许为空！');
+            });
+        })
+    </script>
+}
+
+
+
+
+
+
+
+

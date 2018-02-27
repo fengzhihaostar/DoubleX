@@ -1,0 +1,72 @@
+
+------Start------
+
+  时间：2017-03-16 09:08:02,694   线程ID:[7]   日志级别：INFO   
+  [2017-03-16 09:08:02]System.Web.HttpException (0x80004005): “{"AudioData":null,"Code":500,"Message":"百度json speech not found.未能识别，请换成另一种识别平台试试"}”不是有效的虚拟路径。
+   在 System.Web.Util.UrlPath.CheckValidVirtualPath(String path)
+   在 System.Web.Util.UrlPath.Combine(String appPath, String basepath, String relative)
+   在 System.Web.VirtualPath.Combine(VirtualPath relativePath)
+   在 System.Web.HttpRequest.MapPath(VirtualPath virtualPath, VirtualPath baseVirtualDir, Boolean allowCrossAppMapping)
+   在 System.Web.HttpRequest.MapPath(VirtualPath virtualPath)
+   在 System.Web.HttpResponse.GetNormalizedFilename(String fn)
+   在 System.Web.HttpResponse.TransmitFile(String filename, Int64 offset, Int64 length)
+   在 System.Web.HttpResponseWrapper.TransmitFile(String filename)
+   在 System.Web.Mvc.FilePathResult.WriteFile(HttpResponseBase response)
+   在 System.Web.Mvc.FileResult.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)  
+ 
+-------End-------
+
+------Start------
+
+  时间：2017-03-16 09:42:44,004   线程ID:[5]   日志级别：INFO   
+  [2017-03-16 09:42:44]System.Web.HttpException (0x80004005): “{"AudioData":null,"Code":-901006,"Message":"参数-Per超出最大范围-0"}”不是有效的虚拟路径。
+   在 System.Web.Util.UrlPath.CheckValidVirtualPath(String path)
+   在 System.Web.Util.UrlPath.Combine(String appPath, String basepath, String relative)
+   在 System.Web.VirtualPath.Combine(VirtualPath relativePath)
+   在 System.Web.HttpRequest.MapPath(VirtualPath virtualPath, VirtualPath baseVirtualDir, Boolean allowCrossAppMapping)
+   在 System.Web.HttpRequest.MapPath(VirtualPath virtualPath)
+   在 System.Web.HttpResponse.GetNormalizedFilename(String fn)
+   在 System.Web.HttpResponse.TransmitFile(String filename, Int64 offset, Int64 length)
+   在 System.Web.HttpResponseWrapper.TransmitFile(String filename)
+   在 System.Web.Mvc.FilePathResult.WriteFile(HttpResponseBase response)
+   在 System.Web.Mvc.FileResult.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)  
+ 
+-------End-------
+
+------Start------
+
+  时间：2017-03-16 09:44:17,483   线程ID:[5]   日志级别：INFO   
+  [2017-03-16 09:44:17]System.Web.HttpException (0x80004005): “{"AudioData":"/MoxAAM0SY4ABjGcBYQQHF7/XhO4IRDAFFhFNP/hPCR8v4UhB2ACDjhzQv/KnoTsIQBkD4RMhGj47p/+hV9/sdFOefh/MoxAcNCGqYygiMKMDJp3ESTC2QwRiCD+UrD0PjQ/B/PqdWXP4kdqeo5/Of1O/1OKdb8QPZwfqDCrla0usECCqKYgHZx4I/MoxA0NmG6kAAiEKBooOOMGBxwsUas4y/1hBS8Lrp9KP/xgAs/lwIhHLMOEyQPtJjnFgTD9fs/8xgYkjWcAxGacQikyMp7/MoxBEPEx6kABBEvJp99l/zr5SfX2/6/+10X7/faRKksu6OSxmNYEpgisUxyQaDiTXKZh1VKqlqqIdy9JWCQMIh0ohc/MoxA8NQEadk0UYAEYdBqFQ0DJUaMDstla3dol6wEdU/qeJf/iWW/7xK47K/W6or4bOKN44xG/KYAG/AN8LP8AtjaJz/II/MoxBUR4x6EAY2IAIm4uD/0UyKFw0/MCKGhuTBp/m6DF9OX/y+6ZmnTT/qY0at6e/+y36CE0Zc7xb98JouRL/MoxAgO0RLMAY+AALEEZLBCQN88pEAPDqCxs+Q8CcV1syKjIkKxN6/1p6loWIx93lZkkM+of/+z/+/R/5BX+YImYGwgX/MoxAcOWQa4AdGIAJKiiyyGhLhcEOcbIGq0KxyARwQcbOta9ZNkjqrTZAmhSZBXPupTVLNn/UmzX/57yKv5F5RA8FMEn/MoxAgO0QKsAJ0ecPwIDwJCz6Zomio2hugDo4n+Piuay44Pl/u2tYzazcOqLiuq69fLf/+FCb8Wf1/DjtRSoAwzfD8D/S/MoxAcPAN7FlGtYcCcAUwyEVL+TQJoHhzi1bJhJRjGvwZOUyEQVd8rK20Hl0DIUBl0qRd/+oBmHhFqPmfm5qPDHXH6jI0/MoxAYN4OKwypQYcBnw6cHwptTOmSoNxhmEv5DQDMGFt+ez+hAScdZ6zdoeaQ0AO/9n/+SFk/O63fYhLKKDIkW92i...”不是有效的虚拟路径。
+   在 System.Web.Util.UrlPath.CheckValidVirtualPath(String path)
+   在 System.Web.Util.UrlPath.Combine(String appPath, String basepath, String relative)
+   在 System.Web.VirtualPath.Combine(VirtualPath relativePath)
+   在 System.Web.HttpRequest.MapPath(VirtualPath virtualPath, VirtualPath baseVirtualDir, Boolean allowCrossAppMapping)
+   在 System.Web.HttpRequest.MapPath(VirtualPath virtualPath)
+   在 System.Web.HttpResponse.GetNormalizedFilename(String fn)
+   在 System.Web.HttpResponse.TransmitFile(String filename, Int64 offset, Int64 length)
+   在 System.Web.HttpResponseWrapper.TransmitFile(String filename)
+   在 System.Web.Mvc.FilePathResult.WriteFile(HttpResponseBase response)
+   在 System.Web.Mvc.FileResult.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)  
+ 
+-------End-------

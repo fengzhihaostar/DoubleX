@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会员中心-@(ViewBag.Title)</title>
+    @RenderSection("headers", required: false)
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/css/base.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/css/animate.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/bootstrap/bootstrap.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/pace/themes/green/pace-theme-barber-shop.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/datepicker/bootstrap-datetimepicker.min.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/dialog/css/bootstrap-dialog.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/validator/bootstrapValidator.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/select2/css/select2.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/select2/css/select2-bootstrap.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/icheck/skins/all.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/pagination/pagination.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/webuploader/webuploader.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/drag/drag.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/fonts/iconfont.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/css/member.css"))" />
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    @RenderBody()
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/jQuery/jquery-1.12.4.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/underscore/underscore.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/underscore/underscore-contrib.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/underscore/underscore.string.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/bootstrap/bootstrap.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/metisMenu/jquery.metisMenu.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/pace/pace.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/datepicker/bootstrap-datetimepicker.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/datepicker/bootstrap-datetimepicker.zh-CN.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/dialog/js/bootstrap-dialog.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/validator/bootstrapValidator.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/validator/bootstrapValidator-ext.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/select2/js/select2.full.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/select2/js/i18n/zh-CN.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/iCheck/icheck.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/pagination/jquery.pagination.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/webuploader/webuploader.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/ueditor/ueditor.config.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/ueditor/ueditor.all.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/ueditor/lang/zh-cn/zh-cn.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/slimscroll/jquery.slimscroll.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/drag/drag.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/doublex/doublex.all.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/script/apisite.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/script/member.js"))"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

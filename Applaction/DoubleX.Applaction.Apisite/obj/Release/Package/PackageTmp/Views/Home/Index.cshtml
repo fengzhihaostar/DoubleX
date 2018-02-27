@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "UTH APIs";
+    Layout = "~/Areas/Member/Views/Shared/_Layout.cshtml";
+}
+
+<link href="@(WebHelper.GetStaticUrl("/css/home/home.style.css"))" rel="stylesheet" />
+<link href="@(WebHelper.GetStaticUrl("/css/home/Services/translate.style.css"))" rel="stylesheet" />
+<div id="module_translate" class="ai-platform page-content">
+    <script type="text/javascript">
+        $(function () {
+            $('#evaluate').click(function () {
+                var sl = $('#demo-translate-slang-word  option:selected').val();
+                var tl = $('#demo-translate-tlang-word  option:selected').val();
+                var src = $('#demo-translate-word').val();
+                if (src && src.length > 0) {
+                    $.ajax({
+                        url: '@(WebHelper.GetWebUrl("/Home/GetTranslateText"))' + '?sl=' + sl + '&tl=' + tl + '&src=' + src,
+                        dataType: "JSON",
+                        contentType: 'application/json; charset=utf-8',
+                        type: 'POST',
+                        contentType: "application/json;",
+                        success: function (result) {
+                            var res = $.parseJSON(result);
+                            $('#emo-translate-target-word').html(res['Translations'][0]['Tgt']);
+                        },
+                        error: function (result) {
+                            alert(result.message);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <section class="tech-section tech-banner">
+        <div class="container">
+            <h1>翻译服务</h1>
+            <p>
+                UTH API 通过 HTTP 接口对外提供多种服务。<br />
+                您只需要通过调用 UTH 翻译 API ，上传待翻译的文字内容，并指定要翻译的源语言（支持源语言语种自动检测）和目标语言种类，就可以得到相应的译文。
+            </p>
+            @*<div>
+                    <a role="button" class="btn-primary media" href="#wake-demo">尝试翻译服务</a>
+                </div>*@
+        </div>
+    </section>
+    <section class="tech-section tech-demo">
+        <div class="container" id="wake-demo">
+            <h2>功能演示</h2>
+            <div class="demo-input">
+                <h3>翻译服务<small>将文字按照您的要求，翻译成指定语言的文字</small></h3>
+                <div>
+                    源语言：
+                    <select id="demo-translate-slang-word">
+                        <option value="zh">中文</option>
+                        <option value="en">English</option>
+                        <option value="pt">Português</option>
+                        <option value="es">El español</option>
+                        <option value="fr">Français</option>
+                        <option value="it">In Italiano</option>
+                        <option value="ko">한국어</option>
+                        <option value="ja">日本語</option>
+                        <option value="de">Deutsch</option>
+                        <option value="ru">русский</option>
+                        <option value="ar">عربي</option>
+                    </select>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    目标语言：
+                    <select id="demo-translate-tlang-word">
+                        <option value="en">English</option>
+                        <option value="zh">中文</option>
+                        <option value="pt">Português</option>
+                        <option value="es">El español</option>
+                        <option value="fr">Français</option>
+                        <option value="it">In Italiano</option>
+                        <option value="ko">한국어</option>
+                        <option value="ja">日本語</option>
+                        <option value="de">Deutsch</option>
+                        <option value="ru">русский</option>
+                        <option value="ar">عربي</option>
+                    </select>
+                    <br /><br />
+                    <label for="demo-translate-word" style="display:none"></label>
+                    <input type="text" id="demo-translate-word">
+                    <button type="button" class="btn-primary" id="evaluate">翻译</button>
+                </div>
+                <p>输入要翻译的文字, 点击翻译开始. </p>
+                译文：<span id="emo-translate-target-word"></span>
+            </div>
+            <form action="/Home/GetTranslateInfo"  target="_blank" enctype="multipart/form-data" method="post">
+                <div class="demo-input">
+                    <h3>语音服务<small>将语音按照您的要求，翻译成指定语言的语音</small></h3>
+                    <div>
+                        源语言：
+                        <select name="source" id="demo-translate-slang-info">
+                            <option value="zh">中文</option>
+                            <option value="en">English</option>
+                        </select>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        目标语言：
+                        <select name="target" id="demo-translate-tlang-info">
+                            <option value="en">English</option>
+                            <option value="zh">中文</option>
+                        </select>
+                        <br /><br />
+                        <label for="demo-translate-info" style="display:none"></label>
+                        <input type="file" name="audioFile" accept="audio/*;capture=microphone">
+                        <input type="text" name="content" placeholder="在线语音地址丶文字丶本地语音文件" class="demo-translate-info" id="demo-translate-info">
+                        <button type="submit" class="btn-primary" id="btnTranslate">翻译</button>
+                    </div>
+                    <p>输入要翻译的文字或google在线语音地址，或选择本地语音文件 点击翻译开始. </p>
+                    
+                    <a  target="_blank"  href="@(System.Configuration.ConfigurationManager.AppSettings["BaseAPIUrl"])/swagger/ui/index#!/VoiceTranslate/VoiceTranslate_Get">更多参数设置，请点击此处</a>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>

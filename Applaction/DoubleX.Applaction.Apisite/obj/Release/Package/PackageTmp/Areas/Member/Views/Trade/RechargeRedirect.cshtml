@@ -1,0 +1,11 @@
+﻿@model ResultModel
+@{
+    ViewBag.Title = "RechargeRedirect";
+    Layout = "~/Areas/Member/Views/Shared/_Layout.cshtml";
+}
+@if (!VerifyHelper.IsNull(Model))
+{
+    //new HtmlString();
+    <p>@(new MvcHtmlString(Model.Obj))</p>
+}
+

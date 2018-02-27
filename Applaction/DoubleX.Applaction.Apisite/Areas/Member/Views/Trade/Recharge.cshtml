@@ -1,0 +1,119 @@
+﻿@model DoubleX.Module.Member.MemberDetailModel
+@{
+    ViewBag.Title = "在线充值";
+    Layout = "~/Areas/Member/Views/Shared/_Layout.cshtml";
+}
+@section headers{}
+@section styles{
+}
+<div class="container">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 member-menu">
+                    @Html.Partial("_Menu")
+                </div>
+                <div class="col-sm-9 member-contianer bg-white">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <p class="member-contianer-title">@ViewBag.Title</p>
+                            <div class="member-payment">
+                                <form id="detail-form" role="form" novalidate="novalidate" class="form-horizontal member-form">
+                                    <div class="form-group">
+                                        <label for="labAccount" class="col-sm-2 control-label member-title">账户余额</label>
+                                        <div class="col-sm-10">
+                                            <label class="control-label">￥<strong class="member-money" id="member-balance">@(Math.Round(Model.Balance, 2))</strong>&nbsp;(元)</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtMoney" class="col-sm-2 control-label member-title">充值金额</label>
+                                        <div class="col-sm-8">
+                                            <input id="txtMoney" name="txtMoney" class="form-control" placeholder="请输入数字金额" type="text" value="0.00">
+                                        </div>
+                                        <label class="col-sm-2 control-label member-form-out-link"></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="chk-sex" class="col-sm-2 control-label member-title">支付方式</label>
+                                        <div class="checkbox col-sm-8">
+                                            <label class="item">
+                                                <input type="radio" name="raPayType" class="i-checks" value="@(DoubleX.Infrastructure.Utility.EnumHelper.GetValue(EnumPaymentType.支付宝))" checked="checked" />
+                                                <img class="pay-tag" src="@(WebHelper.GetStaticUrl("/images/payment/alipay.png"))" />
+                                            </label>
+                                            <label class="item">
+                                                <input type="radio" name="raPayType" class="i-checks" value="@(DoubleX.Infrastructure.Utility.EnumHelper.GetValue(EnumPaymentType.微信))" />
+                                                <img class="pay-tag" src="@(WebHelper.GetStaticUrl("/images/payment/weixin.png"))" />
+                                            </label>
+                                        </div>
+                                        <label class="col-sm-2 control-label member-form-out-link"></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="button" id="btn-save" class="btn btn-default btn-primary">确认充值</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="descript">
+                                    <p><storng>温馨提示* </storng></p>
+                                    <p>单笔充值1000元以下，手续费5元（每日免费2笔）；</p>
+                                    <p>单笔充值1000元以上，免收手续费；</p>
+                                    <p>如果您超过1小时后仍未收到充值，请与我们客服联系（400-169-4188）。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="recharge-tip" class="recharge-tip">
+    <p class="recharge-tip-line">
+        <a href="@(WebHelper.GetMemberUrl("/trade/rechargerecord"))" class="btn btn-default btn-primary">充值成功</a><a href="@(WebHelper.GetMemberUrl("/trade/rechargerecord"))" class="btn btn-default btn-primary">充值失败</a>
+    </p>
+</div>
+@section scripts{
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/trade.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/member.js"))"></script>
+    <script type="text/javascript">
+        var pageView = {}, tradeModel = new Trade(), memberModel = new Member();
+        $(document).ready(function () { pageView.init(); });
+
+    </script>
+    <script type="text/javascript">
+        pageView.init = function () {
+            $("#btn-save").click(function () {
+                pageView.add();
+            })
+            pageView.validator();
+        }
+
+
+        pageView.add = function () {
+            if (parseFloat($("#txtMoney").val()) == 0) {
+                dx.util.message({ message: "请输入充值金额大于0.00" });
+                return;
+            }
+            var chkTypeValue = $("input[type='radio'][name='raPayType']:checked").val();
+            tradeModel.rechargeRecordAdd({ data: { MoneyValue: $("#txtMoney").val(), PaymentType: chkTypeValue } }, function (result) {
+                tradeModel.paymentGo(result["Obj"]["Id"]);
+            })
+        }
+        pageView.validator = function () {
+            var fields = {
+                txtMoney: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输入充值金额'
+                        },
+                        numeric: {
+                            message: "请输入充值金额"
+                        }
+                    }
+                }
+            };
+            $('#detail-form').bootstrapValidator(mu.validatorOption(fields));
+        }
+    </script>
+}
+
+

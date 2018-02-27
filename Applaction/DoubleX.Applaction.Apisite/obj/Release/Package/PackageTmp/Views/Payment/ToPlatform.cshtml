@@ -1,0 +1,58 @@
+﻿@model ResultModel
+@{
+    ViewBag.Title = "支付跳转";
+    Layout = "~/Views/Areas/Member/Shared/_Layout.cshtml";
+    var detail = Model.Obj as DoubleX.Module.Trade.RechargeRecordEntity;
+}
+<style>
+    .payment-box { width: 360px; height: 200px; position: absolute; top: 50%; left: 50%; margin-top: -100px; margin-left: -180px; text-align: center; }
+
+    .payment-redrect { width: 100%; height: 35px; line-height: 35px; border: 1px solid #f1f1f1; color: #fff; font-size: 16px; font-weight: bold; background: #ff6a00; }
+    .payment-table { width: 100%; background: #f1f1f1; border: 1px solid #fcfcfc; padding: 20px; }
+        .payment-table td { text-align: left; vertical-align: top; }
+</style>
+<div class="payment-box">
+    @if (!VerifyHelper.IsNull(detail.PaymentType))
+    {
+        if (detail.PaymentType == DoubleX.Infrastructure.Utility.EnumHelper.GetValue(EnumPaymentType.支付宝))
+        {
+            <div class="payment-redrect">正在跳转至支付宝..</div>
+            <p>@(new MvcHtmlString(ViewBag.PayHtml))</p>
+        }
+        else
+        {
+            <div class="payment-table">
+                <table style="width:100%;">
+                    <tr>
+                        <td style="width:126px;" rowspan="5">
+                            <img src="data:image/jpg;base64,@(new MvcHtmlString(Base64Helper.Get(CodeHelper.GetQRCodeByte(ViewBag.PayHtml))))" />
+                        </td>
+                        <td>
+                            <b>微信扫码支付</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>金额：@(detail.MoneyValue)(元)</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>&nbsp;</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            注：<a href="@(WebHelper.GetMemberUrl("/trade/rechargerecord"))">支付后点此查看是否成功.</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>&nbsp;</b>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        }
+    }
+</div>

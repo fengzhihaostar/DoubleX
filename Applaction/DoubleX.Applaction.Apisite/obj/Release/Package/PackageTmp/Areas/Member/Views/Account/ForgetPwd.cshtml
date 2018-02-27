@@ -1,0 +1,276 @@
+﻿@{
+    ViewBag.Title = "忘记密码";
+    Layout = "~/Areas/Member/Views/Shared/_Account.cshtml";
+}
+@section headers{}
+@section styles{}
+<div class="member-account-contianer">
+    <div class="row member-account-box">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <div class="member-account-nav">
+                <div class="row">
+                    <div class="col-sm-6"><a href="javascript:;" class="active" data-type="mobile" data-send-type="@(KeyModel.Config.Template.KeyForgetPwdMobile)">手机找回</a></div>
+                    <div class="col-sm-6"><a href="javascript:;" data-type="email" data-send-type="@(KeyModel.Config.Template.KeyForgetPwdEmail)">邮箱找回</a></div>
+                </div>
+            </div>
+            <div class="member-account-form">
+                <form id="detail-form" role="form" novalidate="novalidate" onsubmit="return false;">
+                    <div class="row member-regist">
+                        <div class="col-sm-12">
+                            <div class="form-group input-ico" data-type="mobile">
+                                <span class="glyphicon glyphicon-phone form-control-feedback ico-tag"></span>
+                                <input type="text" id="txtMobile" name="txtMobile" class="form-control input-lg" placeholder="请输入您的手机号码" />
+                            </div>
+                            <div class="form-group input-ico hidden" data-type="email">
+                                <span class="glyphicon glyphicon-envelope form-control-feedback ico-tag"></span>
+                                <input type="text" id="txtEmail" name="txtEmail" class="form-control input-lg" placeholder="请输入您的邮箱地址" />
+                            </div>
+                            <div class="form-group input-ico">
+                                <div class="input-group">
+                                    <span class="glyphicon glyphicon-record form-control-feedback ico-tag"></span>
+                                    <input class="form-control input-lg" id="txtCode" name="txtCode" placeholder="请输入激活码" maxlength="6" type="text">
+
+                                    <span class="input-group-addon">
+                                        <a id="get-code" href="javascript:;">&nbsp;&nbsp;&nbsp;&nbsp;获取&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group input-ico">
+                                <span class="glyphicon glyphicon-lock form-control-feedback ico-tag"></span>
+                                <input type="password" id="txtPwd" name="txtPwd" class="form-control input-lg" placeholder="请输入您的新密码" />
+                            </div>
+                            <div class="form-group">
+                                <div id="verifyCode" class="verifyCode"></div>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" id="btn-forget-pwd" class="btn btn-primary  btn-block btn-lg">修改密码</button>
+                            </div>
+                            <div class="form-group form-group-line row">
+                                <div class="col-sm-6"><a href="@(WebHelper.GetMemberUrl("/account/login"))">去登录</a></div>
+                                <div class="col-sm-6 text-right"><a href="@(WebHelper.GetMemberUrl("/account/regist"))">去注册</a></div>
+                            </div>
+                            <div id="diev-msg" class="form-group hidden">
+                                <div class="alert alert-danger"></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/common.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/member.js"))"></script>
+    <script type="text/javascript">
+        var pageView = {}, commonModel = new Common(), memberModel = new Member();
+        var codeCountdown, codeBtnText = "&nbsp;&nbsp;&nbsp;&nbsp;获取&nbsp;&nbsp;&nbsp;&nbsp;";
+        var refUrl = "@(UrlsHelper.GetRefUrl(defaultUrl:WebHelper.GetMemberUrl("/account/login")))";
+        $(document).ready(function () { pageView.init(); });
+    </script>
+    <script type="text/javascript">
+
+        pageView.init = function () {
+
+            //验证码
+            $('#verifyCode').drag();
+
+            $(".member-account-nav").find("a").on("click", function () {
+                var type = $(this).attr("data-type");
+                pageView.change(type);
+            })
+
+            $("#get-code").click(function () {
+                pageView.sendCode();
+            })
+
+            //倒计进
+            codeCountdown = dx.util.countdown({
+                times: 60,
+                distance: 1,
+                start: function (obj, times) {
+                    $("#get-code").off("click").attr("disabled", true);
+                    //开始操作
+                },
+                interval: function (obj, times) {
+                    $("#get-code").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + times + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                },
+                stop: function (obj, times) {
+                    pageView.clear();
+                },
+                over: function () {
+                    pageView.clear();
+                }
+            });
+
+
+            $("#btn-forget-pwd").click(function () {
+                pageView.forgetPwd();
+            });
+
+            pageView.validator();
+        }
+
+        pageView.change = function (type) {
+            //效果
+            $(".member-account-nav").find("a").removeClass("active");
+            $(".member-account-nav").find("a[data-type=\"" + type + "\"]").addClass("active");
+            $(".member-regist").find(".form-group[data-type=\"" + type + "\"]").removeClass("hidden");
+
+            var $obj = $(".member-regist").find(".form-group[data-type=\"" + (type == "mobile" ? "email" : "mobile") + "\"]");
+            $obj.removeClass("hidden").addClass("hidden");
+            $obj.find("input.form-control").val("");
+            $("#txtCode").val("");
+
+            mu.validatorResetField("#detail-form", "txtMobile");
+            mu.validatorResetField("#detail-form", "txtEmail");
+            mu.validatorResetField("#detail-form", "txtCode");
+
+            //倒计时重置
+            codeCountdown.clear();
+
+            $("#get-code").html(codeBtnText).removeAttr("disabled").off("click").on("click", function () {
+                pageView.sendCode();
+            })
+        }
+
+        pageView.sendCode = function () {
+
+            var receiver = "";
+            var type = $(".member-account-nav").find("a.active").attr("data-type");
+            var sendType = $(".member-account-nav").find("a.active").attr("data-send-type");
+
+            if (type == "mobile") {
+                var isValidator = mu.validatorField("#detail-form", "txtMobile", ["notEmpty", "regexp"]);
+                if (!isValidator) { return; }
+                receiver = $("#txtMobile").val()
+            }
+            if (type == "email") {
+                var isValidator = mu.validatorField("#detail-form", "txtEmail", ["notEmpty", "regexp"]);
+                if (!isValidator) { return; }
+                receiver = $("#txtEmail").val();
+            }
+
+            if (dx.util.isNullOrEmpty(receiver)) {
+                dx.util.message({ message: type == "email" ? "请输入邮箱地址" : "请输入手机号码" });
+                return;
+            }
+            if (!dx.util.isNullOrEmpty(codeCountdown)) {
+                commonModel.sendVerifyCode({ data: { receiver: receiver, type: sendType } }, function (result) {
+                    $("#txtCode").attr("data-task-id", result["Obj"]);
+                    codeCountdown.start();
+                }, function (result) {
+                    dx.util.message({ message: result["Message"] }, function () {
+                        pageView.clear();
+                    });
+                })
+            }
+        }
+
+        pageView.forgetPwd = function () {
+
+            pageView.showError();
+
+            var sendType = $(".member-account-nav").find("a.active").attr("data-send-type");
+            var mobile = $("#txtMobile").val(), email = $("#txtEmail").val(), code = $("#txtCode").val(), pwd = $("#txtPwd").val(), taskId = $("#txtCode").attr("data-task-id");
+            if ((dx.util.isNullOrEmpty(mobile) && dx.util.isNullOrEmpty(email)) || dx.util.isNullOrEmpty(code) || dx.util.isNullOrEmpty(pwd) || dx.util.isNullOrEmpty(taskId) || dx.util.isNullOrEmpty(sendType))
+                return;
+            if (!mu.validatorSubmit("#detail-form")) {
+                return;
+            }
+            if (!$('#verifyCode').data("ok")) {
+                dx.util.message({ message: "请拖动滑块验证" });
+                return;
+            }
+
+            var model = {
+                Mobile: mobile,
+                Email: email,
+                Code: code,
+                Pwd: pwd,
+                TaskId: taskId,
+                SendType: sendType
+            };
+            memberModel.memberForgetPwd({ data: model }, function (result) {
+                dx.util.message({ message: "操作成功" }, function () {
+                    window.top.location = refUrl;
+                });
+            }, function (result, msg) {
+                pageView.clear();
+                pageView.showError(msg);
+            })
+        }
+
+        pageView.clear = function () {
+            codeCountdown.clear();
+            $("#get-code").html(codeBtnText).removeAttr("disabled").off("click").on("click", function () {
+                pageView.sendCode();
+            })
+        }
+
+        pageView.showError = function (error) {
+            if (dx.util.isNullOrEmpty(error)) {
+                $("#diev-msg").removeClass("hidden").addClass("hidden")
+                $("#diev-msg").find(".alert").html("");
+            } else {
+                $("#diev-msg").removeClass("hidden");
+                $("#diev-msg").find(".alert").html("*" + error);
+            }
+        }
+
+        pageView.validator = function () {
+            var fields = {
+                txtMobile: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输入手机号码'
+                        },
+                        regexp: {
+                            regexp: mu.regMobile,
+                            message: '请输入有效的手机号码'
+                        }
+                    }
+                },
+                txtEmail: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输入邮箱地址'
+                        },
+                        regexp: {
+                            regexp: mu.regEmail,
+                            message: '请输入有效的邮箱地址'
+                        }
+                    }
+                },
+                txtPwd: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输入密码'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 16,
+                            message: '密码为6-16个字符'
+                        }
+                    }
+                },
+                txtCode: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输入激活码'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 6,
+                            message: '激活码为6个字符'
+                        }
+                    }
+                }
+            };
+            $('#detail-form').bootstrapValidator(mu.validatorOption(fields));
+        }
+
+    </script>
+}

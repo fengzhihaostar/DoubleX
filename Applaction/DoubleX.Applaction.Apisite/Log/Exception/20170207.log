@@ -1,0 +1,670 @@
+
+------Start------
+
+  时间：2017-02-07 14:30:28,695   线程ID:[6]   日志级别：INFO   
+  [2017-02-07 14:30:28]System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> MySql.Data.MySqlClient.MySqlException: Table 'uthopenapi.tb_account' doesn't exist
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 MySql.Data.Entity.EFMySqlCommand.ExecuteNonQuery()
+   在 System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<NonQuery>b__0(DbCommand t, DbCommandInterceptionContext`1 c)
+   在 System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   在 System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.NonQuery(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   在 System.Data.Entity.Internal.InterceptableDbCommand.ExecuteNonQuery()
+   在 System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   在 System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   在 System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   在 System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   在 System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   在 System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   在 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   在 System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   在 System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   在 System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   在 System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   在 System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 DoubleX.Framework.Interceptor.ServiceLogInterceptor.Intercept(IInvocation invocation) 位置 e:\Project\API站点\source\DoubleX\Framework\DoubleX.Framework.Interceptor\Log\ServiceLogInterceptor.cs:行号 32
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Castle.Proxies.IService`2Proxy.Login(String account, String password, String clientIp)
+   在 DoubleX.Applaction.Apisite.Areas.Api.Controllers.MemberController.MemberLogin(RequestModel request) 位置 e:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\Areas\Api\Controllers\MemberController.cs:行号 89
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()  
+ 
+-------End-------
+
+------Start------
+
+  时间：2017-02-07 14:31:29,651   线程ID:[8]   日志级别：INFO   
+  [2017-02-07 14:31:29]System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> MySql.Data.MySqlClient.MySqlException: Table 'uthopenapi.tb_account' doesn't exist
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 MySql.Data.Entity.EFMySqlCommand.ExecuteNonQuery()
+   在 System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<NonQuery>b__0(DbCommand t, DbCommandInterceptionContext`1 c)
+   在 System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   在 System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.NonQuery(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   在 System.Data.Entity.Internal.InterceptableDbCommand.ExecuteNonQuery()
+   在 System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   在 System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   在 System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   在 System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   在 System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   在 System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   在 System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   在 System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   在 System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   在 System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   在 System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   在 System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 DoubleX.Framework.Interceptor.ServiceLogInterceptor.Intercept(IInvocation invocation) 位置 e:\Project\API站点\source\DoubleX\Framework\DoubleX.Framework.Interceptor\Log\ServiceLogInterceptor.cs:行号 32
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Castle.Proxies.IService`2Proxy.Login(String account, String password, String clientIp)
+   在 DoubleX.Applaction.Apisite.Areas.Api.Controllers.MemberController.MemberLogin(RequestModel request) 位置 e:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\Areas\Api\Controllers\MemberController.cs:行号 89
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()  
+ 
+-------End-------
+
+------Start------
+
+  时间：2017-02-07 14:33:15,099   线程ID:[9]   日志级别：INFO   
+  [2017-02-07 14:33:15]DoubleX.Infrastructure.Core.Exceptions.MessageException: 引发类型为“DoubleX.Infrastructure.Core.Exceptions.MessageException”的异常。
+   在 DoubleX.Framework.Interceptor.ServiceLogInterceptor.Intercept(IInvocation invocation) 位置 e:\Project\API站点\source\DoubleX\Framework\DoubleX.Framework.Interceptor\Log\ServiceLogInterceptor.cs:行号 32
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Castle.Proxies.IService`2Proxy.Login(String account, String password, String clientIp)
+   在 DoubleX.Applaction.Apisite.Areas.Api.Controllers.MemberController.MemberLogin(RequestModel request) 位置 e:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\Areas\Api\Controllers\MemberController.cs:行号 89
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()  
+ 
+-------End-------
+
+------Start------
+
+  时间：2017-02-07 17:32:19,661   线程ID:[7]   日志级别：INFO   
+  [2017-02-07 17:32:19]System.TypeInitializationException: “DoubleX.Infrastructure.Core.Config.DataCetnerConfig”的类型初始值设定项引发异常。 ---> System.InvalidCastException: 无法将类型为“DoubleX.Infrastructure.Core.Config.SettingConfigModel”的对象强制转换为类型“DoubleX.Infrastructure.Core.Config.DataCenterConfigModel”。
+   在 DoubleX.Infrastructure.Utility.ConfigHelper.GetSection[TEntity](String sectionName) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Utility\Config\ConfigHelper.cs:行号 46
+   在 DoubleX.Infrastructure.Core.Config.AbsConfigs`1.Init(String sectionName, String cacheKey) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\AbsConfigs.cs:行号 24
+   在 DoubleX.Infrastructure.Core.Config.DataCetnerConfig..cctor() 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\DataCetnerConfig.cs:行号 22
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 DoubleX.Framework.Interceptor.ServiceLogInterceptor.Intercept(IInvocation invocation) 位置 e:\Project\API站点\source\DoubleX\Framework\DoubleX.Framework.Interceptor\Log\ServiceLogInterceptor.cs:行号 32
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Castle.Proxies.IService`2Proxy.Regist(String account, String email, String mobile, String password, String clientIp)
+   在 DoubleX.Applaction.Apisite.Areas.Api.Controllers.MemberController.MemberRegist(RequestModel request) 位置 e:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\Areas\Api\Controllers\MemberController.cs:行号 90
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()  
+ 
+-------End-------
+
+------Start------
+
+  时间：2017-02-07 17:32:26,471   线程ID:[7]   日志级别：INFO   
+  [2017-02-07 17:32:26]System.TypeInitializationException: “DoubleX.Infrastructure.Core.Config.DataCetnerConfig”的类型初始值设定项引发异常。 ---> System.InvalidCastException: 无法将类型为“DoubleX.Infrastructure.Core.Config.SettingConfigModel”的对象强制转换为类型“DoubleX.Infrastructure.Core.Config.DataCenterConfigModel”。
+   在 DoubleX.Infrastructure.Utility.ConfigHelper.GetSection[TEntity](String sectionName) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Utility\Config\ConfigHelper.cs:行号 46
+   在 DoubleX.Infrastructure.Core.Config.AbsConfigs`1.Init(String sectionName, String cacheKey) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\AbsConfigs.cs:行号 24
+   在 DoubleX.Infrastructure.Core.Config.DataCetnerConfig..cctor() 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\DataCetnerConfig.cs:行号 22
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 DoubleX.Framework.Interceptor.ServiceLogInterceptor.Intercept(IInvocation invocation) 位置 e:\Project\API站点\source\DoubleX\Framework\DoubleX.Framework.Interceptor\Log\ServiceLogInterceptor.cs:行号 32
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Castle.Proxies.IService`2Proxy.Regist(String account, String email, String mobile, String password, String clientIp)
+   在 DoubleX.Applaction.Apisite.Areas.Api.Controllers.MemberController.MemberRegist(RequestModel request) 位置 e:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\Areas\Api\Controllers\MemberController.cs:行号 90
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()  
+ 
+-------End-------
+
+------Start------
+
+  时间：2017-02-07 17:32:39,209   线程ID:[6]   日志级别：INFO   
+  [2017-02-07 17:32:39]System.TypeInitializationException: “DoubleX.Infrastructure.Core.Config.DataCetnerConfig”的类型初始值设定项引发异常。 ---> System.InvalidCastException: 无法将类型为“DoubleX.Infrastructure.Core.Config.SettingConfigModel”的对象强制转换为类型“DoubleX.Infrastructure.Core.Config.DataCenterConfigModel”。
+   在 DoubleX.Infrastructure.Utility.ConfigHelper.GetSection[TEntity](String sectionName) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Utility\Config\ConfigHelper.cs:行号 46
+   在 DoubleX.Infrastructure.Core.Config.AbsConfigs`1.Init(String sectionName, String cacheKey) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\AbsConfigs.cs:行号 24
+   在 DoubleX.Infrastructure.Core.Config.DataCetnerConfig..cctor() 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\DataCetnerConfig.cs:行号 22
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 DoubleX.Framework.Interceptor.ServiceLogInterceptor.Intercept(IInvocation invocation) 位置 e:\Project\API站点\source\DoubleX\Framework\DoubleX.Framework.Interceptor\Log\ServiceLogInterceptor.cs:行号 32
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Castle.Proxies.IService`2Proxy.Regist(String account, String email, String mobile, String password, String clientIp)
+   在 DoubleX.Applaction.Apisite.Areas.Api.Controllers.MemberController.MemberRegist(RequestModel request) 位置 e:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\Areas\Api\Controllers\MemberController.cs:行号 90
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()  
+ 
+-------End-------
+
+------Start------
+
+  时间：2017-02-07 17:33:41,129   线程ID:[7]   日志级别：INFO   
+  [2017-02-07 17:33:41]System.TypeInitializationException: “DoubleX.Infrastructure.Core.Config.DataCetnerConfig”的类型初始值设定项引发异常。 ---> System.InvalidCastException: 无法将类型为“DoubleX.Infrastructure.Core.Config.SettingConfigModel”的对象强制转换为类型“DoubleX.Infrastructure.Core.Config.DataCenterConfigModel”。
+   在 DoubleX.Infrastructure.Utility.ConfigHelper.GetSection[TEntity](String sectionName) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Utility\Config\ConfigHelper.cs:行号 46
+   在 DoubleX.Infrastructure.Core.Config.AbsConfigs`1.Init(String sectionName, String cacheKey) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\AbsConfigs.cs:行号 24
+   在 DoubleX.Infrastructure.Core.Config.DataCetnerConfig..cctor() 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\DataCetnerConfig.cs:行号 22
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 DoubleX.Framework.Interceptor.ServiceLogInterceptor.Intercept(IInvocation invocation) 位置 e:\Project\API站点\source\DoubleX\Framework\DoubleX.Framework.Interceptor\Log\ServiceLogInterceptor.cs:行号 32
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Castle.Proxies.IService`2Proxy.Regist(String account, String email, String mobile, String password, String clientIp)
+   在 DoubleX.Applaction.Apisite.Areas.Api.Controllers.MemberController.MemberRegist(RequestModel request) 位置 e:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\Areas\Api\Controllers\MemberController.cs:行号 90
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()  
+ 
+-------End-------
+
+------Start------
+
+  时间：2017-02-07 17:36:30,042   线程ID:[6]   日志级别：INFO   
+  [2017-02-07 17:36:30]System.TypeInitializationException: “DoubleX.Infrastructure.Core.Config.DataCetnerConfig”的类型初始值设定项引发异常。 ---> System.Configuration.ConfigurationErrorsException: 创建 DataCetner 的配置节处理程序时出错: 类型“DoubleX.Infrastructure.Core.Config.DataCetnerConfig”不从“System.Configuration.IConfigurationSectionHandler”继承。 (E:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\web.config line 13) ---> System.TypeLoadException: 类型“DoubleX.Infrastructure.Core.Config.DataCetnerConfig”不从“System.Configuration.IConfigurationSectionHandler”继承。
+   在 System.Configuration.TypeUtil.VerifyAssignableType(Type baseType, Type type, Boolean throwOnError)
+   在 System.Configuration.RuntimeConfigurationRecord.RuntimeConfigurationFactory.Init(RuntimeConfigurationRecord configRecord, FactoryRecord factoryRecord)
+   在 System.Configuration.RuntimeConfigurationRecord.RuntimeConfigurationFactory.InitWithRestrictedPermissions(RuntimeConfigurationRecord configRecord, FactoryRecord factoryRecord)
+   在 System.Configuration.RuntimeConfigurationRecord.CreateSectionFactory(FactoryRecord factoryRecord)
+   在 System.Configuration.BaseConfigurationRecord.FindAndEnsureFactoryRecord(String configKey, Boolean& isRootDeclaredHere)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.Configuration.BaseConfigurationRecord.FindAndEnsureFactoryRecord(String configKey, Boolean& isRootDeclaredHere)
+   在 System.Configuration.BaseConfigurationRecord.GetSectionRecursive(String configKey, Boolean getLkg, Boolean checkPermission, Boolean getRuntimeObject, Boolean requestIsHere, Object& result, Object& resultRuntimeObject)
+   在 System.Configuration.BaseConfigurationRecord.GetSection(String configKey)
+   在 System.Web.HttpContext.GetSection(String sectionName)
+   在 System.Web.Configuration.HttpConfigurationSystem.GetSection(String sectionName)
+   在 System.Web.Configuration.HttpConfigurationSystem.System.Configuration.Internal.IInternalConfigSystem.GetSection(String configKey)
+   在 System.Configuration.ConfigurationManager.GetSection(String sectionName)
+   在 DoubleX.Infrastructure.Utility.ConfigHelper.GetSection[TEntity](String sectionName) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Utility\Config\ConfigHelper.cs:行号 43
+   在 DoubleX.Infrastructure.Core.Config.AbsConfigs`1.Init(String sectionName, String cacheKey) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\AbsConfigs.cs:行号 24
+   在 DoubleX.Infrastructure.Core.Config.DataCetnerConfig..cctor() 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\DataCetnerConfig.cs:行号 22
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 DoubleX.Framework.Interceptor.ServiceLogInterceptor.Intercept(IInvocation invocation) 位置 e:\Project\API站点\source\DoubleX\Framework\DoubleX.Framework.Interceptor\Log\ServiceLogInterceptor.cs:行号 32
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Castle.Proxies.IService`2Proxy.Regist(String account, String email, String mobile, String password, String clientIp)
+   在 DoubleX.Applaction.Apisite.Areas.Api.Controllers.MemberController.MemberRegist(RequestModel request) 位置 e:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\Areas\Api\Controllers\MemberController.cs:行号 90
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()  
+ 
+-------End-------
+
+------Start------
+
+  时间：2017-02-07 17:37:31,968   线程ID:[7]   日志级别：INFO   
+  [2017-02-07 17:37:31]System.TypeInitializationException: “DoubleX.Infrastructure.Core.Config.DataCetnerConfig”的类型初始值设定项引发异常。 ---> System.Configuration.ConfigurationErrorsException: 创建 DataCetner 的配置节处理程序时出错: 类型“DoubleX.Infrastructure.Core.Config.DataCetnerConfig”不从“System.Configuration.IConfigurationSectionHandler”继承。 (E:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\web.config line 13) ---> System.TypeLoadException: 类型“DoubleX.Infrastructure.Core.Config.DataCetnerConfig”不从“System.Configuration.IConfigurationSectionHandler”继承。
+   在 System.Configuration.TypeUtil.VerifyAssignableType(Type baseType, Type type, Boolean throwOnError)
+   在 System.Configuration.RuntimeConfigurationRecord.RuntimeConfigurationFactory.Init(RuntimeConfigurationRecord configRecord, FactoryRecord factoryRecord)
+   在 System.Configuration.RuntimeConfigurationRecord.RuntimeConfigurationFactory.InitWithRestrictedPermissions(RuntimeConfigurationRecord configRecord, FactoryRecord factoryRecord)
+   在 System.Configuration.RuntimeConfigurationRecord.CreateSectionFactory(FactoryRecord factoryRecord)
+   在 System.Configuration.BaseConfigurationRecord.FindAndEnsureFactoryRecord(String configKey, Boolean& isRootDeclaredHere)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.Configuration.BaseConfigurationRecord.FindAndEnsureFactoryRecord(String configKey, Boolean& isRootDeclaredHere)
+   在 System.Configuration.BaseConfigurationRecord.GetSectionRecursive(String configKey, Boolean getLkg, Boolean checkPermission, Boolean getRuntimeObject, Boolean requestIsHere, Object& result, Object& resultRuntimeObject)
+   在 System.Configuration.BaseConfigurationRecord.GetSection(String configKey)
+   在 System.Web.HttpContext.GetSection(String sectionName)
+   在 System.Web.Configuration.HttpConfigurationSystem.GetSection(String sectionName)
+   在 System.Web.Configuration.HttpConfigurationSystem.System.Configuration.Internal.IInternalConfigSystem.GetSection(String configKey)
+   在 System.Configuration.ConfigurationManager.GetSection(String sectionName)
+   在 DoubleX.Infrastructure.Utility.ConfigHelper.GetSection[TEntity](String sectionName) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Utility\Config\ConfigHelper.cs:行号 43
+   在 DoubleX.Infrastructure.Core.Config.AbsConfigs`1.Init(String sectionName, String cacheKey) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\AbsConfigs.cs:行号 24
+   在 DoubleX.Infrastructure.Core.Config.DataCetnerConfig..cctor() 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\DataCetnerConfig.cs:行号 22
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 DoubleX.Framework.Interceptor.ServiceLogInterceptor.Intercept(IInvocation invocation) 位置 e:\Project\API站点\source\DoubleX\Framework\DoubleX.Framework.Interceptor\Log\ServiceLogInterceptor.cs:行号 32
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Castle.Proxies.IService`2Proxy.Regist(String account, String email, String mobile, String password, String clientIp)
+   在 DoubleX.Applaction.Apisite.Areas.Api.Controllers.MemberController.MemberRegist(RequestModel request) 位置 e:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\Areas\Api\Controllers\MemberController.cs:行号 90
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()  
+ 
+-------End-------
+
+------Start------
+
+  时间：2017-02-07 17:39:20,721   线程ID:[8]   日志级别：INFO   
+  [2017-02-07 17:39:20]System.TypeInitializationException: “DoubleX.Infrastructure.Core.Config.DataCetnerConfig”的类型初始值设定项引发异常。 ---> System.Configuration.ConfigurationErrorsException: 创建 DataCetner 的配置节处理程序时出错: 类型“DoubleX.Infrastructure.Core.Config.DataCetnerConfig”不从“System.Configuration.IConfigurationSectionHandler”继承。 (E:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\web.config line 13) ---> System.TypeLoadException: 类型“DoubleX.Infrastructure.Core.Config.DataCetnerConfig”不从“System.Configuration.IConfigurationSectionHandler”继承。
+   在 System.Configuration.TypeUtil.VerifyAssignableType(Type baseType, Type type, Boolean throwOnError)
+   在 System.Configuration.RuntimeConfigurationRecord.RuntimeConfigurationFactory.Init(RuntimeConfigurationRecord configRecord, FactoryRecord factoryRecord)
+   在 System.Configuration.RuntimeConfigurationRecord.RuntimeConfigurationFactory.InitWithRestrictedPermissions(RuntimeConfigurationRecord configRecord, FactoryRecord factoryRecord)
+   在 System.Configuration.RuntimeConfigurationRecord.CreateSectionFactory(FactoryRecord factoryRecord)
+   在 System.Configuration.BaseConfigurationRecord.FindAndEnsureFactoryRecord(String configKey, Boolean& isRootDeclaredHere)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.Configuration.BaseConfigurationRecord.FindAndEnsureFactoryRecord(String configKey, Boolean& isRootDeclaredHere)
+   在 System.Configuration.BaseConfigurationRecord.GetSectionRecursive(String configKey, Boolean getLkg, Boolean checkPermission, Boolean getRuntimeObject, Boolean requestIsHere, Object& result, Object& resultRuntimeObject)
+   在 System.Configuration.BaseConfigurationRecord.GetSection(String configKey)
+   在 System.Web.HttpContext.GetSection(String sectionName)
+   在 System.Web.Configuration.HttpConfigurationSystem.GetSection(String sectionName)
+   在 System.Web.Configuration.HttpConfigurationSystem.System.Configuration.Internal.IInternalConfigSystem.GetSection(String configKey)
+   在 System.Configuration.ConfigurationManager.GetSection(String sectionName)
+   在 DoubleX.Infrastructure.Utility.ConfigHelper.GetSection[TEntity](String sectionName) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Utility\Config\ConfigHelper.cs:行号 43
+   在 DoubleX.Infrastructure.Core.Config.AbsConfigs`1.Init(String sectionName, String cacheKey) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\AbsConfigs.cs:行号 24
+   在 DoubleX.Infrastructure.Core.Config.DataCetnerConfig..cctor() 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\DataCetnerConfig.cs:行号 22
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 DoubleX.Framework.Interceptor.ServiceLogInterceptor.Intercept(IInvocation invocation) 位置 e:\Project\API站点\source\DoubleX\Framework\DoubleX.Framework.Interceptor\Log\ServiceLogInterceptor.cs:行号 32
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Castle.Proxies.IService`2Proxy.Regist(String account, String email, String mobile, String password, String clientIp)
+   在 DoubleX.Applaction.Apisite.Areas.Api.Controllers.MemberController.MemberRegist(RequestModel request) 位置 e:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\Areas\Api\Controllers\MemberController.cs:行号 90
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()  
+ 
+-------End-------
+
+------Start------
+
+  时间：2017-02-07 17:42:51,006   线程ID:[5]   日志级别：INFO   
+  [2017-02-07 17:42:50]System.TypeInitializationException: “DoubleX.Infrastructure.Core.Config.DataCetnerConfig”的类型初始值设定项引发异常。 ---> System.Configuration.ConfigurationErrorsException: 创建 DataCetner 的配置节处理程序时出错: 类型“DoubleX.Infrastructure.Core.Config.DataCetnerConfig”不从“System.Configuration.IConfigurationSectionHandler”继承。 (E:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\web.config line 13) ---> System.TypeLoadException: 类型“DoubleX.Infrastructure.Core.Config.DataCetnerConfig”不从“System.Configuration.IConfigurationSectionHandler”继承。
+   在 System.Configuration.TypeUtil.VerifyAssignableType(Type baseType, Type type, Boolean throwOnError)
+   在 System.Configuration.RuntimeConfigurationRecord.RuntimeConfigurationFactory.Init(RuntimeConfigurationRecord configRecord, FactoryRecord factoryRecord)
+   在 System.Configuration.RuntimeConfigurationRecord.RuntimeConfigurationFactory.InitWithRestrictedPermissions(RuntimeConfigurationRecord configRecord, FactoryRecord factoryRecord)
+   在 System.Configuration.RuntimeConfigurationRecord.CreateSectionFactory(FactoryRecord factoryRecord)
+   在 System.Configuration.BaseConfigurationRecord.FindAndEnsureFactoryRecord(String configKey, Boolean& isRootDeclaredHere)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.Configuration.BaseConfigurationRecord.FindAndEnsureFactoryRecord(String configKey, Boolean& isRootDeclaredHere)
+   在 System.Configuration.BaseConfigurationRecord.GetSectionRecursive(String configKey, Boolean getLkg, Boolean checkPermission, Boolean getRuntimeObject, Boolean requestIsHere, Object& result, Object& resultRuntimeObject)
+   在 System.Configuration.BaseConfigurationRecord.GetSection(String configKey)
+   在 System.Web.HttpContext.GetSection(String sectionName)
+   在 System.Web.Configuration.HttpConfigurationSystem.GetSection(String sectionName)
+   在 System.Web.Configuration.HttpConfigurationSystem.System.Configuration.Internal.IInternalConfigSystem.GetSection(String configKey)
+   在 System.Configuration.ConfigurationManager.GetSection(String sectionName)
+   在 DoubleX.Infrastructure.Utility.ConfigHelper.GetSection[TEntity](String sectionName) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Utility\Config\ConfigHelper.cs:行号 43
+   在 DoubleX.Infrastructure.Core.Config.AbsConfigs`1.Init(String sectionName, String cacheKey) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\AbsConfigs.cs:行号 24
+   在 DoubleX.Infrastructure.Core.Config.DataCetnerConfig..cctor() 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\DataCetnerConfig.cs:行号 22
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 DoubleX.Framework.Interceptor.ServiceLogInterceptor.Intercept(IInvocation invocation) 位置 e:\Project\API站点\source\DoubleX\Framework\DoubleX.Framework.Interceptor\Log\ServiceLogInterceptor.cs:行号 32
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Castle.Proxies.IService`2Proxy.Regist(String account, String email, String mobile, String password, String clientIp)
+   在 DoubleX.Applaction.Apisite.Areas.Api.Controllers.MemberController.MemberRegist(RequestModel request) 位置 e:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\Areas\Api\Controllers\MemberController.cs:行号 90
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()  
+ 
+-------End-------
+
+------Start------
+
+  时间：2017-02-07 17:49:05,636   线程ID:[6]   日志级别：INFO   
+  [2017-02-07 17:49:05]System.TypeInitializationException: “DoubleX.Infrastructure.Core.Config.DataCetnerConfig”的类型初始值设定项引发异常。 ---> System.Configuration.ConfigurationErrorsException: configSource 文件的格式必须为包含节名的元素。 (E:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\Config\DataCetner.config line 2)
+   在 System.Configuration.BaseConfigurationRecord.EvaluateOne(String[] keys, SectionInput input, Boolean isTrusted, FactoryRecord factoryRecord, SectionRecord sectionRecord, Object parentResult)
+   在 System.Configuration.BaseConfigurationRecord.Evaluate(FactoryRecord factoryRecord, SectionRecord sectionRecord, Object parentResult, Boolean getLkg, Boolean getRuntimeObject, Object& result, Object& resultRuntimeObject)
+   在 System.Configuration.BaseConfigurationRecord.GetSectionRecursive(String configKey, Boolean getLkg, Boolean checkPermission, Boolean getRuntimeObject, Boolean requestIsHere, Object& result, Object& resultRuntimeObject)
+   在 System.Configuration.BaseConfigurationRecord.GetSection(String configKey)
+   在 System.Web.HttpContext.GetSection(String sectionName)
+   在 System.Web.Configuration.HttpConfigurationSystem.GetSection(String sectionName)
+   在 System.Web.Configuration.HttpConfigurationSystem.System.Configuration.Internal.IInternalConfigSystem.GetSection(String configKey)
+   在 System.Configuration.ConfigurationManager.GetSection(String sectionName)
+   在 DoubleX.Infrastructure.Utility.ConfigHelper.GetSection[TEntity](String sectionName) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Utility\Config\ConfigHelper.cs:行号 43
+   在 DoubleX.Infrastructure.Core.Config.AbsConfigs`1.Init(String sectionName, String cacheKey) 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\AbsConfigs.cs:行号 24
+   在 DoubleX.Infrastructure.Core.Config.DataCetnerConfig..cctor() 位置 e:\Project\API站点\source\DoubleX\Infrastructure\DoubleX.Infrastructure.Core\Config\DataCetnerConfig.cs:行号 22
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 DoubleX.Framework.Interceptor.ServiceLogInterceptor.Intercept(IInvocation invocation) 位置 e:\Project\API站点\source\DoubleX\Framework\DoubleX.Framework.Interceptor\Log\ServiceLogInterceptor.cs:行号 32
+   在 Castle.DynamicProxy.AbstractInvocation.Proceed()
+   在 Castle.Proxies.IService`2Proxy.Regist(String account, String email, String mobile, String password, String clientIp)
+   在 DoubleX.Applaction.Apisite.Areas.Api.Controllers.MemberController.MemberRegist(RequestModel request) 位置 e:\Project\API站点\source\DoubleX\Applaction\DoubleX.Applaction.Apisite\Areas\Api\Controllers\MemberController.cs:行号 90
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<CallOnActionExecutedAsync>d__5.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Filters.ActionFilterAttribute.<ExecuteActionFilterAsyncCore>d__0.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()  
+ 
+-------End-------

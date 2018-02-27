@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "登录";
+    Layout = "~/Areas/Member/Views/Shared/_Account.cshtml";
+}
+@section headers{}
+@section styles{}
+<div class="member-account-contianer">
+    <div class="row member-account-box">
+        <div class="col-sm-8">
+            <div class="member-account-banner"></div>
+        </div>
+        <div class="col-sm-4">
+            <div class="member-account-form">
+                <form id="login-form" role="form" novalidate="novalidate">
+                    <div class="row member-login">
+                        <div class="col-sm-12">
+                            <h2>帐号登录</h2>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group input-ico">
+                                <span class="glyphicon glyphicon-phone form-control-feedback ico-tag"></span>
+                                <input type="text" id="txtAccount" name="txtAccount" class="form-control" placeholder="请输入您的账号/手机/邮箱" />
+                            </div>
+                            <div class="form-group input-ico">
+                                <span class="glyphicon glyphicon-lock form-control-feedback ico-tag"></span>
+                                <input type="password" id="txtPwd" name="txtPwd" class="form-control" placeholder="请输入您的密码" />
+                            </div>
+                            <div class="form-group input-ico">
+                                <div id="verifyCode" class="verifyCode"></div>
+                            </div>
+                            <div class="form-group form-group-line row">
+                                <div class="col-sm-7"><input type="checkbox" id="chk-service" class="i-checks" checked="checked" />&nbsp;同意并遵守<a href="@(WebHelper.GetMemberUrl("/account/agreement"))" target="_blank">《服务条款》</a></div>
+                                <div class="col-sm-5 text-right"><input type="checkbox" id="chk-remember" class="i-checks" />&nbsp;5天内免登录</div>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" id="btn-login" class="btn btn-primary  btn-block btn-lg">会员登录</button>
+                            </div>
+                            <div class="form-group form-group-line row">
+                                <div class="col-sm-6"><a href="@(WebHelper.GetMemberUrl("/account/regist"))" target="_blank">去注册</a></div>
+                                <div class="col-sm-6 text-right"><a href="@(WebHelper.GetMemberUrl("/account/forgetpwd"))" target="_blank">忘记密码？</a></div>
+                            </div>
+                            <div id="diev-msg" class="form-group hidden">
+                                <div class="alert alert-danger"></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/member.js"))"></script>
+    <script type="text/javascript">
+        var pageView = {};
+        var memberModel = new Member();
+        $(document).ready(function () {
+            pageView.init();
+        })
+    </script>
+    <script type="text/javascript">
+
+        pageView.init = function () {
+            $("#btn-login").click(function () {
+                if (mu.validatorSubmit("#login-form")) {
+                    pageView.login();
+                }
+            });
+
+            pageView.validator();
+
+            $('#verifyCode').drag();
+        }
+
+        pageView.login = function () {
+            if (!$("#chk-service").is(":checked")) {
+                dx.util.message({ message: "请阅读，同意并遵守《服务条款》！" });
+                return;
+            }
+            if (!$('#verifyCode').data("ok")) {
+                dx.util.message({ message: "请拖动滑块验证" });
+                return;
+            }
+            pageView.showError();
+            memberModel.memberLogin({ data: { account: $("#txtAccount").val(), password: $("#txtPwd").val(), remember: $("#chk-remember").is(":checked") } },
+                function (result) {
+                    //登录成功跳转,公共ajax己处理跳转
+                }, function (result, msg) {
+                    pageView.showError(msg);
+                });
+        }
+
+        pageView.showError = function (error) {
+            if (dx.util.isNullOrEmpty(error)) {
+                $("#diev-msg").removeClass("hidden").addClass("hidden")
+                $("#diev-msg").find(".alert").html("");
+            } else {
+                $("#diev-msg").removeClass("hidden");
+                $("#diev-msg").find(".alert").html("*" + error);
+            }
+        }
+
+        pageView.validator = function () {
+            var fields = {
+                txtAccount: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输入登录账号/手机/邮箱'
+                        }
+                    }
+                },
+                txtPwd: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输入密码'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 16,
+                            message: '密码为6-16个字符'
+                        }
+                    }
+                }
+            };
+            $('#login-form').bootstrapValidator(mu.validatorOption(fields));
+        }
+
+    </script>
+}

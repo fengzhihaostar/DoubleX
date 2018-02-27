@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "使用记录";
+    Layout = "~/Areas/Member/Views/Shared/_Layout.cshtml";
+}
+@section headers{}
+@section styles{
+}
+<div class="container">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 member-menu">
+                    @Html.Partial("_Menu")
+                </div>
+                <div class="col-sm-9 member-contianer bg-white">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <p class="member-contianer-title">@ViewBag.Title</p>
+                            <table id="data-list" class="table table-hover list-table member-list-table">
+                                <thead>
+                                    <tr>
+                                        <th class="t-w120">时间</th>
+                                        <th class="t-text">流量</th>
+                                        <th class="t-w120">项目名称</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="6">
+                                            <div id="pagination" class="pagination-box"></div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/traffic.js"))"></script>
+    <script type="text/javascript">
+        var pageView = {}, trafficModel = new Traffic();
+        var $list = $(".list-table > tbody"), colCount = 5;
+        $(document).ready(function () { pageView.init(); });
+
+    </script>
+    <script type="text/javascript">
+
+        pageView.init = function () {
+            pageView.query();
+        }
+
+        pageView.query = function () {
+
+            var queryModel = mu.queryPagingData({
+                Key: $("#txt-search-key").val(),
+                PageIndex: ($("#pagination").data('curPageIndex') || 0)
+            });
+
+            mu.queryPagingSet($list, colCount, { data: queryModel }, trafficModel.useRecordQuery, function (result) {
+                mu.queryPagingHtml($list, colCount, { callback: function (i, v) { pageView.query(i); } }, result, function (items) {
+                    var listHtml = "";
+                    $(items).each(function (index, item) {
+                        var id = item["Id"];
+                        listHtml += "<tr>";
+                        listHtml += "    <td>" + mu.listFormatDateTime(item["LastDt"]) + "</td>";
+                        listHtml += "    <td>" + item["Size"] + "</td>";
+                        listHtml += "    <td>" + item["ProjectName"] + "</td>";
+                        listHtml += "</tr>";
+                    });
+                    $list.html(listHtml);
+                });
+            });
+        }
+
+
+    </script>
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,191 @@
+﻿@{
+    ViewBag.Title = "术语列表";
+    Layout = "~/Areas/Member/Views/Shared/_Layout.cshtml";
+}
+@section headers{}
+@section styles{
+}
+<link href="@(WebHelper.GetStaticUrl("/css/Term/Term.css"))" rel="stylesheet" />
+<div class="container">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 member-menu">
+                    @Html.Partial("_Menu")
+                </div>
+                <div class="col-sm-9 member-contianer bg-white">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <p class="member-contianer-title">@ViewBag.Title</p>
+                            <strong>项目:</strong>
+                            <select id="select-project">
+                                <option value="0">请选择项目</option>
+                            </select>
+                            &nbsp;&nbsp;&nbsp;
+                            <strong>源语言:</strong>
+                            <select id="select-srclang" class="ibox-select">
+                                <option value="zh">中文</option>
+                                <option value="en">English</option>
+                                <option value="pt">Português</option>
+                                <option value="es">El español</option>
+                                <option value="fr">Français</option>
+                                <option value="it">In Italiano</option>
+                                <option value="ko">한국어</option>
+                                <option value="ja">日本語</option>
+                                <option value="de">Deutsch</option>
+                                <option value="ru">русский</option>
+                                <option value="ar">عربي</option>
+                            </select>
+                            &nbsp;&nbsp;&nbsp;
+                            <strong>目标语言:</strong>
+                            <select id="select-tgtlang">
+                                <option value="en">English</option>
+                                <option value="zh">中文</option>
+                                <option value="pt">Português</option>
+                                <option value="es">El español</option>
+                                <option value="fr">Français</option>
+                                <option value="it">In Italiano</option>
+                                <option value="ko">한국어</option>
+                                <option value="ja">日本語</option>
+                                <option value="de">Deutsch</option>
+                                <option value="ru">русский</option>
+                                <option value="ar">عربي</option>
+                            </select>
+                            &nbsp;&nbsp;&nbsp;
+                            <strong>标签:</strong>
+                            <select id="select-flag">
+                                <option value="-9999">请选择术语标签</option>
+                            </select>
+                            <button type="button" id="btn-search" style="font-family: 微软雅黑; border: solid; border-width: 1px; width: 50px; float: right;">搜索</button>
+                            <table id="data-list" class="table table-hover list-table member-list-table">
+                                <thead>
+                                    <tr>
+                                        <th class="t-w120">术语原文</th>
+                                        <th class="t-w120">术语译文</th>
+                                        <th class="t-w120">操作</th>
+                                        <th class="t-w120">删除</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div id="pagination" class="pagination-box"></div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/term.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/project.js"))"></script>
+    <script type="text/javascript">
+        var pageView = {}, termModel = new Term(), projectModel = new Project();
+        var $list = $(".list-table > tbody"), colCount = 5;
+        $(document).ready(function () { pageView.init(); });
+
+    </script>
+    <script type="text/javascript">
+        pageView.init = function () {
+            projectModel.projectQuery({}, function (result) {
+                var html = '<option value="0">请选择项目</option>';
+                $(result['Obj'].Items).each(function (index, item) {
+                    html += '<option value="' + item['Id'] + '">' + item['ProjectName'] + '</option>';
+                });
+                $('#select-project').empty();
+                $('#select-project').html(html);
+
+                $('#select-project').change(function () {
+                    var projectId = $('#select-project option:selected').val();
+
+                    if (projectId && projectId.length > 1) {
+                        html = '<option value="-9999">请选择术语标签</option>';
+                        termModel.statisticsUserIds({ data: { ProjectId: projectId } }, function (result) {
+                            $(result['Obj']).each(function (index, item) {
+                                html += '<option value="' + item + '">' + item + '</option>';
+                            });
+                            $('#select-flag').empty();
+                            $('#select-flag').html(html);
+                        });
+                    }
+                });
+            });
+
+            pageView.query();
+
+            $('#btn-search').click(function () {
+                pageView.query();
+            });
+        }
+
+        pageView.query = function () {
+
+            var queryModel =
+                {
+                    RequestModel: mu.queryPagingData({
+                        Key: $("#txt-search-key").val(),
+                        PageIndex: ($("#pagination").data('curPageIndex') || 0)
+                    }),
+                    ProjectId: $('#select-project').val(),
+                    TermSrcLang: $('#select-srclang option:selected').val(),
+                    TermTgtLang: $('#select-tgtlang option:selected').val(),
+                    UserId: $('#select-flag').val()
+                }
+
+            mu.queryPagingSet($list, colCount, { data: queryModel }, termModel.termQuery, function (result) {
+                mu.queryPagingHtml($list, colCount, { callback: function (i, v) { pageView.query(i); } }, result, function (items) {
+                    var listHtml = "";
+                    $(items).each(function (index, item) {
+                        var id = item["Id"];
+                        listHtml += "<tr>";
+                        listHtml += "    <td>" + item["TermSrc"] + "</td>";
+                        listHtml += "    <td><input style='text-align:center;' type='text' value='" + item["TermTgt"] + "' readonly='readonly'/>";
+                        listHtml += "    <td><a name='alter' key='" + id + "' href='javascript:void(0);'>修改</a></td>";
+                        listHtml += "    <td><a name='delete' key='" + id + "' href='javascript:void(0);'>删除</a></td>";
+                        listHtml += "</tr>";
+                    });
+                    $list.html(listHtml);
+                    $('#data-list a[name="alter"]').click(function () {
+                        var id = $(this).attr('key');
+                        var op = $(this).html();
+                        var sib = $(this).parent().siblings('td');
+                        var tgt = $($(sib[1]).children('input')).val();
+                        switch (op) {
+                            case '修改': {
+                                $(sib[1]).children('input').addClass('form-control');
+                                $(sib[1]).children('input').css('background-color', '#ffffff');
+                                $(sib[1]).children('input').removeAttr('readonly');
+                                $(this).html('保存');
+                            } break;
+                            case '保存': {
+                                $(sib[1]).children('input').removeClass('form-control');
+                                $(sib[1]).children('input').attr("style", 'text-align:center;');
+                                $(sib[1]).children('input').attr('readonly', 'readonly');
+                                $(this).html('修改');
+                                termModel.updateTerm({ data: { Id: id, Tgt: tgt } }, function (res) {
+                                    alert(res['Message']);
+                                });
+                            } break;
+                        }
+                    });
+
+                    $('#data-list a[name="delete"]').click(function () {
+                        var id = $(this).attr('key');
+                        termModel.deleteTerm({ data: { Id: id } }, function (res) {
+                            alert(res['Message']);
+                            pageView.query();
+                        });
+                    });
+                });
+            });
+        }
+    </script>
+}
+
+

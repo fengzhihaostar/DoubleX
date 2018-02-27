@@ -1,0 +1,87 @@
+﻿@{
+    var routePath = MvcHelper.GetRoutePath(ViewContext);
+    var memberPath = StringHelper.FormatDefault(WebHelper.GetMemberPath(isRouteFormat: true));
+    var userUrls = new List<string>(){
+                        string.Format("{0}|user|detail",memberPath),
+                        string.Format("{0}|user|editpwd",memberPath),
+                        string.Format("{0}|user|security",memberPath),
+                        string.Format("{0}|user|bindmobile",memberPath),
+                        string.Format("{0}|user|bindemail",memberPath)
+                    };
+    var trafficUrls = new List<string>(){
+                        string.Format("{0}|traffic|userecord",memberPath)
+                    };
+    var tradeUrls = new List<string>(){
+                        string.Format("{0}|trade|recharge",memberPath),
+                        string.Format("{0}|trade|rechargerecord",memberPath),
+                        string.Format("{0}|trade|costrecord",memberPath)
+                    };
+    var projectUrls = new List<string>(){
+                        string.Format("{0}|project|projectinfo",memberPath),
+                        string.Format("{0}|project|projectadd",memberPath)
+                    };
+    var termUrls = new List<string>(){
+                        string.Format("{0}|term|terminfo",memberPath),
+                         string.Format("{0}|term|termadd",memberPath),
+                         string.Format("{0}|term|termdemonstration",memberPath)
+                    };
+    var questionUrls = new List<string>(){
+                        string.Format("{0}|question|commonquestion",memberPath)
+                    };
+
+}
+<div class="ibox bg-white">
+    <div class="ibox-content">
+        @if (userUrls.Contains(routePath))
+        {
+            <p>会员信息</p>
+            <ul>
+                <li><a href="@(WebHelper.GetMemberUrl("/user/detail"))"><i class="iconfont icon-assessment"></i>用户资料</a></li>
+                <li><a href="@(WebHelper.GetMemberUrl("/user/security"))"><i class="iconfont icon-assessment"></i>账号安全</a></li>
+                <li><a href="@(WebHelper.GetMemberUrl("/user/editpwd"))"><i class="iconfont icon-assessment"></i>修改密码</a></li>
+            </ul>
+        }
+        @if (trafficUrls.Contains(routePath))
+        {
+            <p>消费信息</p>
+            <ul>
+                <li><a href="@(WebHelper.GetMemberUrl("/traffic/userecord"))"><i class="iconfont icon-assessment"></i>使用记录</a></li>
+                @*<li><a href="@(WebHelper.GetMemberUrl("/traffic/userecord"))"><i class="iconfont icon-assessment"></i>项目设置</a></li>*@
+            </ul>
+        }
+        @if (tradeUrls.Contains(routePath))
+        {
+            <p>我的钱包</p>
+            <ul>
+                <li><a href="@(WebHelper.GetMemberUrl("/trade/recharge"))"><i class="iconfont icon-assessment"></i>在线充值</a></li>
+                <li><a href="@(WebHelper.GetMemberUrl("/trade/rechargerecord"))"><i class="iconfont icon-assessment"></i>充值记录</a></li>
+                <li><a href="@(WebHelper.GetMemberUrl("/trade/costrecord"))"><i class="iconfont icon-assessment"></i>消费记录</a></li>
+            </ul>
+        }
+        @if (projectUrls.Contains(routePath))
+        {
+            <p>我的项目</p>
+            <ul>
+                <li><a href="@(WebHelper.GetMemberUrl("/project/projectinfo"))"><i class="iconfont icon-assessment"></i>项目列表</a></li>
+                <li><a href="@(WebHelper.GetMemberUrl("/project/projectadd"))"><i class="iconfont icon-assessment"></i>新建项目</a></li>
+            </ul>
+        }
+        @if (termUrls.Contains(routePath))
+        {
+            <p>术语管理</p>
+            <ul>
+                <li><a href="@(WebHelper.GetMemberUrl("/term/terminfo"))"><i class="iconfont icon-assessment"></i>术语列表</a></li>
+                <li><a href="@(WebHelper.GetMemberUrl("/term/termadd"))"><i class="iconfont icon-assessment"></i>新增术语</a></li>
+                <li><a href="@(WebHelper.GetMemberUrl("/term/termdemonstration"))"><i class="iconfont icon-assessment"></i>术语演示</a></li>
+            </ul>
+        }
+        @if (questionUrls.Contains(routePath))
+        {
+            <p>常见问题</p>
+            <ul>
+                <li><a href="@(WebHelper.GetMemberUrl("/question/commonquestion"))"><i class="iconfont icon-assessment"></i>常见问题</a></li>
+            </ul>
+        }
+        <span class="back-home"><a href="@(WebHelper.GetMemberUrl())"><i class="iconfont icon-home"></i>返回</a></span>
+    </div>
+</div>

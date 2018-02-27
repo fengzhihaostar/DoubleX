@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理中心@(ViewBag.Title)</title>
+    @RenderSection("headers", required: false)
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/css/base.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/css/animate.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/bootstrap/bootstrap.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/pace/themes/green/pace-theme-barber-shop.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/datepicker/bootstrap-datetimepicker.min.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/dialog/css/bootstrap-dialog.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/validator/bootstrapValidator.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/select2/css/select2.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/select2/css/select2-bootstrap.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/icheck/skins/all.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/pagination/pagination.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/webuploader/webuploader.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/fonts/iconfont.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/css/manage.css"))" />
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    <div class="container container-body">
+        <div class="menu">
+            <div class="menu-header">
+                <span class="logo">
+                    管理中心
+                </span>
+            </div>
+            <div class="menu-list">
+                <ul class="metismenu menu-list-inner" id="container-menu">
+                    <li>
+                        <a href="#">
+                            <i class="iconfont icon-home nav-ico"></i><span class="nav-label">我的工作台</span>
+                            <span class="label label-warning right">0/0</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="has-arrow">
+                            <i class="iconfont icon-person nav-ico"></i><span class="nav-label">会员管理</span>
+                        </a>
+                        <ul class="nav">
+                            <li>
+                                <a href="#">会员添加</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="has-arrow">
+                            <i class="iconfont icon-attachmoney nav-ico"></i><span class="nav-label">资金流水</span>
+                        </a>
+                        <ul class="nav">
+                            <li>
+                                <a href="#">流水记录</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="has-arrow">
+                            <i class="iconfont icon-payment nav-ico"></i><span class="nav-label">调用记录</span>
+                        </a>
+
+                        <ul>
+                            <li>
+                                <a href="#">调用记录</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="has-arrow">
+                            <i class="iconfont icon-settings nav-ico"></i><span class="nav-label">组织管理</span>
+                        </a>
+
+                        <ul>
+                            <li>
+                                <a href="@(WebHelper.GetManageUrl("/organize/employeelist"))">账号管理</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="has-arrow">
+                            <i class="iconfont icon-lens nav-ico"></i><span class="nav-label">演示页面</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="/manage/demo/list">列表简洁</a>
+                            </li>
+                            <li>
+                                <a href="/manage/demo/search">列表搜索</a>
+                            </li>
+                            <li>
+                                <a href="/manage/demo/form">表单内容</a>
+                            </li>
+                            <li>
+                                <a href="/manage/demo/dialog">弹层内容</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content-full">
+                <div class="content-header border-bottom clearfix">
+                    <a href="javascript:;" class="icon-txt-link title menu-switch" data-for="container-switch">
+                        <i class="iconfont icon-viewheadline"></i>
+                        @*<span>句对编辑工具</span>*@
+                    </a>
+                    <div class="form-group header-search">
+                        <input type="text" placeholder="快速查找..." class="form-control" name="top-search" id="top-search">
+                    </div>
+                    <ul class="nav header-nav navbar-right">
+                        <li>
+                            <span class="m-r-sm text-muted welcome-message">
+                                @(WebHelper.GetContext().IsEmployeeLogin ? string.Format("{0} [{1}]", WebHelper.GetContext().Employee.RoleName, WebHelper.GetContext().Employee.Account) : "Error")，欢迎使用后台管理系统.
+                            </span>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle header-nav-notification" data-toggle="dropdown" href="#">
+                                <i class="iconfont icon-notificationsnone"></i>
+                                <span class="label label-warning">0</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@(WebHelper.GetManageUrl("/account/logout"))">
+                                <i class="iconfont icon-accountbalancewallet"></i>
+                                <span>@(Resources.Common.TuiChu)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-main">
+                    <div class="content-main-scroll">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/jQuery/jquery-1.12.4.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/underscore/underscore.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/underscore/underscore-contrib.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/underscore/underscore.string.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/bootstrap/bootstrap.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/metisMenu/jquery.metisMenu.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/pace/pace.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/datepicker/bootstrap-datetimepicker.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/datepicker/bootstrap-datetimepicker.zh-CN.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/dialog/js/bootstrap-dialog.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/validator/bootstrapValidator.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/validator/bootstrapValidator-ext.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/select2/js/select2.full.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/select2/js/i18n/zh-CN.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/iCheck/icheck.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/pagination/jquery.pagination.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/webuploader/webuploader.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/ueditor/ueditor.config.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/ueditor/ueditor.all.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/ueditor/lang/zh-cn/zh-cn.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/slimscroll/jquery.slimscroll.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/doublex/doublex.all.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/script/apisite.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/script/manage.js"))"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

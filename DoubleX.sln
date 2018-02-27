@@ -1,0 +1,244 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F8B86874-40E9-4F74-A373-CE2EB47C1B12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Infrastructure.Utility", "Infrastructure\DoubleX.Infrastructure.Utility\DoubleX.Infrastructure.Utility.csproj", "{EBFCAC7E-9168-4ADE-A703-DB546B678610}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Infrastructure.Utility.Net45", "Infrastructure\DoubleX.Infrastructure.Utility.Net45\DoubleX.Infrastructure.Utility.Net45.csproj", "{CFC0E83B-791C-4987-AF72-F3C9A43B5775}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Infrastructure.Core", "Infrastructure\DoubleX.Infrastructure.Core\DoubleX.Infrastructure.Core.csproj", "{763D8201-1F11-4414-AAE0-AF9A58D6B016}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Infrastructure.Core.EF", "Infrastructure\DoubleX.Infrastructure.Core.EF\DoubleX.Infrastructure.Core.EF.csproj", "{8DEBF3FA-B7DC-47A8-BC86-85C58DC354B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Infrastructure.Core.Mongo", "Infrastructure\DoubleX.Infrastructure.Core.Mongo\DoubleX.Infrastructure.Core.Mongo.csproj", "{8152C3EF-A478-4894-8AB4-C3C2B7EDB3F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{ED956C8E-38B4-42E9-B9AB-089BFE81954C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Framework.Web", "Framework\DoubleX.Framework.Web\DoubleX.Framework.Web.csproj", "{59B8335A-92DF-40EB-870E-7CB8B6519BC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Framework.Warmup", "Framework\DoubleX.Framework.Warmup\DoubleX.Framework.Warmup.csproj", "{B84B79AE-CFA4-4A40-8AC1-D6570EE6B0AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applaction", "Applaction", "{4CE64F97-987C-43FA-A8E6-7A5B74908D12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Applaction.Apisite", "Applaction\DoubleX.Applaction.Apisite\DoubleX.Applaction.Apisite.csproj", "{C33BBDEC-42D6-4937-87B8-54338EEE8086}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{FFD29E27-C051-44FA-96FC-3010E5A659DE}"
+	ProjectSection(SolutionItems) = preProject
+		Document\EntityFrameworkMySql.md = Document\EntityFrameworkMySql.md
+		Document\Web站点新建流程.md = Document\Web站点新建流程.md
+		Document\数据迁移操作.md = Document\数据迁移操作.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module", "Module", "{19BAEC7F-B1B0-4D30-923D-E04F6BC7DD77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Module.Organize", "Module\DoubleX.Module.Organize\DoubleX.Module.Organize.csproj", "{56F80EE9-F936-4510-911D-B5937A608994}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Infrastructure.Core.Web", "Infrastructure\DoubleX.Infrastructure.Core.Web\DoubleX.Infrastructure.Core.Web.csproj", "{30E6F10D-66C8-40C9-BEB0-DFC976FEBAE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Framework", "Framework\DoubleX.Framework\DoubleX.Framework.csproj", "{231314B8-B175-48FD-853B-7D3CF738467E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B1711353-C2DB-4510-8ADC-E5A8D2561CDA}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Framework.Interceptor", "Framework\DoubleX.Framework.Interceptor\DoubleX.Framework.Interceptor.csproj", "{0B14AC3F-D62E-4A0B-8ED5-E046E134AE5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Module.Member", "Module\DoubleX.Module.Member\DoubleX.Module.Member.csproj", "{1C32C981-DF90-41B9-AE37-E39D61933E59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Module.Common", "Module\DoubleX.Module.Common\DoubleX.Module.Common.csproj", "{6578C337-3EF0-45ED-B680-E515AE2D4779}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Module.Traffic", "Module\DoubleX.Module.Traffic\DoubleX.Module.Traffic.csproj", "{91ABDB83-28E4-4437-83DD-A1B9DE00F348}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Module.Trade", "Module\DoubleX.Module.Payment\DoubleX.Module.Trade.csproj", "{BD88D0DF-D7C0-48AC-AE9C-2A58C50C6F70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Module.Project", "DoubleX.Module.Project\DoubleX.Module.Project.csproj", "{E39AC66B-2453-4845-BA36-EAC96DB05C8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleX.Module.Term", "DoubleX.Module.Term\DoubleX.Module.Term.csproj", "{EBA54A03-3AB9-485D-BA61-7DA16F43E253}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 19
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://192.168.1.6:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Infrastructure\\DoubleX.Infrastructure.Utility\\DoubleX.Infrastructure.Utility.csproj
+		SccProjectTopLevelParentUniqueName1 = DoubleX.sln
+		SccProjectName1 = Infrastructure/DoubleX.Infrastructure.Utility
+		SccLocalPath1 = Infrastructure\\DoubleX.Infrastructure.Utility
+		SccProjectUniqueName2 = Infrastructure\\DoubleX.Infrastructure.Utility.Net45\\DoubleX.Infrastructure.Utility.Net45.csproj
+		SccProjectTopLevelParentUniqueName2 = DoubleX.sln
+		SccProjectName2 = Infrastructure/DoubleX.Infrastructure.Utility.Net45
+		SccLocalPath2 = Infrastructure\\DoubleX.Infrastructure.Utility.Net45
+		SccProjectUniqueName3 = Infrastructure\\DoubleX.Infrastructure.Core\\DoubleX.Infrastructure.Core.csproj
+		SccProjectTopLevelParentUniqueName3 = DoubleX.sln
+		SccProjectName3 = Infrastructure/DoubleX.Infrastructure.Core
+		SccLocalPath3 = Infrastructure\\DoubleX.Infrastructure.Core
+		SccProjectUniqueName4 = Infrastructure\\DoubleX.Infrastructure.Core.EF\\DoubleX.Infrastructure.Core.EF.csproj
+		SccProjectTopLevelParentUniqueName4 = DoubleX.sln
+		SccProjectName4 = Infrastructure/DoubleX.Infrastructure.Core.EF
+		SccLocalPath4 = Infrastructure\\DoubleX.Infrastructure.Core.EF
+		SccProjectUniqueName5 = Infrastructure\\DoubleX.Infrastructure.Core.Mongo\\DoubleX.Infrastructure.Core.Mongo.csproj
+		SccProjectTopLevelParentUniqueName5 = DoubleX.sln
+		SccProjectName5 = Infrastructure/DoubleX.Infrastructure.Core.Mongo
+		SccLocalPath5 = Infrastructure\\DoubleX.Infrastructure.Core.Mongo
+		SccProjectUniqueName6 = Framework\\DoubleX.Framework.Web\\DoubleX.Framework.Web.csproj
+		SccProjectTopLevelParentUniqueName6 = DoubleX.sln
+		SccProjectName6 = Framework/DoubleX.Framework.Web
+		SccLocalPath6 = Framework\\DoubleX.Framework.Web
+		SccProjectUniqueName7 = Framework\\DoubleX.Framework.Warmup\\DoubleX.Framework.Warmup.csproj
+		SccProjectTopLevelParentUniqueName7 = DoubleX.sln
+		SccProjectName7 = Framework/DoubleX.Framework.Warmup
+		SccLocalPath7 = Framework\\DoubleX.Framework.Warmup
+		SccProjectUniqueName8 = Applaction\\DoubleX.Applaction.Apisite\\DoubleX.Applaction.Apisite.csproj
+		SccProjectTopLevelParentUniqueName8 = DoubleX.sln
+		SccProjectName8 = Applaction/DoubleX.Applaction.Apisite
+		SccLocalPath8 = Applaction\\DoubleX.Applaction.Apisite
+		SccProjectUniqueName9 = Module\\DoubleX.Module.Organize\\DoubleX.Module.Organize.csproj
+		SccProjectTopLevelParentUniqueName9 = DoubleX.sln
+		SccProjectName9 = Module/DoubleX.Module.Organize
+		SccLocalPath9 = Module\\DoubleX.Module.Organize
+		SccProjectUniqueName10 = Infrastructure\\DoubleX.Infrastructure.Core.Web\\DoubleX.Infrastructure.Core.Web.csproj
+		SccProjectTopLevelParentUniqueName10 = DoubleX.sln
+		SccProjectName10 = Infrastructure/DoubleX.Infrastructure.Core.Web
+		SccLocalPath10 = Infrastructure\\DoubleX.Infrastructure.Core.Web
+		SccProjectUniqueName11 = Framework\\DoubleX.Framework\\DoubleX.Framework.csproj
+		SccProjectTopLevelParentUniqueName11 = DoubleX.sln
+		SccProjectName11 = Framework/DoubleX.Framework
+		SccLocalPath11 = Framework\\DoubleX.Framework
+		SccProjectUniqueName12 = Framework\\DoubleX.Framework.Interceptor\\DoubleX.Framework.Interceptor.csproj
+		SccProjectTopLevelParentUniqueName12 = DoubleX.sln
+		SccProjectName12 = Framework/DoubleX.Framework.Interceptor
+		SccLocalPath12 = Framework\\DoubleX.Framework.Interceptor
+		SccProjectUniqueName13 = Module\\DoubleX.Module.Member\\DoubleX.Module.Member.csproj
+		SccProjectTopLevelParentUniqueName13 = DoubleX.sln
+		SccProjectName13 = Module/DoubleX.Module.Member
+		SccLocalPath13 = Module\\DoubleX.Module.Member
+		SccProjectUniqueName14 = Module\\DoubleX.Module.Common\\DoubleX.Module.Common.csproj
+		SccProjectTopLevelParentUniqueName14 = DoubleX.sln
+		SccProjectName14 = Module/DoubleX.Module.Common
+		SccLocalPath14 = Module\\DoubleX.Module.Common
+		SccProjectUniqueName15 = Module\\DoubleX.Module.Traffic\\DoubleX.Module.Traffic.csproj
+		SccProjectTopLevelParentUniqueName15 = DoubleX.sln
+		SccProjectName15 = Module/DoubleX.Module.Traffic
+		SccLocalPath15 = Module\\DoubleX.Module.Traffic
+		SccProjectUniqueName16 = Module\\DoubleX.Module.Payment\\DoubleX.Module.Trade.csproj
+		SccProjectTopLevelParentUniqueName16 = DoubleX.sln
+		SccProjectName16 = Module/DoubleX.Module.Payment
+		SccLocalPath16 = Module\\DoubleX.Module.Payment
+		SccProjectUniqueName17 = DoubleX.Module.Project\\DoubleX.Module.Project.csproj
+		SccProjectTopLevelParentUniqueName17 = DoubleX.sln
+		SccProjectName17 = DoubleX.Module.Project
+		SccLocalPath17 = DoubleX.Module.Project
+		SccProjectUniqueName18 = DoubleX.Module.Term\\DoubleX.Module.Term.csproj
+		SccProjectTopLevelParentUniqueName18 = DoubleX.sln
+		SccProjectName18 = DoubleX.Module.Term
+		SccLocalPath18 = DoubleX.Module.Term
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBFCAC7E-9168-4ADE-A703-DB546B678610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBFCAC7E-9168-4ADE-A703-DB546B678610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBFCAC7E-9168-4ADE-A703-DB546B678610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBFCAC7E-9168-4ADE-A703-DB546B678610}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFC0E83B-791C-4987-AF72-F3C9A43B5775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFC0E83B-791C-4987-AF72-F3C9A43B5775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFC0E83B-791C-4987-AF72-F3C9A43B5775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFC0E83B-791C-4987-AF72-F3C9A43B5775}.Release|Any CPU.Build.0 = Release|Any CPU
+		{763D8201-1F11-4414-AAE0-AF9A58D6B016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{763D8201-1F11-4414-AAE0-AF9A58D6B016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{763D8201-1F11-4414-AAE0-AF9A58D6B016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{763D8201-1F11-4414-AAE0-AF9A58D6B016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DEBF3FA-B7DC-47A8-BC86-85C58DC354B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DEBF3FA-B7DC-47A8-BC86-85C58DC354B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DEBF3FA-B7DC-47A8-BC86-85C58DC354B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DEBF3FA-B7DC-47A8-BC86-85C58DC354B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8152C3EF-A478-4894-8AB4-C3C2B7EDB3F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8152C3EF-A478-4894-8AB4-C3C2B7EDB3F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8152C3EF-A478-4894-8AB4-C3C2B7EDB3F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8152C3EF-A478-4894-8AB4-C3C2B7EDB3F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59B8335A-92DF-40EB-870E-7CB8B6519BC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59B8335A-92DF-40EB-870E-7CB8B6519BC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59B8335A-92DF-40EB-870E-7CB8B6519BC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59B8335A-92DF-40EB-870E-7CB8B6519BC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B84B79AE-CFA4-4A40-8AC1-D6570EE6B0AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B84B79AE-CFA4-4A40-8AC1-D6570EE6B0AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B84B79AE-CFA4-4A40-8AC1-D6570EE6B0AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B84B79AE-CFA4-4A40-8AC1-D6570EE6B0AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C33BBDEC-42D6-4937-87B8-54338EEE8086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C33BBDEC-42D6-4937-87B8-54338EEE8086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C33BBDEC-42D6-4937-87B8-54338EEE8086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C33BBDEC-42D6-4937-87B8-54338EEE8086}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56F80EE9-F936-4510-911D-B5937A608994}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56F80EE9-F936-4510-911D-B5937A608994}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56F80EE9-F936-4510-911D-B5937A608994}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56F80EE9-F936-4510-911D-B5937A608994}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30E6F10D-66C8-40C9-BEB0-DFC976FEBAE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30E6F10D-66C8-40C9-BEB0-DFC976FEBAE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30E6F10D-66C8-40C9-BEB0-DFC976FEBAE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30E6F10D-66C8-40C9-BEB0-DFC976FEBAE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{231314B8-B175-48FD-853B-7D3CF738467E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{231314B8-B175-48FD-853B-7D3CF738467E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{231314B8-B175-48FD-853B-7D3CF738467E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{231314B8-B175-48FD-853B-7D3CF738467E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B14AC3F-D62E-4A0B-8ED5-E046E134AE5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B14AC3F-D62E-4A0B-8ED5-E046E134AE5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B14AC3F-D62E-4A0B-8ED5-E046E134AE5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B14AC3F-D62E-4A0B-8ED5-E046E134AE5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C32C981-DF90-41B9-AE37-E39D61933E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C32C981-DF90-41B9-AE37-E39D61933E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C32C981-DF90-41B9-AE37-E39D61933E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C32C981-DF90-41B9-AE37-E39D61933E59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6578C337-3EF0-45ED-B680-E515AE2D4779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6578C337-3EF0-45ED-B680-E515AE2D4779}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6578C337-3EF0-45ED-B680-E515AE2D4779}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6578C337-3EF0-45ED-B680-E515AE2D4779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91ABDB83-28E4-4437-83DD-A1B9DE00F348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91ABDB83-28E4-4437-83DD-A1B9DE00F348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91ABDB83-28E4-4437-83DD-A1B9DE00F348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91ABDB83-28E4-4437-83DD-A1B9DE00F348}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD88D0DF-D7C0-48AC-AE9C-2A58C50C6F70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD88D0DF-D7C0-48AC-AE9C-2A58C50C6F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD88D0DF-D7C0-48AC-AE9C-2A58C50C6F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD88D0DF-D7C0-48AC-AE9C-2A58C50C6F70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E39AC66B-2453-4845-BA36-EAC96DB05C8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E39AC66B-2453-4845-BA36-EAC96DB05C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E39AC66B-2453-4845-BA36-EAC96DB05C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E39AC66B-2453-4845-BA36-EAC96DB05C8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBA54A03-3AB9-485D-BA61-7DA16F43E253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBA54A03-3AB9-485D-BA61-7DA16F43E253}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBA54A03-3AB9-485D-BA61-7DA16F43E253}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBA54A03-3AB9-485D-BA61-7DA16F43E253}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EBFCAC7E-9168-4ADE-A703-DB546B678610} = {F8B86874-40E9-4F74-A373-CE2EB47C1B12}
+		{CFC0E83B-791C-4987-AF72-F3C9A43B5775} = {F8B86874-40E9-4F74-A373-CE2EB47C1B12}
+		{763D8201-1F11-4414-AAE0-AF9A58D6B016} = {F8B86874-40E9-4F74-A373-CE2EB47C1B12}
+		{8DEBF3FA-B7DC-47A8-BC86-85C58DC354B4} = {F8B86874-40E9-4F74-A373-CE2EB47C1B12}
+		{8152C3EF-A478-4894-8AB4-C3C2B7EDB3F4} = {F8B86874-40E9-4F74-A373-CE2EB47C1B12}
+		{30E6F10D-66C8-40C9-BEB0-DFC976FEBAE0} = {F8B86874-40E9-4F74-A373-CE2EB47C1B12}
+		{59B8335A-92DF-40EB-870E-7CB8B6519BC0} = {ED956C8E-38B4-42E9-B9AB-089BFE81954C}
+		{B84B79AE-CFA4-4A40-8AC1-D6570EE6B0AA} = {ED956C8E-38B4-42E9-B9AB-089BFE81954C}
+		{231314B8-B175-48FD-853B-7D3CF738467E} = {ED956C8E-38B4-42E9-B9AB-089BFE81954C}
+		{0B14AC3F-D62E-4A0B-8ED5-E046E134AE5E} = {ED956C8E-38B4-42E9-B9AB-089BFE81954C}
+		{C33BBDEC-42D6-4937-87B8-54338EEE8086} = {4CE64F97-987C-43FA-A8E6-7A5B74908D12}
+		{56F80EE9-F936-4510-911D-B5937A608994} = {19BAEC7F-B1B0-4D30-923D-E04F6BC7DD77}
+		{1C32C981-DF90-41B9-AE37-E39D61933E59} = {19BAEC7F-B1B0-4D30-923D-E04F6BC7DD77}
+		{6578C337-3EF0-45ED-B680-E515AE2D4779} = {19BAEC7F-B1B0-4D30-923D-E04F6BC7DD77}
+		{91ABDB83-28E4-4437-83DD-A1B9DE00F348} = {19BAEC7F-B1B0-4D30-923D-E04F6BC7DD77}
+		{BD88D0DF-D7C0-48AC-AE9C-2A58C50C6F70} = {19BAEC7F-B1B0-4D30-923D-E04F6BC7DD77}
+		{E39AC66B-2453-4845-BA36-EAC96DB05C8E} = {19BAEC7F-B1B0-4D30-923D-E04F6BC7DD77}
+		{EBA54A03-3AB9-485D-BA61-7DA16F43E253} = {19BAEC7F-B1B0-4D30-923D-E04F6BC7DD77}
+	EndGlobalSection
+EndGlobal

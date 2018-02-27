@@ -1,0 +1,200 @@
+﻿@{
+    Layout = "~/Areas/Manage/Views/Shared/_Master.cshtml";
+
+    var queryId = UrlsHelper.GetQueryValue("id");
+    //var pageTitle = string.Format("{0}-{1}", Resources.Manage.HuiYiCaiDan, VerifyHelper.IsEmpty(queryId) ? Resources.Common.TianJia : Resources.Common.XiuGai);
+    //var pathsList = new List<ItemModel>() {
+    //    new ItemModel() { Text=pageTitle,Sort=1}
+    //};
+
+    //ViewBag.Title = WebHelper.GetManagePageTitleByPath(pathsList);
+}
+@section headers{}
+@section styles{}
+<div class="ibox">
+    <div class="ibox-content">
+        <form id="detail-form" onsubmit="return false;">
+            <fieldset class="form-horizontal form-validator">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">会议</label>
+                    <div class="col-sm-10"><select id="ddl-meeting" name="ddlMeeting" class="form-control"></select></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">标题</label>
+                    <div class="col-sm-10"><input id="txt-title" name="txtTitle" type="text" class="form-control" placeholder="请输入菜单标题"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">标识</label>
+                    <div class="col-sm-10"><input id="txt-tag" name="txtTag" type="text" class="form-control" placeholder="请输入菜单标识，请忽随意更改"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">缩略图:</label>
+                    <div class="col-sm-10">
+                        <div class="thumb-box">
+                            <a id="btn-file-select" href="javascript:;" thumb-for="#thumb-img">上传文件</a>
+                            <img id="thumb-img" src="@(WebHelper.GetStaticUrl("/img/no_image.png"))" data-src="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">内容 :</label>
+                    <div class="col-sm-10 text-multi">
+                        <textarea id="txt-content" name="txtContent"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">排序</label>
+                    <div class="col-sm-10"><input id="txt-sort" name="txtSort" type="text" class="form-control" placeholder="" value="0"></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <input id="btn-save" type="button" class="btn btn-primary" value="保存" />
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/organize.js"))"></script>
+    <script type="text/javascript">
+        var id = "@(queryId)";
+        var pageView = {}, editDialog;
+        var organizeModel = new Organize();
+        var refUrl = "@(UrlsHelper.GetRefUrl(defaultUrl:WebHelper.GetManageUrl()))";
+
+        $(document).ready(function () { pageView.init(); });
+    </script>
+    <script type="text/javascript">
+        pageView.init = function () {
+            //控件渲染
+            //....
+
+            //数据加载
+            //pageView.load();
+
+            //数据验证
+            //pageView.validator();
+
+            //保存操作
+            $("#btn-save").click(function () {
+                if (mu.validatorSubmit("#detail-form")) {
+                    pageView.save();
+                }
+            });
+        }
+
+        pageView.load = function () {
+            if (dx.util.isNullOrEmpty(id)) {
+                return;
+            }
+            meetingModule.meetingMenuGet({ data: { id: id } }, function (result, status) {
+                pageView.setModel(result);
+            });
+        }
+
+        pageView.save = function (callback) {
+
+            //默认回调
+            if (!dx.util.isFunction(callback)) {
+                callback = function (type, result) {
+                    if (dx.util.isFunction(parentCallback)) {
+                        parentCallback(type, result);
+                    } else {
+                        dx.util.message({ message: type == "add" ? "添加成功" : "修改成功" }, function () {
+                            window.top.location.href = refUrl;
+                        });
+                    }
+                }
+            }
+            //编辑操作
+
+            callback("add", {})
+            //callback("modify", {})
+
+            //var model = pageView.getModel();
+            //if (_.isEmpty(model.MeetingMenuId)) {
+            //    meetingModule.meetingMenuAdd({ data: model }, function (result, status) {
+            //        callback("add", result)
+            //    });
+            //}
+            //else {
+            //    meetingModule.meetingMenuModify({ data: model }, function (result, status) {
+            //        callback("modify", result)
+            //    })
+            //}
+        }
+
+        pageView.getModel = function () {
+            return {
+                MeetingMenuId: id,
+                MeetingId: $("#ddl-meeting").val(),
+                Title: $("#txt-title").val(),
+                ThumbId: $("#thumb-img").attr("data-src"),
+                Tag: $("#txt-tag").val(),
+                Content: pager.editorGet("#txt-content", pageEdit),
+                Sort: $("#txt-sort").val()
+            };
+        }
+
+        pageView.setModel = function (result) {
+            if (!_.isEmpty(result) && !_.isEmpty(result["Obj"])) {
+                var model = result["Obj"];
+                if (!_.isEmpty(result["Obj"]["MeetingModel"])) {
+                    meetingModule.meetingSelectInit("#ddl-meeting", model.MeetingId, model.MeetingModel.Title);
+                }
+                $("#txt-title").val(model.Title);
+                if (!_.isEmpty(model.ThumbId)) {
+                    $("#thumb-img").attr("src", model.ThumbId);
+                    $("#thumb-img").attr("data-src", model.ThumbId);
+                }
+                $("#txt-tag").val(model.Tag);
+                pager.editorSet("#txt-content", model.Content, pageEdit);
+                $("#txt-sort").val(model.Sort);
+
+            }
+        }
+
+        pageView.validator = function () {
+            var fields = {
+                ddlMeeting: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输选择所属会议'
+                        }
+                    }
+                },
+                txtTitle: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输入菜单标题'
+                        },
+                        stringLength: {
+                            max: 200,
+                            message: '菜单标题长度不超过200个字符'
+                        }
+                    }
+                },
+                txtTag: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输入菜单标识'
+                        },
+                        stringLength: {
+                            max: 200,
+                            message: '菜单标识长度不超过200个字符'
+                        }
+                    }
+                },
+                txtSort: {
+                    validators: {
+                        numeric: {
+                            message: '请输入大于0的数字'
+                        }
+                    }
+                }
+            };
+            $('#detail-form').bootstrapValidator(pager.validatorOption(fields));
+        }
+    </script>
+}

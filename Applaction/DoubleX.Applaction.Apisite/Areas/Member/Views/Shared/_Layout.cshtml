@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会员中心-@(ViewBag.Title)</title>
+    @RenderSection("headers", required: false)
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/css/base.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/css/animate.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/bootstrap/bootstrap.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/pace/themes/green/pace-theme-barber-shop.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/datepicker/bootstrap-datetimepicker.min.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/dialog/css/bootstrap-dialog.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/validator/bootstrapValidator.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/select2/css/select2.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/select2/css/select2-bootstrap.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/icheck/skins/all.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/pagination/pagination.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/webuploader/webuploader.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/plugs/drag/drag.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/fonts/iconfont.css"))" />
+    <link type="text/css" rel="stylesheet" href="@(WebHelper.GetStaticUrl("/css/member.css"))" />
+    @RenderSection("styles", required: false)
+    <script src="@(WebHelper.GetStaticUrl("/plugs/jQuery/jquery-1.12.4.js"))" type="text/javascript"></script>
+    <script src="@(WebHelper.GetStaticUrl("/plugs/jQuery/jquery-1.12.4.min.js"))" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            var bodyHeight = $(window).height() - 70 - 160;
+            if ($('#div-body').height() <= bodyHeight)
+                $('#div-body').css('height', bodyHeight + 'px');
+        });
+    </script>
+</head>
+<body>
+    <header class="header-nav">
+        <div class="container">
+            <div class="clearfix header left">
+                <a href="@(WebHelper.GetMemberUrl())"><span class="logo"><i>UTH</i></span></a>
+            </div>
+            <nav class="top-nav">
+                <ul>
+                    <li><a href="@(WebHelper.GetWebUrl())">首页</a></li>
+                    <li>
+                        <a>解决方案</a>
+                        @*<ul class="sub-top-nav">
+                                <li><a href="">跨境电商</a></li>
+                                <li><a href="">建站平台</a></li>
+                                <li><a href="">视频直播</a></li>
+                            </ul>*@
+                    </li>
+                    <li>
+                        <a>帮助与支持</a>
+                        <ul class="sub-top-nav">
+                            <li><a href="@(WebHelper.GetWebUrl("/question/technologydocument"))">技术文档</a></li>
+                            <li><a href="@(WebHelper.GetWebUrl("/question/commonquestion"))">常见问题</a></li>
+                            <li><a href="@(WebHelper.GetWebUrl("/home/ContactUs"))">联系我们</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="@(WebHelper.GetMemberUrl("/home/index"))">会员中心</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="login">
+                <ul>
+                    @if (WebHelper.GetContext().IsMemberLogin)
+                    {
+                        <li><a class="text" href="@(WebHelper.GetMemberUrl("/user/detail"))">&nbsp;@(WebHelper.GetContext().Member.NameTag)&nbsp;</a></li>
+                        <li><a class="console" href="@(WebHelper.GetMemberUrl("/account/logout"))">退出</a></li>
+                    }
+                    else
+                    {
+                        <li><a class="text" href="@(WebHelper.GetMemberUrl("/account/regist"))">注册</a></li>
+                        <li><a class="console" role="button" href="~/Member">登录</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="member-container">
+        <div id="div-body" class="member-container-body">
+            @RenderBody()
+        </div>
+        <div class="clearfix footer">
+            <div class="container">
+                <div class="wrapper">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="item item-tel">
+                                <p><span><b>全国服务热线</b></span></p>
+                                <p><b>+86&nbsp;021-66181772（工作时间：9:00-17:30）</b></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="item item-nav">
+                                <p><span>&nbsp;</span></p>
+                                <p>
+                                    <a href="javascript:;">公司简介</a>
+                                    <a href="javascript:;">合作伙伴</a>
+                                    <a href="javascript:;">加入我们</a>
+                                    <a href="http://www.utranshub.com/contact.html" target="_blank">联系我们</a>
+                                </p>
+                                <p class="copy">版权所有©2016 UTH 国际 Powered by UTH International 沪ICP备16014616号-1 </p>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="row">
+
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/jQuery/jquery-1.12.4.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/underscore/underscore.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/underscore/underscore-contrib.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/underscore/underscore.string.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/bootstrap/bootstrap.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/metisMenu/jquery.metisMenu.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/pace/pace.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/datepicker/bootstrap-datetimepicker.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/datepicker/bootstrap-datetimepicker.zh-CN.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/dialog/js/bootstrap-dialog.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/validator/bootstrapValidator.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/validator/bootstrapValidator-ext.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/select2/js/select2.full.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/select2/js/i18n/zh-CN.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/iCheck/icheck.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/pagination/jquery.pagination.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/webuploader/webuploader.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/ueditor/ueditor.config.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/ueditor/ueditor.all.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/ueditor/lang/zh-cn/zh-cn.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/slimscroll/jquery.slimscroll.min.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/drag/drag.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/plugs/doublex/doublex.all.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/script/apisite.js"))"></script>
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/script/member.js"))"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

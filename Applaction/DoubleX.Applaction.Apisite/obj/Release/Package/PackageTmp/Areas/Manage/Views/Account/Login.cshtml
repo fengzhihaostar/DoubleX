@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "登录";
+    Layout = "~/Areas/Manage/Views/Shared/_Master.cshtml";
+}
+@section headers{}
+@section styles{}
+
+<div class="gray-bg" style="width:100%; height:100%;">
+    <div class="login-box animated fadeInDown">
+        <div class="row">
+            <div class="col-md-3">&nbsp;</div>
+            <div class="col-md-6">
+                <div class="ibox-content">
+                    <h2 class="font-bold">@(Resources.Manage.DengLuHuanYin)</h2>
+                    <div class="m-t">
+                        <div class="form-group">
+                            <input id="txt-login-name" type="text" class="form-control" autocomplete="off" placeholder="@(Resources.Manage.DengLuZhangHao)" required />
+                        </div>
+                        <div class="form-group">
+                            <input id="txt-login-pwd" type="password" class="form-control" autocomplete="off" placeholder="@(Resources.Manage.DengLuMiMa)" required />
+                        </div>
+                        <button id="btn-login" type="submit" class="btn btn-primary block full-width m-b">@(Resources.Common.DengLu)</button>
+                        <div class="form-group">
+                            <div>*建议使用新版的火狐，Chrome, IE9+浏览使用</div>
+                        </div>
+                        <div class="form-group">
+                            <div id="diev-msg" class="alert alert-danger hidden"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">&nbsp;</div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/organize.js"))"></script>
+    <script type="text/javascript">
+        var organizeModel = new Organize();
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btn-login").click(function () {
+                $("#diev-msg").removeClass("hidden").addClass("hidden").html("");
+                organizeModel.employeeLogin(
+                    { data: { account: $("#txt-login-name").val(), password: $("#txt-login-pwd").val() } },
+                    function (result) {
+                        //登录成功跳转,公共ajax己处理跳转
+                    }, function (result, msg) {
+                        $("#diev-msg").removeClass("hidden").html("*" + msg);
+                    })
+            });
+        })
+    </script>
+}

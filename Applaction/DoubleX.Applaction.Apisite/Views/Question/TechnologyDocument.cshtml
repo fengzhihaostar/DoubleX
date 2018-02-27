@@ -1,0 +1,264 @@
+﻿@{
+    ViewBag.Title = "技术文档";
+    Layout = "~/Areas/Member/Views/Shared/_Technicaldoc.cshtml";
+}
+
+<style>
+    div p {
+        font-family: 微软雅黑;
+    }
+
+    table {
+        width: 100%;
+        border: solid;
+        border-width: 1px;
+    }
+
+    thead {
+        background-color: #c7c3c3;
+        text-align: center;
+    }
+
+    tr td {
+        border: solid;
+        border-width: 1px;
+        text-align: center;
+        font-family: 微软雅黑;
+    }
+
+    .tb-left {
+        text-align: left;
+    }
+
+    .tb-20 {
+        width: 20%;
+    }
+
+    .tb-40 {
+        width: 40%;
+    }
+
+    .tb-80 {
+        width: 40%;
+    }
+</style>
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-9 member-contianer bg-white">
+                    <p class="member-contianer-title">@ViewBag.Title</p>
+                    <h2>HTTP接入文档</h2>
+                    <br />
+                    <p>
+                        UTH翻译API通过HTTP接口对外提供多语种互译服务。您只需要通过调用UTH翻译API，传入待翻译的内容，并指定要翻译的源语言和目标语言种类，就可以得到相应的翻译结果。
+                    </p>
+                    <p>
+                        <b>接口输入参数：</b>
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td class="tb-20">参数名</td>
+                                <td class="tb-20">类型</td>
+                                <td class="tb-20">是否可空</td>
+                                <td class="tb-40">说明</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>key</td>
+                                <td>string</td>
+                                <td>否</td>
+                                <td class="tb-left">用户唯一标识</td>
+                            </tr>
+                            <tr>
+                                <td>q</td>
+                                <td>string</td>
+                                <td>否</td>
+                                <td class="tb-left">需要翻译的内容.如果文本过长，请用POST方式请求</td>
+                            </tr>
+                            <tr>
+                                <td>source</td>
+                                <td>string</td>
+                                <td>否</td>
+                                <td class="tb-left">源语言</td>
+                            </tr>
+                            <tr>
+                                <td>target</td>
+                                <td>string</td>
+                                <td>否</td>
+                                <td class="tb-left">目标语言</td>
+                            </tr>
+                            <tr>
+                                <td>userid</td>
+                                <td>string</td>
+                                <td>是</td>
+                                <td class="tb-left">主项目下的子账户，主要用来应用不同术语库（为空默认应用全局术语库）</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <p>
+                        <b>接口输出参数:</b>
+                    </p>
+                    <div style="width:100%;background-color:#f7f3f3;">
+                        {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;"Src": "If the request is successful, the server returns a 200 OK HTTP status code and the response in JSON format:",<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;"Translations": [<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"Src":"If the request is successful, the server returns a 200 OK HTTP status code and the response in JSON format:",<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Tgt":"如果请求成功，服务器返回200 OK HTTP状态代码和JSON格式的响应：",<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Code":0,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Message":"sucess"}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;"SrcLang": "en",<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;"TgtLang": "zh",<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;"Code": 0,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;"Message": "sucess"<br />
+                        }
+                    </div>
+                    <br />
+                    <p>
+                        <b>说明：</b><br />
+                        Src：原文<br />
+                        Translations：译文对象数组（如果是POST列表请求，则会返回多个数字对象）<br />
+                        SrcLang：源语言<br />
+                        TgtLang：目标语言<br />
+                        Code：返回代码<br />
+                        Message：返回信息<br />
+                    </p>
+                    <br />
+                    <p>
+                        <b>Code码：</b>
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td class="tb-20">Code</td>
+                                <td class="tb-80">说明</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td class="tb-left">成功</td>
+                            </tr>
+                            <tr>
+                                <td>-901000</td>
+                                <td class="tb-left">用户Key错误</td>
+                            </tr>
+                            <tr>
+                                <td>-901001</td>
+                                <td class="tb-left">调用频率超出</td>
+                            </tr>
+                            <tr>
+                                <td>-901002</td>
+                                <td class="tb-left">某一时间段内，调用字数总和超出</td>
+                            </tr>
+                            <tr>
+                                <td>-901004</td>
+                                <td class="tb-left">语言错误</td>
+                            </tr>
+                            <tr>
+                                <td>-901005</td>
+                                <td class="tb-left">单个请求翻译内容超长</td>
+                            </tr>
+                            <tr>
+                                <td>-901006</td>
+                                <td class="tb-left">参数错误</td>
+                            </tr>
+                            <tr>
+                                <td>-901007</td>
+                                <td class="tb-left">用户Key过期</td>
+                            </tr>
+                            <tr>
+                                <td>-901009</td>
+                                <td class="tb-left">账户余额不足</td>
+                            </tr>
+                            <tr>
+                                <td>-909000</td>
+                                <td class="tb-left">内部错误</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <p><b>接口调用样例：</b></p>
+                    <p>GET:&nbsp;&nbsp;<a href="javascript:void(0);">@(System.Configuration.ConfigurationManager.AppSettings["BaseAPIUrl"])/api/translateapi?key=201701191415&q=hello&source=en&target=zh</a></p>
+                    <p>POST:&nbsp;&nbsp;<a href="javascript:void(0);">@(System.Configuration.ConfigurationManager.AppSettings["BaseAPIUrl"])/api/translateapi</a></p>
+                    <p>入参样本(注意：lisq与q只需要传其中之一，如果都传，默认采用listq批量翻译)</p>
+                    <div style="width:100%;background-color:#f7f3f3;">
+                        {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;"key": "201701191415",<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;listq:[<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"诗曰：混沌未分天地乱，茫茫渺渺无人见。自从盘古破鸿蒙，开辟从兹清浊辨。",<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"覆载群生仰至仁，发明万物皆成善。欲知造化会元功，须看西游释厄传。",<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"盖闻天地之数，有十二万九千六百岁为一元。",<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"将一元分为十二会，乃子、丑、寅、卯、辰、巳、午、未、申、酉、戌、亥之十二支也。每会该一万八百岁。"<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;],<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;"Source": "zh",<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;"Target": "en"<br />
+                        }
+                    </div>
+                    <br />
+                    <p><b>支持的语言编码：</b></p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td style="width:70%;">语言</td>
+                                <td>语言Code（作为传入参数）</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>简体中文</td>
+                                <td>zh</td>
+                            </tr>
+                            <tr>
+                                <td>英语</td>
+                                <td>en</td>
+                            </tr>
+                            <tr>
+                                <td>葡萄牙语</td>
+                                <td>pt</td>
+                            </tr>
+                            <tr>
+                                <td>西班牙语</td>
+                                <td>es</td>
+                            </tr>
+                            <tr>
+                                <td>法语</td>
+                                <td>fr</td>
+                            </tr>
+                            <tr>
+                                <td>意大利语</td>
+                                <td>it</td>
+                            </tr>
+                            <tr>
+                                <td>韩语</td>
+                                <td>ko</td>
+                            </tr>
+                            <tr>
+                                <td>日本语</td>
+                                <td>ja</td>
+                            </tr>
+                            <tr>
+                                <td>德语</td>
+                                <td>de</td>
+                            </tr>
+                            <tr>
+                                <td>俄语</td>
+                                <td>ru</td>
+                            </tr>
+                            <tr>
+                                <td>阿拉伯语</td>
+                                <td>ar</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>

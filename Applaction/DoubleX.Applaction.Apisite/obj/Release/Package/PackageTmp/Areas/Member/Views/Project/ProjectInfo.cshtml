@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "项目信息";
+    Layout = "~/Areas/Member/Views/Shared/_Layout.cshtml";
+}
+@section headers{}
+@section styles{
+}
+<div class="container">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 member-menu">
+                    @Html.Partial("_Menu")
+                </div>
+                <div class="col-sm-9 member-contianer bg-white">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <p class="member-contianer-title">@ViewBag.Title</p>
+                            <table id="data-list" class="table table-hover list-table member-list-table">
+                                <thead>
+                                    <tr>
+                                        <th class="t-w120">名称</th>
+                                        <th class="t-w120">Key</th>
+                                        <th class="t-w120">项目状态</th>
+                                        <th class="t-w120">创建时间</th>
+                                        <th class="t-w120">项目管理</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="4">
+                                            <div id="pagination" class="pagination-box"></div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="@(WebHelper.GetStaticUrl("/module/project.js"))"></script>
+    <script type="text/javascript">
+        var pageView = {}, projectModel = new Project();
+        var $list = $(".list-table > tbody"), colCount = 5;
+        $(document).ready(function () { pageView.init(); });
+
+    </script>
+    <script type="text/javascript">
+        pageView.init = function () {
+            pageView.query();
+        }
+
+        pageView.query = function () {
+
+            var queryModel = mu.queryPagingData({
+                Key: $("#txt-search-key").val(),
+                PageIndex: ($("#pagination").data('curPageIndex') || 0)
+            });
+
+            mu.queryPagingSet($list, colCount, { data: queryModel }, projectModel.projectQuery, function (result) {
+                mu.queryPagingHtml($list, colCount, { callback: function (i, v) { pageView.query(i); } }, result, function (items) {
+                    var listHtml = "";
+                    $(items).each(function (index, item) {
+                        var id = item["Id"];
+                        listHtml += "<tr>";
+                        listHtml += "    <td>" + item["ProjectName"] + "</td>";
+                        listHtml += "    <td>" + item["TranslateKey"] + "<br/><a flag='changeKey' obj='" + JSON.stringify(item) + "' href='javascript:void(0)'>重新获取Key</a></td>";
+                        listHtml += "    <td>" + getState(item["State"]) + "</td>";
+                        listHtml += "    <td>" + mu.listFormatDateTime(item["CreateDt"]) + "</td>";
+                        listHtml += "    <td><a flag='changeProjectState' obj='" + JSON.stringify(item) + "' href='javascript:void(0)'>" + getOperation(item["State"]) + "</a></td>";
+                        listHtml += "</tr>";
+                    });
+                    $list.html(listHtml);
+
+                    $("a[flag='changeProjectState']").each(function (index, item) {
+                        $(item).click(function () {
+                            var proj = jQuery.parseJSON($(item).attr('obj'));
+                            if (proj['State'] == -1)
+                                proj['State'] = 0;
+                            else
+                                proj['State'] = -1;
+
+                            projectModel.updateProject({ data: proj }, function (result) {
+                                pageView.query();
+                            });
+                        });
+                    });
+
+                    $("a[flag='changeKey']").each(function (index, item) {
+                        $(item).click(function () {
+                            var proj = jQuery.parseJSON($(item).attr('obj'));
+                            proj['TranslateKey'] = guid();
+
+                            projectModel.updateProject({ data: proj }, function (result) {
+                                pageView.query();
+                            });
+                        });
+                    });
+                });
+            });
+        }
+
+        function getState(state) {
+            if (0 == state)
+                return "正常";
+            else if (-1 == state)
+                return "停用";
+            else
+                return "正常";
+        }
+
+        function getOperation(state) {
+            if (0 == state)
+                return "停用该项目";
+            else if (-1 == state)
+                return "启用该项目";
+            else
+                return "停用该项目";
+        }        
+    </script>
+}
+
+
+
+
+
+
+
+

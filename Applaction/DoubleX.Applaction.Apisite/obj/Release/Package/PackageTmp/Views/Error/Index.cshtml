@@ -1,0 +1,19 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>异常错误</title>
+</head>
+<body>
+    <p>异常错误：</p>
+    <p>
+        Code：@UrlsHelper.GetQueryValue("Code");
+    </p>
+    <p>
+        消息：@UrlsHelper.GetQueryValue("msg");
+    </p>
+</body>
+</html>
